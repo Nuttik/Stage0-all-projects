@@ -1,0 +1,155 @@
+:root{
+  --color-dark:#0C0C0E;
+  --color-text:#000;
+  --color-text-white:#fff;
+  --color-main-brown:#BB945F;
+}
+
+/*{
+  -webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+*/
+/* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html {
+	scroll-behavior: smooth;
+}
+body{
+  max-width: 100%;
+  font-family: 'Inter', sans-serif;
+  color:var(--color-text);
+  font-size: 1.25rem;
+}
+p{
+  margin-bottom:1.25rem;
+}
+a:hover{
+  color:var(--color-main-brown);
+}
+a:hover:after{
+  content:"";
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-main-brown);
+  display: block;
+  margin-top: -0.5rem;
+}
+.logo, h1, h2, h3{
+  font-family: 'Forum', cursive;
+}
+h2{
+  color:var(--color-dark);
+  font-size: 2.5rem;
+  text-align: center;
+}
+.section__title{
+  width: max-content;
+  margin: auto;
+}
+.section__title-line{
+  height: 1px;
+  width: 3.125rem;
+  background-color: var(--color-dark);
+  margin: 1.25rem auto 2.5rem;
+}
+footer, header{
+  background-color: var(--color-dark);
+  color:var(--color-text-white);
+}
+section, footer{
+  padding:1.25rem 1.25rem 2.5rem 1.25rem;
+}
+.container{
+  max-width: 1440px;
+  margin: auto;
+}
+header{
+  padding:1.25rem;
+}
+.logo{
+  font-size: 1.875rem;
+  line-height: 3.125rem; 
+  letter-spacing: 0.0375rem;
+}
+.container-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__right{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__link-list{
+  line-height: 3.125rem;
+  display: flex;
+  margin-right: 2.5rem;
+  gap:1.875rem;
+}
+.nav__link{
+  display: block;
+}
+.profile-menu__input{
+  display: none;
+}
+.profile-menu__ico{
+  cursor: pointer;
+}
+.section-welcome{  
+  background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%), url(../images/welcome.jpg) no-repeat top center var(--color-dark);
+  background-size: cover;
+}
+.section-welcome__text{  
+  display: block;
+  background: var(--color-dark);
+  color: var(--color-text-white);
+  text-align: center;
+  font-family: Forum;
+  font-size: 2.5rem;
+  line-height: 3.125rem; /* 125% */
+  letter-spacing: 0.1875rem;
+  text-transform: uppercase;
+  max-width: 520px;
+  margin-top: 220px;
+  margin-bottom: 160px;
+  padding: 35px 40px;
+}
+.section-about{
+  text-align: center;
+}
+.slider{
+  width: 100%;
+  overflow: hidden;
+  margin-top: 1.24rem;
+}
+.slider__itemlist{
+  display: flex;
+  gap: 25px;
+}
+.slider__indicators{
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  margin: 2.5rem auto 0;
+}
+.slider__indicator{
+  width: 1rem;
+  height: 1rem;
+  border-radius: 3.125rem;
+  background-color:var(--color-dark);
+}
+.slider__indicator.current{
+  background-color: var(--color-main-brown);
+}

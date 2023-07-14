@@ -3,30 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brooklyn Public Library</title>
-  <link rel="stylesheet" href="assets/styles/main.css">
+  <title>Brooklyn Public Library</title>  
   <link rel="stylesheet" href="assets/styles/reset.css">
+  <link rel="stylesheet" href="assets/styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-      </ul>
-    </nav>
+  <header class="header">
+    <div class="container container-header">
+      <h1 class="logo header__logo">Brooklyn Public Library</h1>
+      <div class="header__right">
+        <nav class="nav">
+          <ul class="nav__link-list">
+            <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+            <li class="nav__item"><a href="#favorites" class="nav__link">Favorites</a></li>
+            <li class="nav__item"><a href="#coffee-shop" class="nav__link">Coffee shop</a></li>
+            <li class="nav__item"><a href="#contacts" class="nav__link">Contacts</a></li>
+            <li class="nav__item"><a href="#library-card" class="nav__link">Library Card</a></li>
+          </ul>
+        </nav>
+        <div class="profile-menu header__profile-menu">
+          <div class="profile-menu__bg"></div>
+          <input type="checkbox" name="profil-ico" id="profil-ico" class="profile-menu__input">
+          <label for="profil-ico" class="profile-menu__ico"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14ZM18.6667 7.77778C18.6667 10.3551 16.5774 12.4444 14.0001 12.4444C11.4227 12.4444 9.33339 10.3551 9.33339 7.77778C9.33339 5.20045 11.4227 3.11111 14.0001 3.11111C16.5774 3.11111 18.6667 5.20045 18.6667 7.77778ZM19.4998 16.2781C20.9584 17.7367 21.7778 19.715 21.7778 21.7778H14L6.22225 21.7778C6.22225 19.715 7.0417 17.7367 8.50031 16.2781C9.95893 14.8194 11.9372 14 14 14C16.0628 14 18.0411 14.8194 19.4998 16.2781Z" fill="white"/>
+            </svg></label>
+          <div class="profile-menu__wrapper close">
+            <ul class="menu">
+              <li class="menu__item"><a href="" class="menu__link"></a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
   </header>
   <main>
-    <section></section>
-    <section></section>
-    <section></section>
-    <section></section>
-    <section></section>
-    <section></section>
+    <section class="section section-welcome">
+      
+      <div class="container">
+        <div class="section-welcome__text">Welcome to&nbsp;the&nbsp;Brooklyn Library</div>
+      </div>
+    </section>
+    
+    <div class="container">
+      <section class="section section-about" id="about">
+        <div class="section__title">
+          <h2>About</h2>
+          <div class="section__title-line"></div>
+        </div>
+        <p>The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside </p>
+        <div class="slider section-welcome__slider">
+          <div class="slider__itemlist">
+            <div class="slider__item">
+              <img src="assets/images/slider/1.jpg" alt="brooklyn library room views">
+            </div>
+            <div class="slider__item">
+              <img src="assets/images/slider/2.jpg" alt="brooklyn library room views">
+            </div>
+            <div class="slider__item">
+              <img src="assets/images/slider/3.jpg" alt="brooklyn library room views">
+            </div>
+            <div class="slider__item">
+              <img src="assets/images/slider/4.jpg" alt="brooklyn library room views">
+            </div>
+            <div class="slider__item">
+              <img src="assets/images/slider/5.jpg" alt="brooklyn library room views">
+            </div>
+            <div class="slider__item">
+              <img src="assets/images/slider/6.jpg" alt="brooklyn library room views">
+            </div>
+            <div class="slider__item">
+              <img src="assets/images/slider/7.jpg" alt="brooklyn library room views">
+            </div>
+            <div class="slider__item">
+              <img src="assets/images/slider/8.jpg" alt="brooklyn library room views">
+            </div>
+            <div class="slider__item">
+              <img src="assets/images/slider/9.jpg" alt="brooklyn library room views">
+            </div>
+          </div>
+          <ul class="slider__indicators">
+            <li class="slider__indicator current"></li>
+            <li class="slider__indicator"></li>
+            <li class="slider__indicator"></li>
+          </ul>
+        </div>
+      </section>
+      <section class="section section-afavorites" id="favorites">
+        <div class="section__title"><h2>Favorites</h2><div class="section__title-line"></div></div>
+        
+      </section>
+      <section class="section section-coffee-shop" id="coffee-shop">
+        <div class="section__title"><h2>Coffee shop</h2><div class="section__title-line"></div></div>
+        
+      </section>
+      <section iclass="section section-contacts" id="contacts">
+        <div class="section__title"><h2>Our Contacts</h2><div class="section__title-line"></div></div>
+        
+      </section>
+      <section class="section section-library-card" id="library-card">
+        <div class="section__title"><h2>Digital Library Cards</h2><div class="section__title-line"></div></div>
+        
+      </section>
+    </div>
   </main>
-  <footer></footer>
+  <footer>
+    <div class="container">
+
+    </div>
+  </footer>
 </body>
 </html>

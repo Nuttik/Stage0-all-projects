@@ -30,9 +30,17 @@ body{
   font-family: 'Inter', sans-serif;
   color:var(--color-text);
   font-size: 1.25rem;
+  letter-spacing: 0.125rem;
 }
 p{
   margin-bottom:1.25rem;
+  color: #000;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.5rem;
+  letter-spacing: 0;
 }
 a:hover{
   color:var(--color-main-brown);
@@ -100,6 +108,7 @@ header{
 }
 .nav__link{
   display: block;
+  letter-spacing: 0;
 }
 .profile-menu__input{
   display: none;
@@ -157,7 +166,11 @@ header{
   margin-bottom: 2.5rem;
 }
 .section-favorites__season-selection p{
+  letter-spacing: 0;
   font-weight: 700;
+}
+.section-favorites__season-selection label{
+  letter-spacing: 0;
 }
 .section-favorites__season-selection input:checked + label{
   font-weight: 700;
@@ -246,4 +259,44 @@ header{
   position: absolute;
   bottom: 0.94rem;
   left: 1.25rem;
+}
+.section-coffee-shop p{
+  text-align: center;
+  letter-spacing: 0.125rem;
+}
+.section-coffee-shop__shop-menu{
+  display: flex;
+  justify-content: space-between;
+}
+.section-coffee-shop__shop-menu-card,.section-coffee-shop__table{
+  width: 438px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+
+}
+.section-coffee-shop__row{
+  display: flex;
+  align-items: center;
+  color: var(--color-text);
+  letter-spacing: 0.125rem;
+  text-transform: capitalize;  
+  justify-content: space-between;
+  height: 3.75rem;
+}
+.section-coffee-shop__subtitle{
+  color: var(--color-main-brown);
+  font-family: Forum;
+  font-size: 2.5rem;
+  line-height: 2.5rem; /* 100% */
+  letter-spacing: 0.125rem;
+  text-transform: capitalize;
+}
+.section-coffee-shop__line{
+  background-color: var(--color-main-brown);
+  width: 6.25rem;
+  height: 0.0625rem;
+}
+.section-coffee-shop__dish-name{
+  width:200px;
 }

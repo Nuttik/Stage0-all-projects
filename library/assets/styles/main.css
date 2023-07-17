@@ -45,7 +45,7 @@ p{
 a:hover{
   color:var(--color-main-brown);
 }
-a:hover:after{
+.nav__link:hover:after{
   content:"";
   height: 1px;
   width: 100%;
@@ -149,17 +149,22 @@ header{
 }
 .slider__indicators{
   display: flex;
-  gap: 10px;
   width: max-content;
   margin: 2.5rem auto 0;
 }
 .slider__indicator{
+  width: 26px;
+  height: 26px;  
+  cursor: pointer;
+}
+.slider__indicator-circle{
   width: 1rem;
   height: 1rem;
+  margin: 5px;
   border-radius: 3.125rem;
   background-color:var(--color-dark);
 }
-.slider__indicator.current{
+.slider__indicator.current .slider__indicator-circle{
   background-color: var(--color-main-brown);
 }
 .section-favorites__season-selection{
@@ -169,11 +174,18 @@ header{
   letter-spacing: 0;
   font-weight: 700;
 }
-.section-favorites__season-selection label{
+input[name="season"]{
+  display: none;
+}
+.section-favorites__lable{
+  padding: 5px 5px 5px 37px;
+  background: url(../images/icons/input.svg) no-repeat left center;
   letter-spacing: 0;
+  margin-right: 90px;
 }
 .section-favorites__season-selection input:checked + label{
   font-weight: 700;
+  background: url(../images/icons/input-active.svg) no-repeat left center;
 }
 .section-favorites__books-list{
   display: grid;
@@ -182,6 +194,8 @@ header{
     grid-template-columns: 1fr 1fr;
     gap: 2.63rem;
 }
+
+
 .book{
   max-width: 550px;
   border:solid 1px var(--color-text);
@@ -250,10 +264,17 @@ header{
   line-height: normal;
   letter-spacing: 0.0625rem;
   padding: 0.56rem 1.69rem;
+  cursor: pointer;
 }
-.button_inactive{
+.button:hover, .button:active{
+  border: 1px solid var(--color-main-brown);
+  background: var(--color-main-brown);
+}
+.button:disabled, .button:disabled:hover,.button:disabled:active {
   border: 1px solid var(--color-main-brown);
   color: var(--color-main-brown);
+  background-color: inherit;
+  cursor: auto;
 }
 .book__button{
   position: absolute;
@@ -299,4 +320,24 @@ header{
 }
 .section-coffee-shop__dish-name{
   width:200px;
+}
+.section-contacts__content{
+  display: flex;
+  justify-content: space-between;
+}
+.section-contacts__content b{
+  font-weight: 700;
+  line-height: 2.5rem; /* 200% */
+  letter-spacing: 0.125rem;
+  text-transform: capitalize;
+}
+.section-contacts__info-list, .section-contacts__subtitle{
+  margin-bottom: 40px;
+}
+.section-contacts__info-row{
+  margin-bottom: 20px;
+  line-height: 2.5rem;
+}
+.section-contacts__info-row:last-child{
+  margin-bottom: 0px;
 }

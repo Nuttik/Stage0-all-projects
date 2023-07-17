@@ -85,9 +85,9 @@
             </div>
           </div>
           <ul class="slider__indicators">
-            <li class="slider__indicator current"></li>
-            <li class="slider__indicator"></li>
-            <li class="slider__indicator"></li>
+            <li class="slider__indicator current"><div class="slider__indicator-circle"></div></li>
+            <li class="slider__indicator"><div class="slider__indicator-circle"></div></li>
+            <li class="slider__indicator"><div class="slider__indicator-circle"></div></li>
           </ul>
         </div>
       </section>
@@ -97,13 +97,13 @@
             <p>Pick favorites of season</p>
             <div class="section-favorites__input-list">
               <input type="radio" id="winter" name="season" value="winter" checked>
-              <label for="winter">Winter</label>
+              <label for="winter" class="section-favorites__lable">Winter</label>
               <input type="radio" id="spring" name="season" value="spring">
-              <label for="spring">Spring</label>
+              <label for="spring" class="section-favorites__lable">Spring</label>
               <input type="radio" id="summer" name="season" value="summer">
-              <label for="summer">Summer</label>
+              <label for="summer" class="section-favorites__lable">Summer</label>
               <input type="radio" id="autumn" name="season" value="autumn">
-              <label for="autumn">Autumn</label>
+              <label for="autumn" class="section-favorites__lable">Autumn</label>
             </div>
           </form>
           <div class="section-favorites__books-list">
@@ -153,7 +153,7 @@
               <div class="book__image">
                 <img src="assets/images/books/4.jpg" alt="The Book Eaters">
               </div>
-              <button class="button book__button button_inactive">Own</button>
+              <button class="button book__button" disabled>Own</button>
             </div>             
           </div>
       </section>
@@ -235,7 +235,24 @@
       </section>
       <section iclass="section section-contacts" id="contacts">
         <div class="section__title"><h2>Our Contacts</h2><div class="section__title-line"></div></div>
-        
+        <div class="section-contacts__content">
+          <div class="section-contacts__info">            
+          <div class="section-contacts__subtitle"><b>For all Library inquiries:</b></div>
+            <ul class="section-contacts__info-list">
+              <li class="section-contacts__info-row">Please call <a href="tel:86177302370">(617) 730-2370</a></li>
+              <li class="section-contacts__info-row">For TTY service, please call <a href="tel:86177302370">(617) 730-2370</a></li>
+              <li class="section-contacts__info-row">Putterham Library: <a href="tel:86177302385">(617) 730-2385</a></li>
+            </ul>
+            <ul class="section-contacts__info-list">
+              <li class="section-contacts__info-row">
+                <b>Senior Staff</b></li>
+              <li class="section-contacts__info-row">Library Director:<b><a href="mailto:AmandaHirst@gmail.com">Amanda Hirst</a></b></li>
+            </ul>
+          </div>
+          <div class="section-contacts__map">
+            <img src="assets/images/map.jpg" alt="map">
+          </div>
+        </div>        
       </section>
       <section class="section section-library-card" id="library-card">
         <div class="section__title"><h2>Digital Library Cards</h2><div class="section__title-line"></div></div>

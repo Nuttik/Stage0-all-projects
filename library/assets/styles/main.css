@@ -3,6 +3,7 @@
   --color-text:#000;
   --color-text-white:#fff;
   --color-main-brown:#BB945F;
+  --color-gray:#8E8E8E;
 }
 
 /*{
@@ -53,7 +54,7 @@ a:hover{
   display: block;
   margin-top: -0.5rem;
 }
-.logo, h1, h2, h3{
+.logo, h1, h2, h3, h4{
   font-family: 'Forum', cursive;
 }
 h2{
@@ -276,6 +277,12 @@ input[name="season"]{
   background-color: inherit;
   cursor: auto;
 }
+.button_big{
+  padding: 0.62rem 2.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.0625rem;
+}
 .book__button{
   position: absolute;
   bottom: 0.94rem;
@@ -340,4 +347,90 @@ input[name="season"]{
 }
 .section-contacts__info-row:last-child{
   margin-bottom: 0px;
+}
+.section-library-card__content{
+  display: flex;
+  justify-content: space-between;
+}
+.section-library-card__collum_find-card{
+  flex-shrink: 0;
+  width: 37.5rem;
+}
+.form_find-card{
+  border: 3px solid var(--color-main-brown);
+  padding: 1.25rem;
+  max-width: 37.5rem;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.form_find-card fieldset{
+  background-color: var(--color-main-brown);
+  padding: 1.25rem 1.25rem 1.56rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+.form_find-card__title{
+  font-family: Forum;
+  font-size: 1.875rem;
+  line-height: 3.125rem;
+  letter-spacing: 0.0375rem;
+  margin-bottom: 1.25rem;
+}
+.form input{  
+  border: none;
+  outline:none;
+}
+.form_find-card input{
+  border-radius: 0.625rem;
+  background: #FFF;
+  padding: 0.5rem 1.25rem; 
+  color:var(--color-main-brown);
+  font-family: Forum;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3.125rem; /* 166.667% */
+  letter-spacing: 0.0375rem; 
+}
+.form_find-card input::placeholder{
+  color: var(--color-gray);
+}
+.form_find-card input{
+  margin-bottom: 1.56rem;
+}
+.form_find-card input:last-child{
+  margin-bottom: 0rem;
+}
+.form_find-card__button{  
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+.section-library-card h3{
+  font-family: Inter;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.0375rem;
+  text-align: center;
+  margin-bottom: 1.88rem;
+}
+.section-library-card__collum_get-card{
+  width: 28.5rem;
+  text-align: right;
+}
+.section-library-card__collum_get-card h4{
+  font-size: 1.875rem;
+  letter-spacing: 0.0375rem;
+  margin-bottom:2.19rem;
+}
+.section-library-card__collum_get-card p{
+  margin-bottom:2.19rem;
+}
+.section-library-card__button-row button{
+  margin-right: 1.25rem;
+}
+.section-library-card__button-row button:last-child{
+  margin-right: 0rem;
 }

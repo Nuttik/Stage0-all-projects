@@ -6,14 +6,13 @@
   --color-gray:#8E8E8E;
 }
 
-/*{
+*{
   -webkit-transition: all 0.3s linear;
 	-moz-transition: all 0.3s linear;
 	-o-transition: all 0.3s linear;
 	-ms-transition: all 0.3s linear;
 	transition: all 0.3s linear;
 }
-*/
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
 @media (prefers-reduced-motion: reduce) {
   * {

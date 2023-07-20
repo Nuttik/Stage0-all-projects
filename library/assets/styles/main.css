@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root{
   --color-dark:#0C0C0E;
   --color-text:#000;
@@ -8,17 +15,19 @@
 
 *{
   -webkit-transition: all 0.3s linear;
-	-moz-transition: all 0.3s linear;
 	-o-transition: all 0.3s linear;
-	-ms-transition: all 0.3s linear;
 	transition: all 0.3s linear;
 }
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+         -o-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
@@ -64,6 +73,8 @@ h2{
   text-transform: capitalize;
 }
 .section__title{
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   margin: auto;
 }
@@ -92,17 +103,31 @@ section, footer{
   letter-spacing: 0.0375rem;
 }
 .container-header{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .header__right{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .nav__link-list{
   line-height: 3.125rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-right: 2.5rem;
   gap:1.875rem;
@@ -118,6 +143,8 @@ section, footer{
   cursor: pointer;
 }
 .section-welcome{  
+  background: -webkit-gradient(linear, left top, left bottom, from(#0C0C0E), color-stop(0.01%, #0C0C0E), to(rgba(18, 18, 21, 0.10))), url(../images/welcome.jpg) no-repeat top center var(--color-dark);  
+  background: -o-linear-gradient(top, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%), url(../images/welcome.jpg) no-repeat top center var(--color-dark);  
   background: linear-gradient(180deg, #0C0C0E 0%, #0C0C0E 0.01%, rgba(18, 18, 21, 0.10) 100%), url(../images/welcome.jpg) no-repeat top center var(--color-dark);
   background-size: cover;
 }
@@ -145,11 +172,17 @@ section, footer{
   margin-top: 1.24rem;
 }
 .slider__itemlist{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 25px;
 }
 .slider__indicators{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
   margin: 2rem auto 0;
 }
@@ -194,9 +227,14 @@ input[name="season"]{
   background: url(../images/icons/input-active.svg) no-repeat left center;
 }
 .section-favorites__books-list{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .book{
   width: 510px;
@@ -302,26 +340,43 @@ input[name="season"]{
   margin-bottom: 2.5rem;
 }
 .section-coffee-shop__shop-menu{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .section-coffee-shop__shop-menu-card,.section-coffee-shop__table{
   min-width: 438px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 .section-coffee-shop__row{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: var(--color-text);
   letter-spacing: 0.125rem;
   text-transform: capitalize;  
   height: 3.75rem;
   margin-bottom: 1.2rem;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .section-coffee-shop__shop-menu-card:nth-child(even) .section-coffee-shop__row{
-  justify-content: end;  
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;  
 }
 .section-coffee-shop__row:last-child{
   margin-bottom: 0rem;
@@ -348,8 +403,12 @@ input[name="season"]{
   line-height: 2.5rem; /* 200% */
   letter-spacing: 0.125rem;
   text-transform: capitalize;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .section-coffee-shop__price::before{
   content: "";
@@ -363,8 +422,12 @@ input[name="season"]{
   padding-bottom: 2.2rem;
 }
 .section-contacts__content{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .section-contacts__content b{
   font-weight: 700;
@@ -384,24 +447,35 @@ input[name="season"]{
   margin-bottom: 0px;
 }
 .section-library-card__content{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .section-library-card__collum_find-card{
-  flex-shrink: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   width: 37.5rem;
 }
 .form_find-card{
   border: 3px solid var(--color-main-brown);
   padding: 1.25rem 1.25rem 1.6rem 1.25rem;
   max-width: 37.5rem;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .form_find-card fieldset{
   background-color: var(--color-main-brown);
   padding: 1rem 1rem 1.56rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-bottom: 1.25rem;
 }
 .form_find-card__title{
@@ -427,6 +501,18 @@ input[name="season"]{
   line-height: 3.125rem; /* 166.667% */
   letter-spacing: 0.0375rem; 
 }
+.form_find-card input::-webkit-input-placeholder{
+  color: var(--color-gray);
+}
+.form_find-card input::-moz-placeholder{
+  color: var(--color-gray);
+}
+.form_find-card input:-ms-input-placeholder{
+  color: var(--color-gray);
+}
+.form_find-card input::-ms-input-placeholder{
+  color: var(--color-gray);
+}
 .form_find-card input::placeholder{
   color: var(--color-gray);
 }
@@ -438,6 +524,8 @@ input[name="season"]{
 }
 .form_find-card__button{  
   display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   margin: auto;
 }
@@ -480,6 +568,8 @@ input[name="season"]{
   color: var(--color-text-white);
 }
 .footer__contacts-library{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-bottom: 1.8rem;
 }
@@ -497,6 +587,8 @@ input[name="season"]{
   margin-bottom: 0.7rem;
 }
 .footer__social{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;  
   margin-top: 1.12rem;
 }
@@ -521,8 +613,12 @@ letter-spacing: 0;
   width: 50%;
 }
 .footer_copyright{
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 2.88rem;
 }
 .footer__rs{

@@ -38,7 +38,7 @@
     width: 438px;
   }
   .section-coffee-shop__shop-menu-card:nth-child(even) {
-    margin-top: 40px;
+    margin-top: 32px;
     float: right;
   }
   .section-contacts__content,
@@ -54,14 +54,14 @@
     margin: auto;
   }
   .form_find-card {
-    width: calc(100% - 2.5rem);
+    width: calc(100% - 2.75rem);
   }
   .section-library-card__collum_get-card {
     max-width: 600px;
     width: auto;
     margin: auto;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 26px;
   }
   .section-library-card p {
     text-align: center;
@@ -185,4 +185,153 @@
   }
 }
 @media (max-width: 768px) {
+  .slider {
+    max-width: 450px;
+    margin: auto;
+    position: relative;
+  }
+  .slider img {
+    max-width: 450px;
+  }
+  .slider__control {
+    display: inline;
+  }
+  .slider__arrow {
+    position: absolute;
+    top: 45.7%;
+    font-size: 2rem;
+  }
+  .slider__arrow_left {
+    left: -62px;
+  }
+  .slider__arrow_right {
+    right: -62px;
+  }
+  .slider__indicators {
+    margin: 1rem auto 0;
+  }
+  .slider__indicator_mobile {
+    display: block;
+  }
+  .section-favorites__input-list {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 27px;
+  }
+  .section-favorites__lable {
+    margin-right: 0;
+  }
+  .book {
+    width: calc(100% - 220px);
+    margin-left: 70px;
+    margin-bottom: 40px;
+    height: 524px;
+  }
+  .book:last-child {
+    margin-bottom: 0px;
+  }
+  .section-favorites__season-selection p {
+    margin-bottom: 1.9rem;
+  }
+  .section-favorites__season-selection {
+    margin-bottom: 2.2rem;
+  }
+  .book__description {
+    width: calc(100% - 140px);
+  }
+  .section-contacts__info {
+    margin-bottom: 64px;
+  }
+  .section-contacts__map img {
+    display: block;
+    max-width: 696px;
+    max-height: 414px;
+    margin: auto;
+  }
+  .section-library-card__collum_get-card h4 {
+    margin-bottom: 2.6rem;
+  }
+  .section-library-card__collum_get-card p {
+    margin-bottom: 2.4rem;
+  }
+}
+@media (max-width: 760px) {
+  .book {
+    width: calc(100% - 60px);
+    margin-left: 20px;
+    margin-bottom: 40px;
+    height: auto;
+  }
+}
+@media (max-width: 620px) {
+  .section-library-card__collum_find-card {
+    width: 100%;
+  }
+  .section-favorites__lable {
+    padding: 5px 5px 5px 25px;
+  }
+  .slider {
+    max-width: 320px;
+  }
+  .slider img {
+    max-width: 320px;
+  }
+  .book {
+    width: calc(100% - 40px);
+    margin-left: 0px;
+  }
+}
+@media (max-width: 480px) {
+  h2 {
+    font-size: 2rem;
+  }
+  .section-library-card h3 {
+    font-size: 1.4rem;
+  }
+  .section-coffee-shop__shop-menu-card,
+  .section-coffee-shop__table {
+    width: 100%;
+    min-width: auto;
+  }
+  .section-coffee-shop__price::before {
+    width: 4rem;
+    margin: 0 2rem;
+  }
+  .section-contacts__info {
+    margin-bottom: 0px;
+  }
+  .slider__arrow {
+    display: none;
+  }
+  .section-welcome__text {
+    font-size: 2rem;
+    padding: 1rem 1rem;
+  }
+  .section-favorites__input-list {
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 2rem;
+  }
+  .form_find-card input {
+    width: calc(100% - 2.75rem);
+  }
+  .book__description {
+    width: 100%;
+  }
+  .book__image img {
+    width: 80px;
+  }
+  .book__image {
+    position: absolute;
+    bottom: 20px;
+    right: -20px;
+    height: 80px;
+  }
+}
+@media (max-width: 420px) {
+  .logo {
+    font-size: 1.6rem;
+    line-height: 2.25rem;
+    padding-right: 1rem;
+  }
 }

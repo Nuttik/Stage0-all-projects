@@ -1,0 +1,337 @@
+@media (max-width: 1439px) {
+  body {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1260px) {
+  .book {
+    width: calc(50% - 100px);
+  }
+  .book__description {
+    width: calc(100% - 160px);
+    padding-bottom: 40px;
+  }
+  .book {
+    height: auto;
+  }
+  .section-contacts__map {
+    width: 50%;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 1060px) {
+  .nav__link-list {
+    gap: 1rem;
+  }
+  .section-coffee-shop__shop-menu {
+    display: inline-block;
+    clear: both;
+    width: 100%;
+  }
+  .section-coffee-shop__shop-menu-card {
+    width: 438px;
+  }
+  .section-coffee-shop__shop-menu-card:nth-child(even) {
+    margin-top: 32px;
+    float: right;
+  }
+  .section-contacts__content,
+  .section-library-card__content {
+    flex-direction: column;
+  }
+  .section-contacts__map,
+  .section-contacts__map img {
+    width: 100%;
+  }
+  .section-library-card__collum_find-card {
+    width: 600px;
+    margin: auto;
+  }
+  .form_find-card {
+    width: calc(100% - 2.75rem);
+  }
+  .section-library-card__collum_get-card {
+    max-width: 600px;
+    width: auto;
+    margin: auto;
+    text-align: center;
+    margin-top: 26px;
+  }
+  .section-library-card p {
+    text-align: center;
+  }
+}
+@media (min-width: 1024px) {
+  .nav-mobile {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .nav-desc {
+    display: none;
+  }
+  .header__profile-menu {
+    margin-right: 40px;
+  }
+  .nav-mobile {
+    display: block;
+    position: relative;
+    z-index: 2;
+  }
+  .burger-ico {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .burger-ico-line {
+    height: 2px;
+    width: 45px;
+    background: #fff;
+  }
+  .main .burger-ico-line {
+    background: var(--color-primary);
+  }
+  .nav-mobile-wrapper {
+    position: fixed;
+    width: calc(320px - 60px);
+    background: #000;
+    padding: 100px 30px;
+    height: 100%;
+    top: 0;
+    z-index: 3;
+    -webkit-transition: right 1s ease-in-out;
+    -moz-transition: right 1s ease-in-out;
+    -o-transition: right 1s ease-in-out;
+    -ms-transition: right 1s ease-in-out;
+    transition: right 1s ease-in-out;
+  }
+  .nav-mobile-burger {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav__link-list_mobile {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav__link-list .menu__item a {
+    color: var(--color-dark-s);
+  }
+  .nav-mobile-burger .menu__item.active {
+    color: var(--color-light-s);
+  }
+  .nav__link-list_mobile {
+    gap: 2rem;
+  }
+  .nav__link-list_mobile .nav__item {
+    height: 3rem;
+  }
+  .nav-mobile input ~ label {
+    z-index: 4;
+    position: relative;
+    transform: rotate(0deg);
+    cursor: pointer;
+  }
+  .nav-mobile .nav__link-list {
+    margin-right: 0;
+  }
+  .wrapper-bg {
+    background: #29292900;
+  }
+  .nav-mobile .wrapper-bg_open {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    position: fixed;
+    background: #00000094;
+  }
+  .nav-mobile input {
+    display: none;
+  }
+  .nav-mobile input:checked ~ label .burger-ico-line:nth-child(2) {
+    display: none;
+  }
+  .nav-mobile input:checked ~ label .burger-ico-line:nth-child(1) {
+    transform: rotate(-45deg) translatey(8px);
+  }
+  .nav-mobile input:checked ~ label .burger-ico-line:nth-child(3) {
+    transform: rotate(45deg) translatey(-8px);
+  }
+  .close {
+    right: -420px;
+  }
+  .open {
+    right: 0px;
+  }
+  .fixed {
+    position: fixed !important;
+  }
+  .fixed.profile-menu__ico {
+    top: 30px;
+    right: 105px;
+  }
+  .fixed.burger-ico {
+    top: 32px;
+    right: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .slider {
+    max-width: 450px;
+    margin: auto;
+    position: relative;
+  }
+  .slider img {
+    max-width: 450px;
+  }
+  .slider__control {
+    display: inline;
+  }
+  .slider__arrow {
+    position: absolute;
+    top: 45.7%;
+    font-size: 2rem;
+  }
+  .slider__arrow_left {
+    left: -62px;
+  }
+  .slider__arrow_right {
+    right: -62px;
+  }
+  .slider__indicators {
+    margin: 1rem auto 0;
+  }
+  .slider__indicator_mobile {
+    display: block;
+  }
+  .section-favorites__input-list {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 27px;
+  }
+  .section-favorites__lable {
+    margin-right: 0;
+  }
+  .book {
+    width: calc(100% - 220px);
+    margin-left: 70px;
+    margin-bottom: 40px;
+    height: 524px;
+  }
+  .book:last-child {
+    margin-bottom: 0px;
+  }
+  .section-favorites__season-selection p {
+    margin-bottom: 1.9rem;
+  }
+  .section-favorites__season-selection {
+    margin-bottom: 2.2rem;
+  }
+  .book__description {
+    width: calc(100% - 140px);
+  }
+  .section-contacts__info {
+    margin-bottom: 64px;
+  }
+  .section-contacts__map img {
+    display: block;
+    max-width: 696px;
+    max-height: 414px;
+    margin: auto;
+  }
+  .section-library-card__collum_get-card h4 {
+    margin-bottom: 2.6rem;
+  }
+  .section-library-card__collum_get-card p {
+    margin-bottom: 2.4rem;
+  }
+}
+@media (max-width: 760px) {
+  .book {
+    width: calc(100% - 60px);
+    margin-left: 20px;
+    margin-bottom: 40px;
+    height: auto;
+  }
+}
+@media (max-width: 620px) {
+  .section-library-card__collum_find-card {
+    width: 100%;
+  }
+  .section-favorites__lable {
+    padding: 5px 5px 5px 25px;
+  }
+  .slider {
+    max-width: 320px;
+  }
+  .slider img {
+    max-width: 320px;
+  }
+  .book {
+    width: calc(100% - 40px);
+    margin-left: 0px;
+  }
+}
+@media (max-width: 480px) {
+  h2 {
+    font-size: 2rem;
+  }
+  .section-library-card h3 {
+    font-size: 1.4rem;
+  }
+  .section-coffee-shop__shop-menu-card,
+  .section-coffee-shop__table {
+    width: 100%;
+    min-width: auto;
+  }
+  .section-coffee-shop__price::before {
+    width: 4rem;
+    margin: 0 2rem;
+  }
+  .section-contacts__info {
+    margin-bottom: 0px;
+  }
+  .slider__arrow {
+    display: none;
+  }
+  .section-welcome__text {
+    font-size: 2rem;
+    padding: 1rem 1rem;
+  }
+  .section-favorites__input-list {
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 2rem;
+  }
+  .form_find-card input {
+    width: calc(100% - 2.75rem);
+  }
+  .book__description {
+    width: 100%;
+  }
+  .book__image img {
+    width: 80px;
+  }
+  .book__image {
+    position: absolute;
+    bottom: 20px;
+    right: -20px;
+    height: 80px;
+  }
+}
+@media (max-width: 420px) {
+  .logo {
+    font-size: 1.6rem;
+    line-height: 2.25rem;
+    padding-right: 1rem;
+  }
+}

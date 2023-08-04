@@ -1,4 +1,4 @@
-@media (max-width: 1439px) {
+@media (max-width: 1460px) {
   body {
     min-width: 100%;
     max-width: 100%;
@@ -50,18 +50,21 @@
     width: 100%;
   }
   .section-library-card__collum_find-card {
-    width: 600px;
+    width: calc(100% - 2.75rem);
     margin: auto;
   }
   .form_find-card {
     width: calc(100% - 2.75rem);
   }
   .section-library-card__collum_get-card {
-    max-width: 600px;
+    max-width: 100%;
     width: auto;
     margin: auto;
     text-align: center;
     margin-top: 26px;
+  }
+  .form_find-card {
+    max-width: 100%;
   }
   .section-library-card p {
     text-align: center;

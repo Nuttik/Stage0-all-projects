@@ -261,6 +261,9 @@
   .section-library-card__collum_get-card {
     width: calc(100% - 8rem);
   }
+  .form_find-card {
+    margin: 0 auto;
+  }
   .section-coffee-shop__shop-menu-card {
     width: 460px;
   }

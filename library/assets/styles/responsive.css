@@ -201,14 +201,14 @@
   }
   .slider__arrow {
     position: absolute;
-    top: 46.7%;
+    top: 46%;
     font-size: 2rem;
   }
   .slider__arrow_left {
-    left: -62px;
+    left: -74px;
   }
   .slider__arrow_right {
-    right: -62px;
+    right: -74px;
   }
   .slider__indicators {
     margin: 1rem auto 0;

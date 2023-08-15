@@ -257,6 +257,10 @@
   .section-library-card__collum_get-card p {
     margin-bottom: 2.4rem;
   }
+  .form_find-card,
+  .section-library-card__collum_get-card {
+    width: calc(100% - 8rem);
+  }
 }
 @media (max-width: 760px) {
   .book {
@@ -264,6 +268,10 @@
     margin-left: 20px;
     margin-bottom: 40px;
     height: auto;
+  }
+  .form_find-card,
+  .section-library-card__collum_get-card {
+    width: calc(100% - 2.5rem);
   }
 }
 @media (max-width: 620px) {

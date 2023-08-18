@@ -233,7 +233,8 @@ footer {
   background-color: var(--color-dark);
 }
 .slider__indicator.current {
-  cursor: auto;
+  cursor: initial;
+  pointer-events: unset;
 }
 
 .slider__indicator.current .slider__indicator-circle {

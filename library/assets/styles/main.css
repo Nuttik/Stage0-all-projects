@@ -206,7 +206,10 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 25px;
+  width: fit-content;
+}
+.slider__item {
+  margin-right: 25px;
 }
 .slider__indicators {
   display: -webkit-box;
@@ -229,10 +232,15 @@ footer {
   border-radius: 3.125rem;
   background-color: var(--color-dark);
 }
+.slider__indicator.current {
+  cursor: auto;
+}
+
 .slider__indicator.current .slider__indicator-circle {
   background-color: var(--color-main-brown);
 }
-.slider__indicator_mobile {
+.slider__indicator_one-img,
+.slider__indicator_two-img {
   display: none;
 }
 .section-favorites {

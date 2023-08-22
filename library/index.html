@@ -45,24 +45,43 @@
               </ul>
             </div>
           </nav>
-          <div class="profile-menu header__profile-menu">
-            <div class="profile-menu__bg"></div>
+          <!--меню для незарегистрированных пользователей-->
+          <div class="profile-menu noRegisted">
             <input
               type="checkbox"
               name="profil-ico"
               id="profil-ico"
               class="profile-menu__input"
             />
-            <label for="profil-ico" class="profile-menu__ico"
-              ><img src="assets/images/icons/profile.svg"
-            /></label>
-            <div class="profile-menu__wrapper close">
+            <label for="profil-ico" class="profile-menu__ico menu__ico"
+              ><div class="profil-ico__img"></div
+            ></label>
+            <div class="profile-menu__bg"></div>
+            <div class="profile-menu__wrapper menu__wrapper close current-menu">
+              <div class="profile-menu__title">Profile</div>
+              <div class="profile-menu__title-line"></div>
               <ul class="menu">
-                <li class="menu__item"><a href="" class="menu__link"></a></li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">Log In</a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">Register</a>
+                </li>
+              </ul>
+            </div>
+            <div class="profile-menu__wrapper menu__wrapper close">
+              <div class="profile-menu__title">Profile</div>
+              <div class="profile-menu__title-line"></div>
+              <ul class="menu">
+                <li class="menu__item">
+                  <a href="" class="menu__link">My profile</a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link">Log Out</a>
+                </li>
               </ul>
             </div>
           </div>
-
           <nav class="nav">
             <div class="nav-mobile">
               <div class="wrapper-bg"></div>
@@ -771,7 +790,7 @@
         </div>
       </div>
     </footer>
-    <script src="assets/js/index.js"></script>
+    <script src="assets/js/registration.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
     <script src="assets/js/slider.js"></script>
   </body>

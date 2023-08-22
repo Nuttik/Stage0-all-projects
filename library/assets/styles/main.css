@@ -79,6 +79,9 @@ h2 {
   text-align: center;
   text-transform: capitalize;
 }
+.hidden {
+  display: none;
+}
 .section__title {
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -677,4 +680,59 @@ input[name="season"] {
 }
 .slider__control {
   display: none;
+}
+.profile-menu {
+  position: relative;
+}
+.profil-ico__img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 100%;
+}
+.noRegisted .profil-ico__img {
+  background: url("../images/icons/profile.svg");
+}
+.isRegisted .profil-ico__img {
+  background: #fff;
+}
+.profile-menu__wrapper {
+  position: absolute;
+  top: 36px;
+  transform: translateX(-22px);
+  background: var(--color-text-white);
+  padding: 0 0.61rem 0;
+  color: var(--color-text);
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0;
+  transition: all 1s ease-in;
+  z-index: 10;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+.profile-menu__wrapper.close {
+  height: 0;
+}
+.profile-menu__wrapper.open.current-menu {
+  display: block;
+  height: 7.1875rem;
+}
+.profile-menu__title {
+  font-weight: 700;
+  margin-bottom: 0.31rem;
+  margin-top: 0.31rem;
+}
+.profile-menu__title-line {
+  margin: 0 auto 0.94rem;
+  width: 2.5rem;
+  height: 0.0625rem;
+  background-color: var(--color-main-brown);
+}
+.profile-menu .menu__item {
+  margin-bottom: 0.61rem;
 }

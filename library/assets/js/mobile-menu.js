@@ -18,7 +18,11 @@ mobileMenu.onclick = function (event) {
     burgerIco.classList.toggle("fixed");
     profileIcon.classList.toggle("fixed");
   }
-  if (!mobileMenuWrapper.contains(event.target) || event.target.closest("a")) {
+  if (
+    !mobileMenuWrapper.contains(event.target) ||
+    event.target.closest("a") ||
+    event.target.closest("label")
+  ) {
     mobileMenuWrapper.classList.toggle("close");
     mobileMenuWrapper.classList.toggle("open");
     burgerIco.classList.toggle("fixed");
@@ -26,5 +30,4 @@ mobileMenu.onclick = function (event) {
     wrapperBg.classList.toggle("wrapper-bg_open");
     input.checked = !input.checked;
   }
-  console.log(menuLinks[1]);
 };

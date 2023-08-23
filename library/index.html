@@ -46,7 +46,7 @@
             </div>
           </nav>
           <!--меню для незарегистрированных пользователей-->
-          <div class="profile-menu noRegisted">
+          <div class="profile-menu">
             <input
               type="checkbox"
               name="profil-ico"
@@ -56,11 +56,10 @@
             <label for="profil-ico" class="profile-menu__ico menu__ico"
               ><div class="profil-ico__img"></div
             ></label>
-            <div class="profile-menu__bg"></div>
-            <div class="profile-menu__wrapper menu__wrapper close current-menu">
+            <div class="profile-menu__wrapper menu__wrapper close">
               <div class="profile-menu__title">Profile</div>
               <div class="profile-menu__title-line"></div>
-              <ul class="menu">
+              <ul class="menu" id="menu-log-out">
                 <li class="menu__item">
                   <a href="" class="menu__link">Log In</a>
                 </li>
@@ -68,11 +67,7 @@
                   <a href="" class="menu__link">Register</a>
                 </li>
               </ul>
-            </div>
-            <div class="profile-menu__wrapper menu__wrapper close">
-              <div class="profile-menu__title">Profile</div>
-              <div class="profile-menu__title-line"></div>
-              <ul class="menu">
+              <ul class="menu hidden" id="menu-log-in">
                 <li class="menu__item">
                   <a href="" class="menu__link">My profile</a>
                 </li>
@@ -81,6 +76,7 @@
                 </li>
               </ul>
             </div>
+            <div class="profile-menu__bg"></div>
           </div>
           <nav class="nav">
             <div class="nav-mobile">

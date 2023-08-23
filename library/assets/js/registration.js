@@ -23,12 +23,16 @@ function openMenu(menu) {
           !document.querySelector(".nav-mobile").querySelector("input").checked;
       }
     }
-    if (!menuWrapper.contains(event.target) || event.target.closest("a")) {
+    if (event.target.closest("a")) {
       menuWrapper.classList.toggle("close");
       menuWrapper.classList.toggle("open");
       burgerIco.classList.toggle("fixed");
       document.querySelector(".nav-mobile").querySelector("input").checked =
         !document.querySelector(".nav-mobile").querySelector("input").checked;
+    }
+    if (!menuWrapper.contains(event.target)) {
+      menuWrapper.classList.toggle("close");
+      menuWrapper.classList.toggle("open");
     }
   };
 }

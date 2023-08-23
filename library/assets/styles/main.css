@@ -689,18 +689,15 @@ input[name="season"] {
   height: 1.75rem;
   border-radius: 100%;
 }
-.noRegisted .profil-ico__img {
+.profil-ico__img {
   background: url("../images/icons/profile.svg");
-}
-.isRegisted .profil-ico__img {
-  background: #fff;
 }
 .profile-menu__wrapper {
   position: absolute;
   top: 36px;
   transform: translateX(-22px);
   background: var(--color-text-white);
-  padding: 0 0.61rem 0;
+  width: 5rem;
   color: var(--color-text);
   text-align: center;
   font-family: Inter;
@@ -735,4 +732,12 @@ input[name="season"] {
 }
 .profile-menu .menu__item {
   margin-bottom: 0.61rem;
+}
+.profile-menu__wrapper.open + .profile-menu__bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
 }

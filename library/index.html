@@ -54,7 +54,7 @@
               class="profile-menu__input"
             />
             <label for="profil-ico" class="profile-menu__ico menu__ico"
-              ><div class="profil-ico__img"></div
+              ><i class="profil-ico__img"></i
             ></label>
             <div class="profile-menu__wrapper menu__wrapper close">
               <div class="profile-menu__title">Profile</div>
@@ -234,7 +234,7 @@
           </form>
           <ul class="section-favorites__books-list">
             <!-- Winter-->
-            <li class="book section-favorites__book">
+            <li class="book section-favorites__book" data-season="winter">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Book Eaters</div>
@@ -255,7 +255,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book">
+            <li class="book section-favorites__book" data-season="winter">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Cackle</div>
@@ -275,7 +275,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book">
+            <li class="book section-favorites__book" data-season="winter">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Dante: Poet of the Secular World</div>
@@ -296,7 +296,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book">
+            <li class="book section-favorites__book" data-season="winter">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Last Queen</div>
@@ -313,11 +313,11 @@
                   alt="book cover The Book Eaters"
                 />
               </div>
-              <button class="button book__button" disabled>Own</button>
+              <button class="button book__button">Buy</button>
             </li>
             <!-- Начало скрытого списка книг-->
             <!-- Spring-->
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="spring">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Body</div>
@@ -336,7 +336,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="spring">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">
@@ -354,7 +354,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="spring">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Days of Distraction</div>
@@ -373,7 +373,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="spring">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Dominicana</div>
@@ -388,10 +388,10 @@
               <div class="book__image">
                 <img src="assets/images/books/8.jpg" alt="Dominicana" />
               </div>
-              <button class="button book__button" disabled>Own</button>
+              <button class="button book__button">Buy</button>
             </li>
             <!-- Summer-->
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="summer">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Crude: A Memoir</div>
@@ -410,7 +410,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="summer">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Let My People Go Surfing</div>
@@ -425,7 +425,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="summer">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Octopus Museum: Poems</div>
@@ -444,7 +444,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="summer"">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Shark Dialogues: A Novel</div>
@@ -465,7 +465,7 @@
               <button class="button book__button">Buy</button>
             </li>
             <!-- Autumn-->
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="autumn">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Casual Conversation</div>
@@ -485,7 +485,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="autumn">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Great Fire</div>
@@ -502,7 +502,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="autumn">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Rickey: The Life and Legend</div>
@@ -522,7 +522,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="autumn">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Slug: And Other Stories</div>
@@ -789,5 +789,6 @@
     <script src="assets/js/registration.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
     <script src="assets/js/slider.js"></script>
+    <script src="assets/js/sorting-slider.js"></script>
   </body>
 </html>

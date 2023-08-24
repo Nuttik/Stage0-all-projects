@@ -237,7 +237,7 @@ footer {
 }
 .slider__indicator.current {
   cursor: initial;
-  pointer-events: unset;
+  pointer-events: none;
 }
 
 .slider__indicator.current .slider__indicator-circle {
@@ -273,6 +273,7 @@ input[name="season"] {
 .section-favorites__season-selection input:checked + label {
   font-weight: 700;
   background: url(../images/icons/input-active.svg) no-repeat left center;
+  pointer-events: none;
 }
 .section-favorites__books-list {
   display: -webkit-box;
@@ -688,9 +689,8 @@ input[name="season"] {
   width: 1.75rem;
   height: 1.75rem;
   border-radius: 100%;
-}
-.profil-ico__img {
   background: url("../images/icons/profile.svg");
+  display: block;
 }
 .profile-menu__wrapper {
   position: absolute;
@@ -740,4 +740,30 @@ input[name="season"] {
   left: 0;
   top: 0;
   z-index: 1;
+}
+.opasity-start {
+  animation: opasityStart 2s 1 ease-out forwards;
+}
+@keyframes opasityStart {
+  from {
+    opacity: 0;
+    display: block;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
+.opasity-end {
+  animation: opasityEnd 2s 1 ease-out forwards;
+}
+@keyframes opasityEnd {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
 }

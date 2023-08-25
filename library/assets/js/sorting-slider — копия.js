@@ -42,33 +42,27 @@ function SortingSlider(id) {
 
   this.sorting = (event) => {
     let season = event.target.getAttribute("For");
-
     this.visibleBooks.forEach((book) => {
+      book.classList.toggle("hidden");
+      book.classList.remove("opasity-start");
       book.classList.add("opasity-end");
-
-      if (book.classList.contains("opasity-start")) {
-        book.classList.remove("opasity-start");
-      }
-
-      setTimeout((event) => {
-        book.classList.toggle("hidden");
-        book.classList.remove("opasity-end");
-
-        for (let key in this.seasons) {
-          if (key == season) {
-            this.visibleBooks = this.seasons[key];
-
-            this.seasons[key].forEach((item) => {
-              item.classList.remove("hidden");
-              item.classList.add("opasity-start");
-              if (item.classList.contains("opasity-end")) {
-                item.classList.remove("opasity-end");
-              }
-            });
-          }
-        }
-      }, 1350);
     });
+    for (let key in this.seasons) {
+      if (key == season) {
+        this.visibleBooks = this.seasons[key];
+        console.log(this.seasons[key]);
+        this.seasons[key].forEach((book) => {
+          book.classList.toggle("hidden");
+          book.classList.add("opasity-start");
+          if (book.classList.contains("opasity-end")) {
+            book.classList.remove("opasity-end");
+          }
+        });
+      }
+    }
+    //чтобы отработала анимация затухания нужно:
+    //к текущим this.visibleBooks добавить класс "opasity-end" и повесить событие "animationend".
+    //только когда анимация закончится добавлять текущим хидден, удалять "opasity-end" и менять остальные классы
   };
 
   this.buttons.forEach((button) =>

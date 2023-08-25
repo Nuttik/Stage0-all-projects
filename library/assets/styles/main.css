@@ -742,7 +742,7 @@ input[name="season"] {
   z-index: 1;
 }
 .opasity-start {
-  animation: opasityStart 2s 1 ease-out forwards;
+  animation: opasityStart 1.5s 1 ease-out forwards;
 }
 @keyframes opasityStart {
   from {
@@ -755,7 +755,7 @@ input[name="season"] {
   }
 }
 .opasity-end {
-  animation: opasityEnd 2s 1 ease-out forwards;
+  animation: opasityEnd 1.5s 1 ease-out forwards;
 }
 @keyframes opasityEnd {
   from {

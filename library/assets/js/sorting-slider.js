@@ -2,6 +2,7 @@ function SortingSlider(id) {
   this.slider = document.getElementById(id);
   this.buttons = Array.from(this.slider.querySelectorAll("label"));
   this.booksList = Array.from(this.slider.querySelectorAll(".book"));
+  this.toolsbar = this.slider.querySelector("form");
 
   this.seasons = {
     winter: [],
@@ -74,6 +75,18 @@ function SortingSlider(id) {
   this.buttons.forEach((button) =>
     button.addEventListener("click", this.sorting)
   );
+
+  this.stikcToolsBar = () => {
+    let coordinates = this.toolsbar.getBoundingClientRect();
+    let clientY = coordinates.y;
+    console.log(clientY);
+    if (clientY < 0) {
+      this.toolsbar.style.position = "sticky";
+      this.toolsbar.style.top = "0";
+      this.toolsbar.style.paddingBottom = "1rem";
+    }
+  };
+  window.addEventListener("scroll", this.stikcToolsBar);
 }
 
 let favoritesSeason = new SortingSlider("favorites");

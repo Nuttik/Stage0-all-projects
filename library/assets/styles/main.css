@@ -253,6 +253,8 @@ footer {
 .section-favorites__season-selection {
   margin-bottom: 2.6rem;
   margin-top: -8px;
+  background: #fff;
+  z-index: 15;
 }
 .section-favorites__season-selection p {
   letter-spacing: 0;

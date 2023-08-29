@@ -61,10 +61,10 @@
               <div class="profile-menu__title-line"></div>
               <ul class="menu" id="menu-log-out">
                 <li class="menu__item">
-                  <a href="" class="menu__link">Log In</a>
+                  <a href="#login" class="menu__link openModalLogin">Log In</a>
                 </li>
                 <li class="menu__item">
-                  <a href="" class="menu__link">Register</a>
+                  <a href="#register" class="menu__link openModalRegister">Register</a>
                 </li>
               </ul>
               <ul class="menu hidden" id="menu-log-in">
@@ -694,8 +694,8 @@
                 or you can register a new account
               </p>
               <div class="section-library-card__button-row">
-                <button class="button">Sign Up</button>
-                <button class="button">Log in</button>
+                <button class="button openModalRegister">Sign Up</button>
+                <button class="button openModalLogin">Log in</button>
               </div>
             </div>
           </div>
@@ -786,8 +786,53 @@
         </div>
       </div>
     </footer>
-    <script src="assets/js/registration.js"></script>
+    <!-- Окно входа-->
+    <div class="modal hidden" id="modalLogin">
+      <div class="modal__wrapper-bg"></div>
+      <div class="modal__window">
+      <div class="modal__closeButton"></div>
+      <div class="modal__title">Login</div>
+      <form class="modal__form" action="#" name="loginForm">
+        <div class="modal__input">
+         <label for="login">E-mail or readers card</label><input type="text" id="login">
+        </div>
+        <div class="modal__input">
+          <label for="password">Password</label><input type="text" id="password">
+        </div>
+        <input type="submit" value="Log in" class="button">
+      </form>    
+      <div class="modal__anotherVariant"><p>Don’t have an account?</p> <a href="" class="openModalRegister">Register</a></div>
+    </div>
+    </div>
+    <!-- Окно регистрации-->
+    <div class="modal hidden" id="modalRegister">      
+      <div class="modal__wrapper-bg"></div>
+      <div class="modal__window">
+        <div class="modal__closeButton"></div>
+        <div class="modal__title">Register</div>
+        <form class="modal__form" action="#" name="registerForm">
+          <div class="modal__input">
+            <label for="firstName">First name</label><input type="text" id="firstName">
+          </div>
+          <div class="modal__input">
+            <label for="lastName">Last name</label><input type="text" id="lastName">
+          </div>
+          <div class="modal__input">
+            <label for="mail">E-mail</label><input type="email" id="mail">
+          </div>
+          <div class="modal__input">
+            <label for="password">Password</label><input type="text" id="password">
+          </div>
+          <input type="submit" value="Sign Up" class="button">
+        </form>    
+        <div class="modal__anotherVariant"><p>Already have an account?</p> <a href="" class="openModalLogin">Login</a></div>
+      </div>      
+    </div>
+    <script src="assets/js/localData.js"></script>    
+    <script src="assets/js/modal-windows.js"></script>
+    <script src="assets/js/profile-menu.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/login.js"></script> 
     <script src="assets/js/slider.js"></script>
     <script src="assets/js/sorting-slider.js"></script>
   </body>

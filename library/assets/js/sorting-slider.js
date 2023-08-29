@@ -79,7 +79,6 @@ function SortingSlider(id) {
   this.stikcToolsBar = () => {
     let coordinates = this.toolsbar.getBoundingClientRect();
     let clientY = coordinates.y;
-    console.log(clientY);
     if (clientY < 0) {
       this.toolsbar.style.position = "sticky";
       this.toolsbar.style.top = "0";

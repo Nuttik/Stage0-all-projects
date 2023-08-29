@@ -35,6 +35,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  position: relative;
   min-width: 1440px;
   max-width: 100%;
   font-family: "Inter", sans-serif;
@@ -154,7 +155,7 @@ footer {
 .profile-menu__ico {
   cursor: pointer;
   position: relative;
-  z-index: 4;
+  z-index: 3;
 }
 .section-welcome {
   background: -webkit-gradient(
@@ -254,7 +255,7 @@ footer {
   margin-bottom: 2.6rem;
   margin-top: -8px;
   background: #fff;
-  z-index: 15;
+  z-index: 1;
 }
 .section-favorites__season-selection p {
   letter-spacing: 0;
@@ -768,4 +769,100 @@ input[name="season"] {
     opacity: 0;
     display: none;
   }
+}
+
+/*модальное окно*/
+.modal__window {
+  width: calc(15.625rem - 2.5rem);
+  padding: 1.25rem 1.56rem;
+  background: #fff;
+  color: #000;
+  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 4;
+}
+.modal__title {
+  margin-bottom: 1.25rem;
+  text-align: center;
+  font-family: Forum;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem; /* 100% */
+  letter-spacing: 0.025rem;
+  text-transform: uppercase;
+}
+.modal label {
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem; /* 133.333% */
+  letter-spacing: 0.01875rem;
+}
+.modal__anotherVariant {
+  display: flex;
+}
+.modal__anotherVariant p {
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+  font-family: Inter;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 0.62rem;
+}
+.modal__anotherVariant a {
+  color: #0c0c0e;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.0625rem;
+  text-decoration-line: none;
+}
+.modal__anotherVariant a:hover {
+  text-decoration-line: underline;
+}
+.modal__input {
+  margin-bottom: 0.62rem;
+}
+.modal__input label {
+  display: block;
+  margin-bottom: 0.62rem;
+}
+.modal__input input {
+  border: 1px solid #bb945f;
+  height: 1.25rem;
+  padding: 0 0.62rem;
+  width: calc(100% - 1.22rem);
+}
+.modal .button {
+  margin-top: 1.25rem;
+  margin-bottom: 0.62rem;
+}
+.modal__closeButton {
+  position: absolute;
+  right: 0.94rem;
+  top: 0.94rem;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  background: url(../images/icons/close_btn.svg) no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+}
+.modal__wrapper-bg {
+  background: #29292900;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  position: fixed;
+  background: #00000094;
+  z-index: 3;
 }

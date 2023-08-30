@@ -31,7 +31,6 @@ const modalRegister = document.getElementById("modalRegister");
 function openModal(arrayLinks, modal) {
   arrayLinks.forEach((link) => {
     link.addEventListener("click", function (event) {
-      console.log(event.target);
       modal.classList.remove("hidden");
       event.preventDefault();
     });

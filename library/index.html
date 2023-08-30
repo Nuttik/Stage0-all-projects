@@ -72,7 +72,7 @@
                   <a href="" class="menu__link">My profile</a>
                 </li>
                 <li class="menu__item">
-                  <a href="" class="menu__link">Log Out</a>
+                  <a href="" class="menu__link" id="logOut">Log Out</a>
                 </li>
               </ul>
             </div>
@@ -792,12 +792,12 @@
       <div class="modal__window">
       <div class="modal__closeButton"></div>
       <div class="modal__title">Login</div>
-      <form class="modal__form" action="#" name="loginForm">
+      <form class="modal__form" action="#" name="loginForm" id="loginForm">
         <div class="modal__input">
          <label for="login">E-mail or readers card</label><input type="text" id="login">
         </div>
         <div class="modal__input">
-          <label for="password">Password</label><input type="text" id="password">
+          <label for="password">Password</label><input type="text" id="loginpassword">
         </div>
         <input type="submit" value="Log in" class="button">
       </form>    
@@ -810,7 +810,7 @@
       <div class="modal__window">
         <div class="modal__closeButton"></div>
         <div class="modal__title">Register</div>
-        <form class="modal__form" action="#" name="registerForm">
+        <form class="modal__form" action="#" name="registerForm" id="registerForm">
           <div class="modal__input">
             <label for="firstName">First name</label><input type="text" id="firstName">
           </div>

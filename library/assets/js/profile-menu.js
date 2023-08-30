@@ -1,25 +1,26 @@
 function openMenu(menu) {
   //сделать чтобы изменения классов оберток меню касалось обоих и дла залогиненого и разлогиненого wrapper
-
   const labelIco = menu.querySelector(".menu__ico");
   const menuWrapper = menu.querySelector(".menu__wrapper");
-  const input = menu.querySelector("input");
-  const menuLinks = menuWrapper.querySelectorAll("a");
   const mobileMenuWrapper = document.querySelector(".nav-mobile-wrapper");
   const menuList = menuWrapper.querySelectorAll(".menu");
+  let count = 0;
 
-  const linkLogin = menu.querySelector('a[href="#login"]');
-  const linkRegister = menu.querySelector('a[href="#register"]');
-  const modalLogin = document.getElementById("modalLogin");
-  const modalRegister = document.getElementById("modalRegister");
-
-  if (localStorage.getItem("isLogin") == "true") {
-    Array.from(menuList).forEach((item) => {
-      item.classList.toggle("hidden");
-    });
+  function isLogin() {
+    if (localStorage.getItem("isLogin") == "true") {
+      document.getElementById("menu-log-out").classList.add("hidden");
+      document.getElementById("menu-log-in").classList.remove("hidden");
+    } else if (
+      localStorage.getItem("isLogin") == "false" ||
+      localStorage.getItem("isLogin") == "false"
+    ) {
+      document.getElementById("menu-log-out").classList.remove("hidden");
+      document.getElementById("menu-log-in").classList.add("hidden");
+    }
   }
 
   menu.onclick = function (event) {
+    isLogin();
     let label = event.target.closest("label");
     if (label) {
       menuWrapper.classList.toggle("close");
@@ -47,5 +48,4 @@ function openMenu(menu) {
   };
 }
 
-let menu = document.querySelector(".profile-menu");
-menu.addEventListener("click", openMenu(menu));
+openMenu(document.querySelector(".profile-menu"));

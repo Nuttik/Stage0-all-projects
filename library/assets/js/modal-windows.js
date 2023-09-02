@@ -9,7 +9,6 @@ modalsList.forEach((modal) => {
     if (
       !modalWindow.contains(event.target) ||
       event.target == closeButton ||
-      event.target == submitButton ||
       event.target.closest("a")
     ) {
       modal.classList.add("hidden");

@@ -866,3 +866,10 @@ input[name="season"] {
   background: #00000094;
   z-index: 3;
 }
+.error-m {
+  font-size: 0.8rem;
+  color: #ff0000;
+  line-height: 0.8rem;
+  margin: 1rem 0;
+  letter-spacing: 0rem;
+}

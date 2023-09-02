@@ -72,8 +72,18 @@ registerForm.onsubmit = (event) => {
   let lastName = registerForm.lastName.value;
   let mail = registerForm.mail.value;
   let password = registerForm.password.value;
+  let errorMes = registerForm.querySelector(".error-m");
+  if (!errorMes.classList.contains("hidden")) {
+    errorMes.classList.add("hidden");
+  }
 
   if (firstName == "" || lastName == "" || mail == "" || password == "") {
+    return false;
+  }
+  if (password.length < 8) {
+    if (errorMes.classList.contains("hidden")) {
+      errorMes.classList.remove("hidden");
+    }
     return false;
   }
   newUser = new User(firstName, lastName, mail, password);
@@ -84,6 +94,7 @@ registerForm.onsubmit = (event) => {
 
 function changeIco() {
   let ico = document.querySelector(".profile-menu__ico i");
+  let menuTilte = document.querySelector(".profile-menu .profile-menu__title");
   let UserInitials =
     localStorage.getItem("firstName").slice(0, 1) +
     localStorage.getItem("lastName").slice(0, 1);
@@ -96,12 +107,16 @@ function changeIco() {
       localStorage.getItem("firstName") +
       " " +
       localStorage.getItem("lastName");
+    menuTilte.innerHTML = localStorage.getItem("cardNumber");
+    menuTilte.style.fontSize = "0.8rem";
   }
   if (localStorage.getItem("isLogin") == "false") {
     ico.classList.add("profil-ico__img");
     ico.classList.remove("profil-ico__name");
     ico.innerHTML = "";
     ico.title = "";
+    menuTilte.innerHTML = "Profile";
+    menuTilte.style.fontSize = "1rem";
   }
 }
 
@@ -120,7 +135,7 @@ function loginUser(event, login, password) {
   }
   if (
     login === localStorage.getItem("mail") ||
-    localStorage.getItem("cardNumber ") == login
+    localStorage.getItem("cardNumber") == login
   ) {
     if (password === localStorage.getItem("password")) {
       //создать новый юзер и копировать в него все локальные данные
@@ -150,12 +165,12 @@ function loginUser(event, login, password) {
   } else {
     if (errorMes.classList.contains("hidden")) {
       errorMes.classList.remove("hidden");
+
+      loginForm.login.value = ""; //сбрасываю значения полей
+      loginForm.loginpassword.value = ""; //сбрасываю значения полей
     }
     return false;
   }
-
-  loginForm.login.value = ""; //сбрасываю значения полей
-  loginForm.loginpassword.value = ""; //сбрасываю значения полей
 }
 
 loginForm.onsubmit = (event) => {

@@ -11,3 +11,4 @@
 //localStorage.setItem("mail", "undefined");
 //localStorage.setItem("password", "undefined");
 //localStorage.setItem("cardNumber", "undefined");
+//localStorage.setItem("rentedBooks", "undefined");

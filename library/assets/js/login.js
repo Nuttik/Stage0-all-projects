@@ -16,11 +16,11 @@ function User(firstName, lastName, mail, password) {
     localStorage.setItem("lastName", this.lastName);
     localStorage.setItem("mail", this.mail);
     localStorage.setItem("password", this.password);
-    this.logIn();
     localStorage.setItem("visits", this.visits);
+    this.logIn();
   };
   this.logIn = () => {
-    localStorage.setItem("isLogin", "true");
+    localStorage.setItem("isLogin", true);
   };
 
   this.getBook = (book) => {
@@ -35,8 +35,6 @@ function User(firstName, lastName, mail, password) {
   this.coutnBooks = () => {
     return this.rentedBooks.leght;
   };
-
-  this.register();
 }
 
 let newUser;
@@ -51,11 +49,13 @@ registerForm.onsubmit = (event) => {
     return false;
   }
   newUser = new User(firstName, lastName, mail, password);
+  newUser.register();
+  event.target.closest(".modal").classList.add("hidden");
   return false;
 };
 
 function logUot(event) {
-  localStorage.setItem("isLogin", "false");
+  localStorage.setItem("isLogin", false);
   event.preventDefault();
 }
 
@@ -80,9 +80,9 @@ function loginUser(event, login, password) {
         localStorage.getItem("password")
       );
       newUser.logIn();
-      newUser.visits = localStorage.getItem("visits");
-      +1;
-      localStorage.setItem("visits", this.visits);
+      event.target.closest(".modal").classList.add("hidden");
+      newUser.visits = Number(localStorage.getItem("visits")) + 1;
+      localStorage.setItem("visits", newUser.visits);
 
       if (localStorage.getItem("cardNumber")) {
         newUser.cardNumber = localStorage.getItem("cardNumber");
@@ -91,7 +91,6 @@ function loginUser(event, login, password) {
         newUser.rentedBooks = localStorage.getItem("rentedBooks");
       }
     }
-    event.target.closest(".modal").classList.add("hidden");
     loginForm.login.value = ""; //сбрасываю значения полей
     loginForm.loginpassword.value = ""; //сбрасываю значения полей
   } else {
@@ -108,3 +107,17 @@ function loginUser(event, login, password) {
 loginForm.onsubmit = (event) => {
   loginUser(event, loginForm.login.value, loginForm.loginpassword.value);
 };
+
+/*function changeIco() {
+  console.log("!!!");
+  let ico = document.getElementById("profil-ico");
+  let UserInitials =
+    newUser.firstName.slice(0, 1) + newUser.lastName.slice(0, 1);
+
+  if (localStorage.getItem("isLogin") == "true") {
+    ico.classList.remove("profil-ico__img");
+    ico.classList.add("profil-ico__name");
+    ico.innerHTML(UserInitials);
+  }
+}
+*/

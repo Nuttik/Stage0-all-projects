@@ -10,10 +10,7 @@ function openMenu(menu) {
     if (localStorage.getItem("isLogin") == "true") {
       document.getElementById("menu-log-out").classList.add("hidden");
       document.getElementById("menu-log-in").classList.remove("hidden");
-    } else if (
-      localStorage.getItem("isLogin") == "false" ||
-      localStorage.getItem("isLogin") == "false"
-    ) {
+    } else if (localStorage.getItem("isLogin") == "false") {
       document.getElementById("menu-log-out").classList.remove("hidden");
       document.getElementById("menu-log-in").classList.add("hidden");
     }

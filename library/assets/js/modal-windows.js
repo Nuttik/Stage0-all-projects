@@ -44,10 +44,15 @@ const buttonsByeList = Array.from(
 );
 
 function showModalLogin(event) {
+  let errorMes = loginForm.querySelector(".error-m");
+  if (!errorMes.classList.contains("hidden")) {
+    errorMes.classList.add("hidden");
+  }
   if (localStorage.getItem("isLogin") == "false") {
     modalLogin.classList.remove("hidden");
     event.preventDefault();
   }
+  event.preventDefault();
 }
 buttonsByeList.forEach((button) => {
   button.addEventListener("click", showModalLogin);

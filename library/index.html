@@ -54,7 +54,7 @@
               class="profile-menu__input"
             />
             <label for="profil-ico" class="profile-menu__ico menu__ico"
-              ><i class="profil-ico__img" id="profil-ico"></i
+              ><i class="profil-ico__img"></i
             ></label>
             <div class="profile-menu__wrapper menu__wrapper close">
               <div class="profile-menu__title">Profile</div>
@@ -827,6 +827,50 @@
           <input type="submit" value="Sign Up" class="button">
         </form>    
         <div class="modal__anotherVariant"><p>Already have an account?</p> <a href="" class="openModalLogin">Login</a></div>
+      </div>      
+    </div>
+    <!-- Окно профиля-->
+    <div class="modal hidden" id="modalProfil">      
+      <div class="modal__wrapper-bg"></div>
+      <div class="modal__window">        
+        <div class="modal__closeButton"></div>
+        <div class="profil-left">
+          <div class="user-avatar"></div> 
+          <div class="user-name"></div>
+        </div>
+        <div class="profil-right">
+          <h2>My profile</h2>
+          <div class="profil__info-row">
+            <ul>
+              <li class="visits">
+                <div class="info-title"></div>
+                <div class="info-ico"></div>
+                <div class="info-count"></div>
+              </li>
+              <li class="bonuses">
+                <div class="info-title"></div>
+                <div class="info-ico"></div>
+                <div class="info-count"></div>
+              </li>
+              <li class="books">
+                <div class="info-title"></div>
+                <div class="info-ico"></div>
+                <div class="info-count"></div>
+              </li>
+            </ul>
+            <div class="profil__rented-books">
+              <div class="profil__rented-books-title">Rented books</div>
+              <ul class="profil__rented-books-list"></ul>
+            </div>
+            <div class="profil__card">
+              <p>Card number: <span></span></p>
+              <div class="copy"></div>
+            </div>
+        
+          </div>
+
+
+        </div>
       </div>      
     </div>
     <script src="assets/js/localData.js"></script>    

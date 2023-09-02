@@ -695,6 +695,20 @@ input[name="season"] {
   background: url("../images/icons/profile.svg");
   display: block;
 }
+.profil-ico__name {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 100%;
+  display: block;
+  background-color: #fff;
+  color: var(--color-main-brown);
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.75rem;
+  letter-spacing: 0rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
 .profile-menu__wrapper {
   position: absolute;
   top: 36px;

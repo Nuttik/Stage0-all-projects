@@ -7,7 +7,7 @@ function User(firstName, lastName, mail, password) {
   this.mail = mail;
   this.password = password;
   this.visits = 1;
-  this.cardNumber = ""; //ПОсле покупки BUY A LIBRARY CARD - Будет сгенерирован девятизначный Card Number случайным образом в формате 16-ричного числа.
+  this.cardNumber = "";
   this.rentedBooks = [];
 
   //методы
@@ -17,10 +17,38 @@ function User(firstName, lastName, mail, password) {
     localStorage.setItem("mail", this.mail);
     localStorage.setItem("password", this.password);
     localStorage.setItem("visits", this.visits);
+    this.generateCardNumber = () => {
+      let result = [];
+      let hexRef = [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+      ];
+      for (let n = 0; n < 10; n++) {
+        result.push(hexRef[Math.floor(Math.random() * 16)]);
+      }
+      return result.join("");
+    };
+    this.cardNumber = this.generateCardNumber();
+    localStorage.setItem("cardNumber", this.cardNumber);
     this.logIn();
   };
   this.logIn = () => {
     localStorage.setItem("isLogin", true);
+    changeIco();
   };
 
   this.getBook = (book) => {
@@ -54,8 +82,32 @@ registerForm.onsubmit = (event) => {
   return false;
 };
 
+function changeIco() {
+  let ico = document.querySelector(".profile-menu__ico i");
+  let UserInitials =
+    localStorage.getItem("firstName").slice(0, 1) +
+    localStorage.getItem("lastName").slice(0, 1);
+
+  if (localStorage.getItem("isLogin") == "true") {
+    ico.classList.remove("profil-ico__img");
+    ico.classList.add("profil-ico__name");
+    ico.innerHTML = UserInitials;
+    ico.title =
+      localStorage.getItem("firstName") +
+      " " +
+      localStorage.getItem("lastName");
+  }
+  if (localStorage.getItem("isLogin") == "false") {
+    ico.classList.add("profil-ico__img");
+    ico.classList.remove("profil-ico__name");
+    ico.innerHTML = "";
+    ico.title = "";
+  }
+}
+
 function logUot(event) {
   localStorage.setItem("isLogin", false);
+  changeIco();
   event.preventDefault();
 }
 
@@ -66,10 +118,9 @@ function loginUser(event, login, password) {
   if (!errorMes.classList.contains("hidden")) {
     errorMes.classList.add("hidden");
   }
-
   if (
     login === localStorage.getItem("mail") ||
-    login === localStorage.getItem("cardNumber")
+    localStorage.getItem("cardNumber ") == login
   ) {
     if (password === localStorage.getItem("password")) {
       //создать новый юзер и копировать в него все локальные данные
@@ -83,6 +134,7 @@ function loginUser(event, login, password) {
       event.target.closest(".modal").classList.add("hidden");
       newUser.visits = Number(localStorage.getItem("visits")) + 1;
       localStorage.setItem("visits", newUser.visits);
+      newUser.cardNumber = localStorage.getItem("cardNumber");
 
       if (localStorage.getItem("cardNumber")) {
         newUser.cardNumber = localStorage.getItem("cardNumber");
@@ -93,6 +145,8 @@ function loginUser(event, login, password) {
     }
     loginForm.login.value = ""; //сбрасываю значения полей
     loginForm.loginpassword.value = ""; //сбрасываю значения полей
+    changeIco();
+    return false;
   } else {
     if (errorMes.classList.contains("hidden")) {
       errorMes.classList.remove("hidden");
@@ -108,16 +162,4 @@ loginForm.onsubmit = (event) => {
   loginUser(event, loginForm.login.value, loginForm.loginpassword.value);
 };
 
-/*function changeIco() {
-  console.log("!!!");
-  let ico = document.getElementById("profil-ico");
-  let UserInitials =
-    newUser.firstName.slice(0, 1) + newUser.lastName.slice(0, 1);
-
-  if (localStorage.getItem("isLogin") == "true") {
-    ico.classList.remove("profil-ico__img");
-    ico.classList.add("profil-ico__name");
-    ico.innerHTML(UserInitials);
-  }
-}
-*/
+changeIco();

@@ -24,8 +24,12 @@ const buttonsOpenRegister = Array.from(
 const buttonsOpenLogin = Array.from(
   document.querySelectorAll(".openModalLogin")
 );
+const buttonsOpenProfile = Array.from(
+  document.querySelectorAll(".openModalProfile")
+);
 const modalLogin = document.getElementById("modalLogin");
 const modalRegister = document.getElementById("modalRegister");
+const modalProfile = document.getElementById("modalProfile");
 
 function openModal(arrayLinks, modal) {
   arrayLinks.forEach((link) => {
@@ -37,6 +41,7 @@ function openModal(arrayLinks, modal) {
 }
 openModal(buttonsOpenLogin, modalLogin);
 openModal(buttonsOpenRegister, modalRegister);
+openModal(buttonsOpenProfile, modalProfile);
 
 //вызов модальных окон для незарегистированных пользователей по клику на кнопку Bye
 const buttonsByeList = Array.from(

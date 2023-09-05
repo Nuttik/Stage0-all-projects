@@ -787,8 +787,8 @@ input[name="season"] {
 
 /*модальное окно*/
 .modal__window {
-  width: calc(15.625rem - 2.5rem);
-  padding: 1.25rem 1.56rem;
+  width: calc(15.625rem - 3rem);
+  padding: 1rem 1.4rem;
   background: #fff;
   color: #000;
   position: relative;
@@ -827,6 +827,7 @@ input[name="season"] {
   font-weight: 400;
   line-height: normal;
   margin-right: 0.62rem;
+  margin-bottom: 0;
 }
 .modal__anotherVariant a {
   color: #0c0c0e;
@@ -843,7 +844,7 @@ input[name="season"] {
   text-decoration-line: underline;
 }
 .modal__input {
-  margin-bottom: 0.62rem;
+  margin-bottom: 8px;
 }
 .modal__input label {
   display: block;
@@ -851,23 +852,29 @@ input[name="season"] {
 }
 .modal__input input {
   border: 1px solid #bb945f;
-  height: 1.25rem;
+  height: 18px;
   padding: 0 0.62rem;
-  width: calc(100% - 1.22rem);
+  width: calc(100% - 1.4rem);
 }
 .modal .button {
-  margin-top: 1.25rem;
+  margin-top: 8px;
   margin-bottom: 0.62rem;
 }
 .modal__closeButton {
   position: absolute;
-  right: 0.94rem;
-  top: 0.94rem;
-  width: 0.9375rem;
-  height: 0.9375rem;
+  right: 15px;
+  top: 15px;
+  width: 1.3rem;
+  height: 1.3rem;
   background: url(../images/icons/close_btn.svg) no-repeat center center;
   background-size: contain;
   cursor: pointer;
+}
+#modalProfile .modal__closeButton {
+  right: 1.4rem;
+  top: 1.4rem;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 .modal__wrapper-bg {
   background: #29292900;
@@ -886,4 +893,140 @@ input[name="season"] {
   line-height: 0.8rem;
   margin: 1rem 0;
   letter-spacing: 0rem;
+}
+#modalProfile .modal__window {
+  padding: 0;
+  width: 600px;
+  height: 400px;
+  letter-spacing: 0;
+}
+#modalProfile .modal__container {
+  display: flex;
+}
+#modalProfile .profile-left {
+  background-color: var(--color-dark);
+  width: 170px;
+}
+#modalProfile .profile-user {
+  margin: 139px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#modalProfile .user-avatar {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  color: #bb945f;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  text-transform: uppercase;
+}
+#modalProfile .user-name {
+  width: 110px;
+  padding: 5px;
+  background-color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: capitalize;
+}
+#modalProfile h2 {
+  text-align: left;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 50% */
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+#modalProfile .profile-right {
+  margin: 39px 20px;
+}
+#modalProfile .profile__info-row ul {
+  display: flex;
+  margin-bottom: 20px;
+}
+#modalProfile .profile__info-row ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+#modalProfile .profile__info-row .info-ico {
+  margin: 10px;
+}
+#modalProfile .profile__info-row .info-title {
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: 0.4px;
+}
+#modalProfile .profile__rented-books-title {
+  color: #0c0c0e;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 80% */
+  margin-bottom: 30px;
+}
+#modalProfile .profile__rented-books-list {
+  margin-bottom: 40px;
+  margin-left: 12px;
+}
+#modalProfile .profile__rented-books-list li {
+  list-style: disc;
+  list-style-position: inside;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+#modalProfile .profile__card {
+  display: flex;
+  align-items: center;
+  color: #0c0c0e;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+}
+#modalProfile .profile__card .profile__card-number {
+  color: #bb945f;
+  text-transform: uppercase;
+  margin: 0 15px;
+}
+.profile__card-copy {
+  background: url(../images/icons/copy.svg) no-repeat center;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+#modalProfile .info-count {
+  text-align: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 200% */
+  letter-spacing: 0.2px;
 }

@@ -6,6 +6,7 @@
 //localStorage.setItem("isLogin", "false");
 
 //данные пользователя
+//localStorage.getItem("visits");
 //localStorage.setItem("firstName", "undefined");
 //localStorage.setItem("lastName", "undefined");
 //localStorage.setItem("mail", "undefined");

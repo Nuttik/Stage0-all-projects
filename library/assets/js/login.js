@@ -17,6 +17,8 @@ function User(firstName, lastName, mail, password) {
     localStorage.setItem("mail", this.mail);
     localStorage.setItem("password", this.password);
     localStorage.setItem("visits", this.visits);
+    localStorage.setItem("rentedBooks", this.rentedBooks);
+    localStorage.setItem("countBooks", "0");
     this.generateCardNumber = () => {
       let result = [];
       let hexRef = [
@@ -108,7 +110,7 @@ function changeIco() {
       " " +
       localStorage.getItem("lastName");
     menuTilte.innerHTML = localStorage.getItem("cardNumber");
-    menuTilte.style.fontSize = "0.8rem";
+    menuTilte.style.fontSize = "0.7rem";
   }
   if (localStorage.getItem("isLogin") == "false") {
     ico.classList.add("profil-ico__img");
@@ -150,6 +152,7 @@ function loginUser(event, login, password) {
       newUser.visits = Number(localStorage.getItem("visits")) + 1;
       localStorage.setItem("visits", newUser.visits);
       newUser.cardNumber = localStorage.getItem("cardNumber");
+      newUser.rentedBooks = localStorage.getItem("rentedBooks");
 
       if (localStorage.getItem("cardNumber")) {
         newUser.cardNumber = localStorage.getItem("cardNumber");

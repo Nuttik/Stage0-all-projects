@@ -69,7 +69,7 @@
               </ul>
               <ul class="menu hidden" id="menu-log-in">
                 <li class="menu__item">
-                  <a href="" class="menu__link">My profile</a>
+                  <a href="" class="menu__link openModalProfile">My profile</a>
                 </li>
                 <li class="menu__item">
                   <a href="" class="menu__link" id="logOut">Log Out</a>
@@ -831,46 +831,49 @@
       </div>      
     </div>
     <!-- Окно профиля-->
-    <div class="modal hidden" id="modalProfil">      
+    <div class="modal hidden" id="modalProfile">      
       <div class="modal__wrapper-bg"></div>
       <div class="modal__window">        
         <div class="modal__closeButton"></div>
-        <div class="profil-left">
-          <div class="user-avatar"></div> 
-          <div class="user-name"></div>
+        <div class="modal__container">
+        <div class="profile-left">
+          <div class ="profile-user">
+            <div class="user-avatar"></div> 
+            <div class="user-name"></div>
         </div>
-        <div class="profil-right">
+        </div>
+        <div class="profile-right">
           <h2>My profile</h2>
-          <div class="profil__info-row">
+          <div class="profile__info-row">
             <ul>
               <li class="visits">
-                <div class="info-title"></div>
-                <div class="info-ico"></div>
+                <div class="info-title">Visits</div>
+                <div class="info-ico"><img src="assets/images/icons/user-union.svg" alt="иконка человека"></div>
                 <div class="info-count"></div>
               </li>
               <li class="bonuses">
-                <div class="info-title"></div>
-                <div class="info-ico"></div>
-                <div class="info-count"></div>
+                <div class="info-title">Bonuses</div>
+                <div class="info-ico"><img src="assets/images/icons/user-star.svg" alt="количество бонусов"></div>
+                <div class="info-count">1240</div>
               </li>
               <li class="books">
-                <div class="info-title"></div>
-                <div class="info-ico"></div>
+                <div class="info-title">Books</div>
+                <div class="info-ico"><img src="assets/images/icons/user-book.svg" alt="количество книг"></div>
                 <div class="info-count"></div>
               </li>
             </ul>
-            <div class="profil__rented-books">
-              <div class="profil__rented-books-title">Rented books</div>
-              <ul class="profil__rented-books-list"></ul>
-            </div>
-            <div class="profil__card">
-              <p>Card number: <span></span></p>
-              <div class="copy"></div>
-            </div>
-        
           </div>
-
-
+          <div class="profile__rented-books">
+            <div class="profile__rented-books-title">Rented books</div>
+            <ul class="profile__rented-books-list"></ul>
+          </div>
+          <div class="profile__card">
+            <div class="profile__card-text">Card number</div>
+            <div class="profile__card-number" id="content"></div>
+            <div class="profile__card-copy" id="copy"></div>
+          </div>
+        </div>
+      </div>
         </div>
       </div>      
     </div>
@@ -881,5 +884,6 @@
     <script src="assets/js/login.js"></script> 
     <script src="assets/js/slider.js"></script>
     <script src="assets/js/sorting-slider.js"></script>
+    <script src="assets/js/user-profile.js"></script>
   </body>
 </html>

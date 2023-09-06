@@ -90,6 +90,7 @@ registerForm.onsubmit = (event) => {
   }
   newUser = new User(firstName, lastName, mail, password);
   newUser.register();
+  showYourLibrarycardInfo();
   event.target.closest(".modal").classList.add("hidden");
   return false;
 };
@@ -125,6 +126,7 @@ function changeIco() {
 function logUot(event) {
   localStorage.setItem("isLogin", false);
   changeIco();
+  showYourLibrarycardInfo();
   event.preventDefault();
 }
 
@@ -153,7 +155,6 @@ function loginUser(event, login, password) {
       localStorage.setItem("visits", newUser.visits);
       newUser.cardNumber = localStorage.getItem("cardNumber");
       newUser.rentedBooks = localStorage.getItem("rentedBooks");
-
       if (localStorage.getItem("cardNumber")) {
         newUser.cardNumber = localStorage.getItem("cardNumber");
       }
@@ -164,6 +165,7 @@ function loginUser(event, login, password) {
     loginForm.login.value = ""; //сбрасываю значения полей
     loginForm.loginpassword.value = ""; //сбрасываю значения полей
     changeIco();
+    showYourLibrarycardInfo();
     return false;
   } else {
     if (errorMes.classList.contains("hidden")) {
@@ -181,3 +183,126 @@ loginForm.onsubmit = (event) => {
 };
 
 changeIco();
+
+//проверка данных по форме Find your Library card для незалогиненного пользователя
+
+const findYourLibraryCardForm = document.querySelector(".form_find-card");
+
+findYourLibraryCardForm.onsubmit = (event) => {
+  let readerName = findYourLibraryCardForm.name.value;
+  let cardNumber = findYourLibraryCardForm.number.value;
+  let button = findYourLibraryCardForm.querySelector(".form_find-card__button");
+  let infoRow = findYourLibraryCardForm.querySelector(".form__card-info");
+  let infoRowVisits = findYourLibraryCardForm.querySelector(
+    ".visits .info-count"
+  );
+  let infoRowBooks =
+    findYourLibraryCardForm.querySelector(".books .info-count");
+
+  let userName =
+    localStorage.getItem("firstName") + " " + localStorage.getItem("lastName");
+  let userNameReverse =
+    localStorage.getItem("lastName") + " " + localStorage.getItem("firstName");
+  let userCardNumber = localStorage.getItem("cardNumber");
+
+  if (
+    (readerName.toLowerCase() == userName.toLowerCase() ||
+      readerName.toLowerCase() == userNameReverse.toLowerCase()) &&
+    cardNumber.toLowerCase() == userCardNumber.toLowerCase()
+  ) {
+    //заполнить строку данными визиты и книги!!
+    infoRowVisits.innerHTML = localStorage.getItem("visits");
+    infoRowBooks.innerHTML = localStorage.getItem("countBooks");
+
+    button.classList.add("hidden");
+    infoRow.classList.remove("hidden");
+    setTimeout(() => {
+      button.classList.remove("hidden");
+      infoRow.classList.add("hidden");
+      findYourLibraryCardForm.reset();
+    }, 10000);
+  }
+  event.preventDefault();
+  return false;
+};
+
+//смена данных по форме Find your Library card для залогиненного пользователя
+function showYourLibrarycardInfo() {
+  let sectionLibraryCard = document.querySelector(
+    ".section-library-card__content"
+  );
+  let h3 = sectionLibraryCard.querySelector("h3");
+  let h4 = sectionLibraryCard.querySelector("h4");
+  let text = sectionLibraryCard.querySelector(
+    ".section-library-card__collum_get-card p"
+  );
+  let form = findYourLibraryCardForm;
+  let readerName = findYourLibraryCardForm.name;
+  let cardNumber = findYourLibraryCardForm.number;
+  let button = findYourLibraryCardForm.querySelector(".form_find-card__button");
+  let infoRowVisits = findYourLibraryCardForm.querySelector(".form__card-info");
+
+  let buttonLogin = sectionLibraryCard.querySelector(".openModalRegister");
+  let buttonReg = sectionLibraryCard.querySelector(".openModalLogin");
+  let buttonProgile = sectionLibraryCard.querySelector(".openModalProfile");
+
+  if (localStorage.getItem("isLogin") == "true") {
+    fillProfileInfoRow();
+
+    buttonLogin.classList.add("hidden");
+    buttonReg.classList.add("hidden");
+    buttonProgile.classList.remove("hidden");
+
+    h3.innerHTML = "Your Library card";
+    h4.innerHTML = "Visit your profile";
+    text.innerHTML =
+      "With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.";
+    button.classList.add("hidden");
+    infoRowVisits.classList.remove("hidden");
+    readerName.value =
+      localStorage.getItem("firstName") +
+      " " +
+      localStorage.getItem("lastName");
+    cardNumber.value = localStorage.getItem("cardNumber");
+    readerName.disabled = true;
+    cardNumber.disabled = true;
+  } else {
+    if (buttonLogin.classList.contains("hidden")) {
+      buttonLogin.classList.remove("hidden");
+    }
+    if (buttonReg.classList.contains("hidden")) {
+      buttonReg.classList.remove("hidden");
+    }
+    if (!buttonReg.classList.contains("hidden")) {
+      buttonProgile.classList.add("hidden");
+    }
+
+    h3.innerHTML = "Find your Library card";
+    h4.innerHTML = "Get a reader card";
+    text.innerHTML =
+      "You will be able to see a reader card after logging into account or you can register a new account";
+    readerName.disabled = false;
+    cardNumber.disabled = false;
+    form.reset();
+    if (button.classList.contains("hidden")) {
+      button.classList.remove("hidden");
+    }
+    if (!infoRowVisits.classList.contains("hidden")) {
+      infoRowVisits.classList.add("hidden");
+    }
+  }
+}
+//заполнение данных пользователя
+function fillProfileInfoRow() {
+  let countVisitsList = document.querySelectorAll(".visits .info-count");
+  let countBooksList = document.querySelectorAll(".books .info-count");
+  countVisitsList.forEach((elem) => {
+    elem.innerHTML = localStorage.getItem("visits");
+  });
+  countBooksList.forEach((elem) => {
+    elem.innerHTML = localStorage.getItem("countBooks");
+  });
+}
+
+fillProfileInfoRow();
+showYourLibrarycardInfo();

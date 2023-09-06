@@ -81,7 +81,7 @@ h2 {
   text-transform: capitalize;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 .section__title {
   width: -webkit-max-content;
@@ -907,7 +907,8 @@ input[name="season"] {
   background-color: var(--color-dark);
   width: 170px;
 }
-#modalProfile .profile-user {
+#modalProfile .profile-user,
+.form__card-info .profile-user {
   margin: 139px 25px;
   display: flex;
   flex-direction: column;
@@ -942,6 +943,7 @@ input[name="season"] {
   font-weight: 400;
   line-height: 20px;
   text-transform: capitalize;
+  overflow-wrap: anywhere;
 }
 #modalProfile h2 {
   text-align: left;
@@ -1029,4 +1031,27 @@ input[name="season"] {
   font-weight: 400;
   line-height: 20px; /* 200% */
   letter-spacing: 0.2px;
+}
+.form__card-info ul {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 15px auto;
+}
+.form__card-info ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 400;
+  color: #000;
+  line-height: 20px; /* 200% */
+  letter-spacing: 0.2px;
+}
+.form__card-info .info-ico {
+  width: 20px;
+}
+input:-internal-autofill-selected {
+  color: inherit !important;
+  background-color: #fff !important;
 }

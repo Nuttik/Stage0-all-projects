@@ -11,19 +11,6 @@ const booksRentedList = modalProfile.querySelector(
   "ul.profile__rented-books-list"
 );
 
-userAvatar.innerHTML =
-  localStorage.getItem("firstName").slice(0, 1) +
-  localStorage.getItem("lastName").slice(0, 1);
-
-userName.innerHTML =
-  localStorage.getItem("firstName") + " " + localStorage.getItem("lastName");
-
-coutnVisits.innerHTML = localStorage.getItem("visits");
-
-cardNumber.innerHTML = localStorage.getItem("cardNumber");
-
-coutnBooks.innerHTML = localStorage.getItem("countBooks");
-
 //доработать добавление книг в список!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function createdBooksRentedList() {
   if (!localStorage.getItem("rentedBooks")) {
@@ -38,8 +25,13 @@ function createdBooksRentedList() {
 //обновляю данные при каждом открытие профиля
 function updateProfileData() {
   createdBooksRentedList();
-  coutnVisits.innerHTML = localStorage.getItem("visits");
-  coutnBooks.innerHTML = localStorage.getItem("countBooks");
+  userAvatar.innerHTML =
+    localStorage.getItem("firstName").slice(0, 1) +
+    localStorage.getItem("lastName").slice(0, 1);
+  userName.innerHTML =
+    localStorage.getItem("firstName") + " " + localStorage.getItem("lastName");
+  cardNumber.innerHTML = localStorage.getItem("cardNumber");
+  fillProfileInfoRow();
 }
 
 buttonsOpenProfile.forEach((link) => {

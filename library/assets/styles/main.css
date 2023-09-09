@@ -35,6 +35,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
+  position: relative;
   min-width: 1440px;
   max-width: 100%;
   font-family: "Inter", sans-serif;
@@ -42,6 +43,18 @@ body {
   font-size: 1.25rem;
   letter-spacing: 0.125rem;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
 a[href^="tel"] {
   white-space: nowrap;
 }
@@ -78,6 +91,9 @@ h2 {
   font-size: 2.5rem;
   text-align: center;
   text-transform: capitalize;
+}
+.hidden {
+  display: none !important;
 }
 .section__title {
   width: -webkit-max-content;
@@ -151,7 +167,7 @@ footer {
 .profile-menu__ico {
   cursor: pointer;
   position: relative;
-  z-index: 4;
+  z-index: 3;
 }
 .section-welcome {
   background: -webkit-gradient(
@@ -233,7 +249,8 @@ footer {
   background-color: var(--color-dark);
 }
 .slider__indicator.current {
-  cursor: auto;
+  cursor: initial;
+  pointer-events: none;
 }
 
 .slider__indicator.current .slider__indicator-circle {
@@ -249,6 +266,8 @@ footer {
 .section-favorites__season-selection {
   margin-bottom: 2.6rem;
   margin-top: -8px;
+  background: #fff;
+  z-index: 1;
 }
 .section-favorites__season-selection p {
   letter-spacing: 0;
@@ -269,6 +288,7 @@ input[name="season"] {
 .section-favorites__season-selection input:checked + label {
   font-weight: 700;
   background: url(../images/icons/input-active.svg) no-repeat left center;
+  pointer-events: none;
 }
 .section-favorites__books-list {
   display: -webkit-box;
@@ -676,4 +696,438 @@ input[name="season"] {
 }
 .slider__control {
   display: none;
+}
+.profile-menu {
+  position: relative;
+}
+.profil-ico__img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 100%;
+  background: url("../images/icons/profile.svg");
+  display: block;
+}
+.profil-ico__name {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 100%;
+  display: block;
+  background-color: #fff;
+  color: var(--color-main-brown);
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.75rem;
+  letter-spacing: 0rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.profile-menu__wrapper {
+  position: absolute;
+  top: 36px;
+  transform: translateX(-22px);
+  background: var(--color-text-white);
+  width: 5rem;
+  color: var(--color-text);
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0;
+  transition: all 1s ease-in;
+  z-index: 10;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+.profile-menu__wrapper.close {
+  height: 0;
+}
+.profile-menu__wrapper.open.current-menu {
+  display: block;
+  height: 7.1875rem;
+}
+.profile-menu__title {
+  font-weight: 700;
+  margin-bottom: 0.31rem;
+  margin-top: 0.31rem;
+}
+.profile-menu__title-line {
+  margin: 0 auto 0.94rem;
+  width: 2.5rem;
+  height: 0.0625rem;
+  background-color: var(--color-main-brown);
+}
+.profile-menu .menu__item {
+  margin-bottom: 0.61rem;
+}
+.profile-menu__wrapper.open + .profile-menu__bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.opasity-start {
+  animation: opasityStart 1.5s 1 ease-out forwards;
+}
+@keyframes opasityStart {
+  from {
+    opacity: 0;
+    display: block;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
+.opasity-end {
+  animation: opasityEnd 1.5s 1 ease-out forwards;
+}
+@keyframes opasityEnd {
+  from {
+    opacity: 1;
+    display: block;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+/*модальное окно*/
+.modal__window {
+  width: calc(15.625rem - 3rem);
+  padding: 1rem 1.4rem;
+  background: #fff;
+  color: #000;
+  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 4;
+}
+.modal__title {
+  margin-bottom: 1.25rem;
+  text-align: center;
+  font-family: Forum;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem; /* 100% */
+  letter-spacing: 0.025rem;
+  text-transform: uppercase;
+}
+.modal label {
+  font-size: 0.9375rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem; /* 133.333% */
+  letter-spacing: 0.01875rem;
+}
+.modal__anotherVariant {
+  display: flex;
+}
+.modal__anotherVariant p {
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.16);
+  font-family: Inter;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-right: 0.62rem;
+  margin-bottom: 0;
+}
+.modal__anotherVariant a {
+  color: #0c0c0e;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.625rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.0625rem;
+  text-decoration-line: none;
+}
+.modal__anotherVariant a:hover {
+  text-decoration-line: underline;
+}
+.modal__input {
+  margin-bottom: 8px;
+}
+.modal__input label {
+  display: block;
+  margin-bottom: 0.62rem;
+}
+.modal__input input {
+  border: 1px solid #bb945f;
+  height: 18px;
+  padding: 0 0.62rem;
+  width: calc(100% - 1.4rem);
+}
+.modal .button {
+  margin-top: 8px;
+  margin-bottom: 0.62rem;
+}
+.modal__closeButton {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 1.3rem;
+  height: 1.3rem;
+  background: url(../images/icons/close_btn.svg) no-repeat center center;
+  background-size: contain;
+  cursor: pointer;
+}
+#modalProfile .modal__closeButton {
+  right: 1.4rem;
+  top: 1.4rem;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+.modal__wrapper-bg {
+  background: #29292900;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  position: fixed;
+  background: #00000094;
+  z-index: 3;
+}
+.error-m {
+  font-size: 0.8rem;
+  color: #ff0000;
+  line-height: 0.8rem;
+  margin: 1rem 0;
+  letter-spacing: 0rem;
+}
+#modalProfile .modal__window {
+  padding: 0;
+  width: 600px;
+  min-height: 400px;
+  letter-spacing: 0;
+}
+#modalProfile .modal__container {
+  display: flex;
+}
+#modalProfile .profile-left {
+  background-color: var(--color-dark);
+  width: 170px;
+}
+#modalProfile .profile-user,
+.form__card-info .profile-user {
+  margin: 139px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#modalProfile .user-avatar {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: #fff;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  color: #bb945f;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  text-transform: uppercase;
+}
+#modalProfile .user-name {
+  width: 110px;
+  padding: 5px;
+  background-color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: capitalize;
+  overflow-wrap: anywhere;
+}
+#modalProfile h2 {
+  text-align: left;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 50% */
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+#modalProfile .profile-right {
+  margin: 39px 20px;
+}
+#modalProfile .profile__info-row ul {
+  display: flex;
+  margin-bottom: 20px;
+}
+#modalProfile .profile__info-row ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+#modalProfile .profile__info-row .info-ico {
+  margin: 10px;
+}
+#modalProfile .profile__info-row .info-title {
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: 0.4px;
+}
+#modalProfile .profile__rented-books-title {
+  color: #0c0c0e;
+  font-family: Inter;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 80% */
+  margin-bottom: 30px;
+}
+#modalProfile .profile__rented-books-list {
+  margin-bottom: 40px;
+  margin-left: 12px;
+}
+#modalProfile .profile__rented-books-list li {
+  list-style: disc;
+  list-style-position: inside;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+#modalProfile .profile__card {
+  display: flex;
+  align-items: center;
+  color: #0c0c0e;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 100% */
+}
+#modalProfile .profile__card .profile__card-number {
+  color: #bb945f;
+  text-transform: uppercase;
+  margin: 0 15px;
+}
+.profile__card-copy {
+  background: url(../images/icons/copy.svg) no-repeat center;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+#modalProfile .info-count {
+  text-align: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 200% */
+  letter-spacing: 0.2px;
+}
+.form__card-info ul {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 15px auto;
+}
+.form__card-info ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 400;
+  color: #000;
+  line-height: 20px; /* 200% */
+  letter-spacing: 0.2px;
+}
+.form__card-info .info-ico {
+  width: 20px;
+}
+input:-internal-autofill-selected {
+  color: inherit !important;
+  background-color: #fff !important;
+}
+#modalBuyCard .modal__window {
+  width: 640px;
+  padding: 0;
+}
+.modal__container-modalBuyCard {
+  padding: 10px 2.2rem 2.5rem;
+  display: inline-block;
+}
+.modal__container-modalBuyCard form {
+  width: 200px;
+  float: left;
+  margin-right: 40px;
+}
+.modalBuyCard__text p {
+  color: #8e8e8e;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 133.333% */
+  letter-spacing: 2px;
+}
+#modalBuyCard .modal__title {
+  background-color: var(--color-dark);
+  color: #fff;
+  text-align: center;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+#modalBuyCard .modal__closeButton {
+  background: url(../images/icons/close_btn-white.svg) no-repeat center center;
+}
+#modalBuyCard .modal__input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+#modalBuyCard .modal__input-row input {
+  width: 25px;
+}
+#bankCardCVC {
+  width: 25px;
+}
+#modalBuyCard .button {
+  margin-bottom: 0;
+}
+#modalBuyCard .price {
+  color: var(--color-dark);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1rem; /* 100% */
+  letter-spacing: 2px;
+  margin-left: 15px;
+  margin-bottom: 4px;
+}
+#modalBuyCard .modal__input.cardholder {
+  margin-top: 20px;
 }

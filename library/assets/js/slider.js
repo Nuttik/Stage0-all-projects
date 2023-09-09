@@ -88,6 +88,7 @@ function Slider(id) {
     this.index = Array.from(this.indicatorslRow).indexOf(indecator);
     this.changeCurentIndecator();
     this.moveSlider();
+    this.isArrowDisable();
   };
 }
 let aboutSlider = new Slider("sliderAbout");

@@ -45,24 +45,39 @@
               </ul>
             </div>
           </nav>
-          <div class="profile-menu header__profile-menu">
-            <div class="profile-menu__bg"></div>
+          <!--меню для незарегистрированных пользователей-->
+          <div class="profile-menu">
             <input
               type="checkbox"
               name="profil-ico"
               id="profil-ico"
               class="profile-menu__input"
             />
-            <label for="profil-ico" class="profile-menu__ico"
-              ><img src="assets/images/icons/profile.svg"
-            /></label>
-            <div class="profile-menu__wrapper close">
-              <ul class="menu">
-                <li class="menu__item"><a href="" class="menu__link"></a></li>
+            <label for="profil-ico" class="profile-menu__ico menu__ico"
+              ><i class="profil-ico__img"></i
+            ></label>
+            <div class="profile-menu__wrapper menu__wrapper close">
+              <div class="profile-menu__title">Profile</div>
+              <div class="profile-menu__title-line"></div>
+              <ul class="menu" id="menu-log-out">
+                <li class="menu__item">
+                  <a href="#login" class="menu__link openModalLogin">Log In</a>
+                </li>
+                <li class="menu__item">
+                  <a href="#register" class="menu__link openModalRegister">Register</a>
+                </li>
+              </ul>
+              <ul class="menu hidden" id="menu-log-in">
+                <li class="menu__item">
+                  <a href="" class="menu__link openModalProfile">My profile</a>
+                </li>
+                <li class="menu__item">
+                  <a href="" class="menu__link" id="logOut">Log Out</a>
+                </li>
               </ul>
             </div>
+            <div class="profile-menu__bg"></div>
           </div>
-
           <nav class="nav">
             <div class="nav-mobile">
               <div class="wrapper-bg"></div>
@@ -219,7 +234,7 @@
           </form>
           <ul class="section-favorites__books-list">
             <!-- Winter-->
-            <li class="book section-favorites__book">
+            <li class="book section-favorites__book" data-season="winter">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Book Eaters</div>
@@ -240,7 +255,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book">
+            <li class="book section-favorites__book" data-season="winter">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Cackle</div>
@@ -260,7 +275,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book">
+            <li class="book section-favorites__book" data-season="winter">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Dante: Poet of the Secular World</div>
@@ -281,7 +296,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book">
+            <li class="book section-favorites__book" data-season="winter">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Last Queen</div>
@@ -298,11 +313,11 @@
                   alt="book cover The Book Eaters"
                 />
               </div>
-              <button class="button book__button" disabled>Own</button>
+              <button class="button book__button">Buy</button>
             </li>
             <!-- Начало скрытого списка книг-->
             <!-- Spring-->
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="spring">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Body</div>
@@ -321,7 +336,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="spring">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">
@@ -339,7 +354,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="spring">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Days of Distraction</div>
@@ -358,7 +373,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="spring">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Dominicana</div>
@@ -373,15 +388,14 @@
               <div class="book__image">
                 <img src="assets/images/books/8.jpg" alt="Dominicana" />
               </div>
-              <button class="button book__button" disabled>Own</button>
+              <button class="button book__button">Buy</button>
             </li>
             <!-- Summer-->
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="summer">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Crude: A Memoir</div>
-                <div class="book__autor">
-                  By Pablo Fajardo & ​​Sophie Tardy-Joubert
+                <div class="book__autor">By Pablo Fajardo & ​​Sophie Tardy-Joubert
                 </div>
               </div>
               <div class="book__description">
@@ -395,13 +409,13 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="summer">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Let My People Go Surfing</div>
                 <div class="book__autor">By Yvon Chouinard</div>
               </div>
-              <div class="book__description"></div>
+              <div class="book__description">Chouinard—climber, businessman, environmentalist—shares tales of courage and persistence from his experience of founding and leading Patagonia, Inc. Full title: Let My People Go Surfing: The Education of a Reluctant Businessman, Including 10 More Years of Business Unusual.</div>
               <div class="book__image">
                 <img
                   src="assets/images/books/10.jpg"
@@ -410,7 +424,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="summer">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Octopus Museum: Poems</div>
@@ -429,7 +443,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="summer"">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Shark Dialogues: A Novel</div>
@@ -450,7 +464,7 @@
               <button class="button book__button">Buy</button>
             </li>
             <!-- Autumn-->
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="autumn">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Casual Conversation</div>
@@ -470,7 +484,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="autumn">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">The Great Fire</div>
@@ -487,7 +501,7 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="autumn">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Rickey: The Life and Legend</div>
@@ -507,13 +521,13 @@
               </div>
               <button class="button book__button">Buy</button>
             </li>
-            <li class="book section-favorites__book" style="display: none">
+            <li class="book section-favorites__book hidden" data-season="autumn">
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Slug: And Other Stories</div>
                 <div class="book__autor">By Megan Milks</div>
               </div>
-              <div class="book__description"></div>
+              <div class="book__description">Exes Tegan and Sara find themselves chained together by hairballs of codependency. A father and child experience the shared trauma of giving birth to gods from their wounds.</div>
               <div class="book__image">
                 <img
                   src="assets/images/books/16.jpg"
@@ -663,6 +677,26 @@
                   <input type="text" id="name" placeholder="Reader's name" />
                   <input type="text" id="number" placeholder="Card number" />
                 </fieldset>
+                <div class="form__card-info hidden">
+                  <ul>
+                  <li class="visits">
+                    <div class="info-title">Visits</div>
+                    <div class="info-ico"><img src="assets/images/icons/user-union.svg" alt="иконка человека"></div>
+                    <div class="info-count"></div>
+                  </li>
+                  <li class="bonuses">
+                    <div class="info-title">Bonuses</div>
+                    <div class="info-ico"><img src="assets/images/icons/user-star.svg" alt="количество бонусов"></div>
+                    <div class="info-count">1240</div>
+                  </li>
+                  <li class="books">
+                    <div class="info-title">Books</div>
+                    <div class="info-ico"><img src="assets/images/icons/user-book.svg" alt="количество книг"></div>
+                    <div class="info-count"></div>
+                  </li>
+                </ul>
+                </ul>
+                </div>
                 <button
                   class="button button_big form_find-card__button"
                   type="submit"
@@ -679,8 +713,9 @@
                 or you can register a new account
               </p>
               <div class="section-library-card__button-row">
-                <button class="button">Sign Up</button>
-                <button class="button">Log in</button>
+                <button class="button openModalRegister">Sign Up</button>
+                <button class="button openModalLogin">Log in</button>
+                <button class="button openModalProfile">Profile</button>                
               </div>
             </div>
           </div>
@@ -771,8 +806,147 @@
         </div>
       </div>
     </footer>
-    <script src="assets/js/index.js"></script>
+    <!-- Окно входа-->
+    <div class="modal hidden" id="modalLogin">
+      <div class="modal__wrapper-bg"></div>
+      <div class="modal__window">
+      <div class="modal__closeButton"></div>
+      <div class="modal__title">Login</div>
+      <form class="modal__form" action="#" name="loginForm" id="loginForm">
+        <div class="modal__input">
+         <label for="login">E-mail or readers card</label><input type="text" id="login">
+        </div>
+        <div class="modal__input">
+          <label for="password">Password</label><input type="text" id="loginpassword">
+        </div>
+        <input type="submit" value="Log in" class="button">
+        <div class="error-m hidden">Введите верные логин и пароль</div>
+      </form>    
+      <div class="modal__anotherVariant"><p>Don’t have an account?</p> <a href="" class="openModalRegister">Register</a></div>
+    </div>
+    </div>
+    <!-- Окно регистрации-->
+    <div class="modal hidden" id="modalRegister">      
+      <div class="modal__wrapper-bg"></div>
+      <div class="modal__window">
+        <div class="modal__closeButton"></div>
+        <div class="modal__title">Register</div>
+        <form class="modal__form" action="#" name="registerForm" id="registerForm">
+          <div class="modal__input">
+            <label for="firstName">First name</label><input type="text" id="firstName">
+          </div>
+          <div class="modal__input">
+            <label for="lastName">Last name</label><input type="text" id="lastName">
+          </div>
+          <div class="modal__input">
+            <label for="mail">E-mail</label><input type="email" id="mail">
+          </div>
+          <div class="modal__input">
+            <label for="password">Password</label><input type="text" id="password">
+            <div class="error-m hidden">Пароль должен содержать болье 8 символов</div>
+          </div>
+          <input type="submit" value="Sign Up" class="button">
+        </form>    
+        <div class="modal__anotherVariant"><p>Already have an account?</p> <a href="" class="openModalLogin">Login</a></div>
+      </div>      
+    </div>
+    <!-- Окно покупки абонимента-->
+    <div class="modal hidden" id="modalBuyCard">      
+      <div class="modal__wrapper-bg"></div>
+      <div class="modal__window">
+        <div class="modal__closeButton"></div>
+        <div class="modal__title">Buy a library card</div>
+        <div class="modal__container-modalBuyCard">
+        <form class="modal__form" action="#" name="buyCardForm" id="buyCardForm">
+          <div class="modal__input">
+            <label for="bankCardNumber">Bank card number</label><input type="text" maxlength="19" id="bankCardNumber">
+          </div>
+          <div class="modal__input">
+            <label for="expirationCode_mounth">Expiration code</label>
+            <div class="modal__input-row">
+            <input type="text" maxlength="2" id="expirationCode_mounth">
+            <input type="text" maxlength="2" id="expirationCode_year">
+            </div>
+          </div>
+          <div class="modal__input">
+            <label for="bankCardCVC">CVC</label><input type="text" maxlength="3" id="bankCardCVC">
+          </div>
+          <div class="modal__input cardholder">
+            <label for="name">Cardholder name</label><input type="text" id="name">
+          </div>
+          <div class="modal__input">
+            <label for="postalCode">Postal code</label><input type="text" id="postalCode">
+          </div>
+          <div class="modal__input">
+            <label for="city">City / Town</label><input type="text" id="city">
+          </div>
+          <div class="modal__input-row">
+          <input type="submit" value="Buy" class="button" id="buyCardFormButton">
+          <div class="price">$ 25.00</div>
+        </div>
+        </form> 
+        <div class="modalBuyCard__text">
+          <p>If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.
+          </p>
+        </div>
+      </div>
+      </div>      
+    </div>
+    <!-- Окно профиля-->
+    <div class="modal hidden" id="modalProfile">      
+      <div class="modal__wrapper-bg"></div>
+      <div class="modal__window">        
+        <div class="modal__closeButton"></div>
+        <div class="modal__container">
+        <div class="profile-left">
+          <div class ="profile-user">
+            <div class="user-avatar"></div> 
+            <div class="user-name"></div>
+        </div>
+        </div>
+        <div class="profile-right">
+          <h2>My profile</h2>
+          <div class="profile__info-row">
+            <ul>
+              <li class="visits">
+                <div class="info-title">Visits</div>
+                <div class="info-ico"><img src="assets/images/icons/user-union.svg" alt="иконка человека"></div>
+                <div class="info-count"></div>
+              </li>
+              <li class="bonuses">
+                <div class="info-title">Bonuses</div>
+                <div class="info-ico"><img src="assets/images/icons/user-star.svg" alt="количество бонусов"></div>
+                <div class="info-count">1240</div>
+              </li>
+              <li class="books">
+                <div class="info-title">Books</div>
+                <div class="info-ico"><img src="assets/images/icons/user-book.svg" alt="количество книг"></div>
+                <div class="info-count"></div>
+              </li>
+            </ul>
+          </div>
+          <div class="profile__rented-books">
+            <div class="profile__rented-books-title">Rented books</div>
+            <ul class="profile__rented-books-list"></ul>
+          </div>
+          <div class="profile__card">
+            <div class="profile__card-text">Card number</div>
+            <div class="profile__card-number" id="content"></div>
+            <div class="profile__card-copy" id="copy"></div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>      
+    </div>
+    <script src="assets/js/buy-book.js "></script>     
+    <script src="assets/js/buy-card-form.js "></script>     
+    <script src="assets/js/modal-windows.js"></script>
+    <script src="assets/js/profile-menu.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/login.js"></script> 
     <script src="assets/js/slider.js"></script>
+    <script src="assets/js/sorting-slider.js"></script>
+    <script src="assets/js/user-profile.js"></script>
   </body>
 </html>

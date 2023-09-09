@@ -219,10 +219,10 @@
   .nav-mobile input:checked ~ label .burger-ico-line:nth-child(3) {
     transform: rotate(45deg) translatey(-8px);
   }
-  .close {
+  .nav-mobile-wrapper.close {
     right: -420px;
   }
-  .open {
+  .nav-mobile-wrapper.open {
     right: 0px;
   }
   .fixed {
@@ -235,6 +235,9 @@
   .fixed.burger-ico {
     top: 32px;
     right: 20px;
+  }
+  .profile-menu {
+    margin-right: 2.5rem;
   }
 }
 

@@ -211,18 +211,22 @@ findYourLibraryCardForm.onsubmit = (event) => {
   let infoRowBooks =
     findYourLibraryCardForm.querySelector(".books .info-count");
 
-  let userName =
+  let userName = localStorage.getItem("firstName");
+  let userSurname = localStorage.getItem("lastName");
+  let userNameFull =
     localStorage.getItem("firstName") + " " + localStorage.getItem("lastName");
-  let userNameReverse =
+  let userNameFullReverse =
     localStorage.getItem("lastName") + " " + localStorage.getItem("firstName");
   let userCardNumber = localStorage.getItem("cardNumber");
 
   if (
     (readerName.toLowerCase() == userName.toLowerCase() ||
-      readerName.toLowerCase() == userNameReverse.toLowerCase()) &&
+      readerName.toLowerCase() == userSurname.toLowerCase() ||
+      readerName.toLowerCase() == userNameFull.toLowerCase() ||
+      readerName.toLowerCase() == userNameReverseFull.toLowerCase()) &&
     cardNumber.toLowerCase() == userCardNumber.toLowerCase()
   ) {
-    //заполнить строку данными визиты и книги!!
+    //заполняю строку данными визиты и книги
     infoRowVisits.innerHTML = localStorage.getItem("visits");
     infoRowBooks.innerHTML = localStorage.getItem("countBooks");
 

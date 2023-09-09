@@ -14,7 +14,6 @@ function checkCardFormFilling(form) {
   function isNumber(value, count) {
     let numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     let str = value.replace(/\s/g, "");
-    console.log(str);
     if (str.length != count) {
       return false;
     }

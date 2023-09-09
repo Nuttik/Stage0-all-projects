@@ -11,20 +11,23 @@ const booksRentedList = modalProfile.querySelector(
   "ul.profile__rented-books-list"
 );
 
-//доработать добавление книг в список!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function createdBooksRentedList() {
-  if (!localStorage.getItem("rentedBooks")) {
+  if (localStorage.getItem("rentedBooks") == "") {
     booksRentedList.innerHTML = "<li>You don't have any books yet</li>";
   } else {
-    newUser.rentedBooks.forEach((book) => {
-      booksRentedList.innerHTML += book;
+    let rentedBooks = localStorage.getItem("rentedBooks").split("/");
+    rentedBooks.forEach((book) => {
+      if (book != "") {
+        booksRentedList.innerHTML += "<li>" + book + "</li>";
+      }
     });
   }
 }
 
 //обновляю данные при каждом открытие профиля
 function updateProfileData() {
-  createdBooksRentedList();
+  booksRentedList.innerHTML = ""; //очищаем список книг
+  createdBooksRentedList(); //создаем список книг заново
   userAvatar.innerHTML =
     localStorage.getItem("firstName").slice(0, 1) +
     localStorage.getItem("lastName").slice(0, 1);

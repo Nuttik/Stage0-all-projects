@@ -59,6 +59,35 @@ function showModalLogin(event) {
   }
   event.preventDefault();
 }
-buttonsByeList.forEach((button) => {
-  button.addEventListener("click", showModalLogin);
-});
+const modalBuyCard = document.getElementById("modalBuyCard");
+
+function showModalBuy(event) {
+  let errorMes = loginForm.querySelector(".error-m");
+  if (!errorMes.classList.contains("hidden")) {
+    errorMes.classList.add("hidden");
+  }
+  if (localStorage.getItem("isLogin") == "true") {
+    modalBuyCard.classList.remove("hidden");
+    event.preventDefault();
+  }
+  event.preventDefault();
+}
+
+function changeModalOnbuttonsByeList() {
+  buttonsByeList.forEach((button) => {
+    if (localStorage.getItem("isLogin") == "false") {
+      button.addEventListener("click", showModalLogin);
+    } else if (
+      localStorage.getItem("isLogin") == "true" &&
+      localStorage.getItem("hasCard") == "false"
+    ) {
+      button.addEventListener("click", showModalBuy);
+    } else if (
+      localStorage.getItem("isLogin") == "true" &&
+      localStorage.getItem("hasCard") == "true"
+    ) {
+      button.removeEventListener("click", showModalBuy);
+    }
+  });
+}
+changeModalOnbuttonsByeList();

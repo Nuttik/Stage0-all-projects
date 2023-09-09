@@ -43,6 +43,18 @@ body {
   font-size: 1.25rem;
   letter-spacing: 0.125rem;
 }
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
+}
+
 a[href^="tel"] {
   white-space: nowrap;
 }
@@ -897,7 +909,7 @@ input[name="season"] {
 #modalProfile .modal__window {
   padding: 0;
   width: 600px;
-  height: 400px;
+  min-height: 400px;
   letter-spacing: 0;
 }
 #modalProfile .modal__container {
@@ -1054,4 +1066,68 @@ input[name="season"] {
 input:-internal-autofill-selected {
   color: inherit !important;
   background-color: #fff !important;
+}
+#modalBuyCard .modal__window {
+  width: 640px;
+  padding: 0;
+}
+.modal__container-modalBuyCard {
+  padding: 10px 2.2rem 2.5rem;
+  display: inline-block;
+}
+.modal__container-modalBuyCard form {
+  width: 200px;
+  float: left;
+  margin-right: 40px;
+}
+.modalBuyCard__text p {
+  color: #8e8e8e;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 133.333% */
+  letter-spacing: 2px;
+}
+#modalBuyCard .modal__title {
+  background-color: var(--color-dark);
+  color: #fff;
+  text-align: center;
+  font-family: Forum;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 60px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+#modalBuyCard .modal__closeButton {
+  background: url(../images/icons/close_btn-white.svg) no-repeat center center;
+}
+#modalBuyCard .modal__input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+#modalBuyCard .modal__input-row input {
+  width: 25px;
+}
+#bankCardCVC {
+  width: 25px;
+}
+#modalBuyCard .button {
+  margin-bottom: 0;
+}
+#modalBuyCard .price {
+  color: var(--color-dark);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1rem; /* 100% */
+  letter-spacing: 2px;
+  margin-left: 15px;
+  margin-bottom: 4px;
+}
+#modalBuyCard .modal__input.cardholder {
+  margin-top: 20px;
 }

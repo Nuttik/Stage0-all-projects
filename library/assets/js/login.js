@@ -19,6 +19,8 @@ function User(firstName, lastName, mail, password) {
     localStorage.setItem("visits", this.visits);
     localStorage.setItem("rentedBooks", this.rentedBooks);
     localStorage.setItem("countBooks", "0");
+    localStorage.setItem("hasCard", "false");
+    localStorage.setItem("book-own", "");
     this.generateCardNumber = () => {
       let result = [];
       let hexRef = [
@@ -47,10 +49,13 @@ function User(firstName, lastName, mail, password) {
     this.cardNumber = this.generateCardNumber();
     localStorage.setItem("cardNumber", this.cardNumber);
     this.logIn();
+
+    checkConditionBooks();
   };
   this.logIn = () => {
     localStorage.setItem("isLogin", true);
     changeIco();
+    checkConditionBooks();
   };
 
   this.getBook = (book) => {
@@ -91,6 +96,8 @@ registerForm.onsubmit = (event) => {
   newUser = new User(firstName, lastName, mail, password);
   newUser.register();
   showYourLibrarycardInfo();
+  changeModalOnbuttonsByeList();
+  checkConditionBooks();
   event.target.closest(".modal").classList.add("hidden");
   return false;
 };
@@ -127,6 +134,9 @@ function logUot(event) {
   localStorage.setItem("isLogin", false);
   changeIco();
   showYourLibrarycardInfo();
+  changeModalOnbuttonsByeList();
+  checkConditionBooks();
+  claerForm(formBuyCard);
   event.preventDefault();
 }
 
@@ -166,6 +176,8 @@ function loginUser(event, login, password) {
     loginForm.loginpassword.value = ""; //сбрасываю значения полей
     changeIco();
     showYourLibrarycardInfo();
+    changeModalOnbuttonsByeList();
+    checkConditionBooks();
     return false;
   } else {
     if (errorMes.classList.contains("hidden")) {

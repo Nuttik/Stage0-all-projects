@@ -395,8 +395,7 @@
               <div class="book__staff">Staff Picks</div>
               <div class="book__title">
                 <div class="book__name">Crude: A Memoir</div>
-                <div class="book__autor">
-                  By Pablo Fajardo & ​​Sophie Tardy-Joubert
+                <div class="book__autor">By Pablo Fajardo & ​​Sophie Tardy-Joubert
                 </div>
               </div>
               <div class="book__description">
@@ -851,6 +850,48 @@
         <div class="modal__anotherVariant"><p>Already have an account?</p> <a href="" class="openModalLogin">Login</a></div>
       </div>      
     </div>
+    <!-- Окно покупки абонимента-->
+    <div class="modal hidden" id="modalBuyCard">      
+      <div class="modal__wrapper-bg"></div>
+      <div class="modal__window">
+        <div class="modal__closeButton"></div>
+        <div class="modal__title">Buy a library card</div>
+        <div class="modal__container-modalBuyCard">
+        <form class="modal__form" action="#" name="buyCardForm" id="buyCardForm">
+          <div class="modal__input">
+            <label for="bankCardNumber">Bank card number</label><input type="text" maxlength="19" id="bankCardNumber">
+          </div>
+          <div class="modal__input">
+            <label for="expirationCode_mounth">Expiration code</label>
+            <div class="modal__input-row">
+            <input type="text" maxlength="2" id="expirationCode_mounth">
+            <input type="text" maxlength="2" id="expirationCode_year">
+            </div>
+          </div>
+          <div class="modal__input">
+            <label for="bankCardCVC">CVC</label><input type="text" maxlength="3" id="bankCardCVC">
+          </div>
+          <div class="modal__input cardholder">
+            <label for="name">Cardholder name</label><input type="text" id="name">
+          </div>
+          <div class="modal__input">
+            <label for="postalCode">Postal code</label><input type="text" id="postalCode">
+          </div>
+          <div class="modal__input">
+            <label for="city">City / Town</label><input type="text" id="city">
+          </div>
+          <div class="modal__input-row">
+          <input type="submit" value="Buy" class="button" id="buyCardFormButton">
+          <div class="price">$ 25.00</div>
+        </div>
+        </form> 
+        <div class="modalBuyCard__text">
+          <p>If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.
+          </p>
+        </div>
+      </div>
+      </div>      
+    </div>
     <!-- Окно профиля-->
     <div class="modal hidden" id="modalProfile">      
       <div class="modal__wrapper-bg"></div>
@@ -898,7 +939,8 @@
         </div>
       </div>      
     </div>
-    <script src="assets/js/localData.js"></script>    
+    <script src="assets/js/buy-book.js "></script>     
+    <script src="assets/js/buy-card-form.js "></script>     
     <script src="assets/js/modal-windows.js"></script>
     <script src="assets/js/profile-menu.js"></script>
     <script src="assets/js/mobile-menu.js"></script>

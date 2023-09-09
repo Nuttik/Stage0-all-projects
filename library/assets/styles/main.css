@@ -1103,6 +1103,9 @@ input:-internal-autofill-selected {
 }
 #modalBuyCard .modal__closeButton {
   background: url(../images/icons/close_btn-white.svg) no-repeat center center;
+  position: absolute;
+  right: 16px;
+  top: 22px;
 }
 #modalBuyCard .modal__input-row {
   display: flex;

@@ -41,7 +41,7 @@ function User(firstName, lastName, mail, password) {
         "e",
         "f",
       ];
-      for (let n = 0; n < 10; n++) {
+      for (let n = 0; n < 9; n++) {
         result.push(hexRef[Math.floor(Math.random() * 16)]);
       }
       return result.join("");

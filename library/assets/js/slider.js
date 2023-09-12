@@ -84,11 +84,13 @@ function Slider(id) {
   };
 
   this.clickOnIndecatorButton = (event) => {
-    let indecator = event.target.closest("li");
-    this.index = Array.from(this.indicatorslRow).indexOf(indecator);
-    this.changeCurentIndecator();
-    this.moveSlider();
-    this.isArrowDisable();
+    if (!event.target.closest("li").classList.contains("current")) {
+      let indecator = event.target.closest("li");
+      this.index = Array.from(this.indicatorslRow).indexOf(indecator);
+      this.changeCurentIndecator();
+      this.moveSlider();
+      this.isArrowDisable();
+    }
   };
 }
 let aboutSlider = new Slider("sliderAbout");

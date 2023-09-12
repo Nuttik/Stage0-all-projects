@@ -724,7 +724,7 @@ input[name="season"] {
 .profile-menu__wrapper {
   position: absolute;
   top: 36px;
-  transform: translateX(-22px);
+  transform: translateX(-50px);
   background: var(--color-text-white);
   width: 5rem;
   color: var(--color-text);

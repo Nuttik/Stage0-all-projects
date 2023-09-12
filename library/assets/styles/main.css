@@ -1004,6 +1004,8 @@ input[name="season"] {
 #modalProfile .profile__rented-books-list {
   margin-bottom: 40px;
   margin-left: 12px;
+  overflow: auto;
+  max-height: 110px;
 }
 #modalProfile .profile__rented-books-list li {
   list-style: disc;

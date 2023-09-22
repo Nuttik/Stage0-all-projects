@@ -4,26 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1.2-audio-player</title>
-    <link rel="stylesheet" href="assets/styles/reset.css" />
-    <link rel="stylesheet" href="assets/styles/main.css" />
-    <link rel="stylesheet" href="assets/styles/responsive.css" />
+    <link rel="stylesheet" href="assets/styles/css/reset.css" />
+    <link rel="stylesheet" href="assets/styles/css/main.css" />
+    <link rel="stylesheet" href="assets/styles/css/responsive.css" />
   </head>
+
   <body>
-    <header class="header"></header>
-    <main></main>
-    <footer class="footer">
-      <div class="container">
-        <div class="footer_copyright">
-          <div class="footer__year">2023</div>
-          <div class="footer__rs">
-            <a href="https://rs.school/js-stage0/">The Rolling Scopes School</a>
+    <main>
+      <div class="audio-player">
+        <div class="audio-player__wrapper">
+          <div class="audio-player__track-img">
+            <div class="audio-player__track-info">
+              <div class="track-artist">---</div>
+              <div class="track-separator">/</div>
+              <div class="track-title">---</div>
+            </div>
           </div>
-          <div class="footer__github">
-            <a href="https://github.com/Nuttik">Natalia</a>
+          <div class="audio-player__controls-tool">
+            <div class="audio-player__controls-btn">
+              <button class="audio-player__prev-btn button"></button>
+              <button class="audio-player__play-btn button">
+                <div class="button__half_one"></div>
+                <div class="button__half_two"></div>
+              </button>
+              <button class="audio-player__next-btn button"></button>
+            </div>
+          </div>
+          <div class="audio-player__progress-bar">
+            <div class="time-current"></div>
+            <div class="time-end"></div>
+            <div class="progress__filled"></div>
+          </div>
+        </div>
+        <div class="audio-player__footer footer">
+          <div class="footer__copy">
+            <div class="footer__year">2023</div>
+            <div class="footer__github">
+              <a href="https://github.com/Nuttik">by Nata</a>
+            </div>
+          </div>
+          <div class="footer__rs">
+            <a href="https://rs.school/js-stage0/">RL logo</a>
           </div>
         </div>
       </div>
-    </footer>
+    </main>
+
     <script src="assets/js/index.js"></script>
     <script src="assets/js/audio-player.js"></script>
   </body>

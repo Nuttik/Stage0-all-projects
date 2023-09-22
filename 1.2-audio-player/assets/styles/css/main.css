@@ -1,0 +1,146 @@
+:root {
+  --color-main: #666666;
+  --color-bg: #a8a8a8;
+  --gradient-silver: linear-gradient(120deg, #c4c4c4, #e8e8e8, #c7c7c7);
+  --gradient-silver-dark: linear-gradient(120deg, #b3b3b3, #cdcccc, #8e8e8e);
+}
+
+body {
+  min-height: 100vh;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio-player {
+  font-family: "Lucida Console", Monaco, monospace;
+  width: 20rem;
+  margin: auto;
+  background: var(--gradient-silver);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 4px 5px 2px #686868, 5px 6px 13px 0px rgba(0, 0, 0, 0.39);
+}
+.audio-player__wrapper {
+  border-left: 4px solid #dcdcdc;
+  border-top: 4px solid #d2d2d2;
+  border-right: 6px solid #d2d2d2;
+  border-radius: 2rem 2rem 2rem 2rem;
+}
+.audio-player__track-img {
+  width: 100%;
+  height: 18rem;
+  border-radius: 0.8rem 0.8rem 0.2rem 0.2rem;
+  background: url("../../images/covers/default.jpg") center center no-repeat;
+  background-size: cover;
+  border: 1px solid #cdcdcd;
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.3294117647), inset 0px 0px 40px rgba(0, 0, 0, 0.168627451);
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+.audio-player__track-info {
+  margin: 0 auto;
+  display: flex;
+  background: rgba(255, 255, 255, 0.8549019608);
+  min-width: calc(100% - 2rem);
+  padding: 1rem;
+  box-shadow: inset -2px -5px 8px rgba(0, 0, 0, 0.0901960784), inset 3px 0px 4px rgba(0, 0, 0, 0.0588235294);
+  border-right: 2px solid #e1e1e1;
+  border-left: 2px solid #c5c5c5;
+  font-weight: 600;
+  font-size: 0.75rem;
+  overflow: auto;
+}
+.audio-player__track-info .track-artist {
+  color: #961a20;
+}
+.audio-player__track-info .track-separator {
+  margin: 0 0.4rem;
+}
+.audio-player__controls-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1rem 0;
+}
+.audio-player__play-btn {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 2px #686868, 3px 3px 6px 0px rgba(0, 0, 0, 0.39);
+}
+.audio-player__prev-btn {
+  -webkit-clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  height: 2.2rem;
+  width: 1.4rem;
+  box-shadow: 2px 2px 2px #686868, 3px 3px 6px 0px rgba(0, 0, 0, 0.39);
+}
+.audio-player__next-btn {
+  -webkit-clip-path: polygon(0 0, 100% 50%, 0 100%);
+  height: 2.2rem;
+  width: 1.4rem;
+  box-shadow: 2px 2px 2px #686868, 3px 3px 6px 0px rgba(0, 0, 0, 0.39);
+}
+.audio-player .button {
+  background: var(--gradient-silver-dark);
+  border: none;
+  cursor: pointer;
+}
+.audio-player .button__half_one, .audio-player .button__half_two {
+  background: #e5e5e5;
+  width: 0.6rem;
+  height: 1.5rem;
+  transition: 0.3s ease-in-out;
+}
+.audio-player .button__half_one {
+  -webkit-clip-path: polygon(0 0, 100% 25%, 100% 75%, 0% 100%);
+  transform: translateX(0.125rem);
+}
+.audio-player .button__half_two {
+  -webkit-clip-path: polygon(0 25%, 100% 50%, 100% 50%, 0 75%);
+  transform: translateX(0.1rem);
+}
+.audio-player .button.pause-btn .button__half_one {
+  width: 0.4rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  transform: translateX(-0.1875rem);
+}
+.audio-player .button.pause-btn .button__half_two {
+  width: 0.4rem;
+  clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0%, 100% 0%, 100% 100%, 0 100%);
+  transform: translateX(0.1875rem);
+}
+.audio-player .footer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 1rem;
+  box-shadow: 1px 0px 8px 0px rgba(102, 102, 102, 0.3607843137);
+  background: rgba(0, 0, 0, 0.0588235294);
+  font-size: 0.75rem;
+  color: #363636;
+}
+.audio-player .footer__copy {
+  display: flex;
+}
+.audio-player .footer__year {
+  margin-right: 0.5rem;
+}
+
+.audio-player__track-img::before {
+  content: "";
+  background: url("../../images/theme/light.png") center center no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: calc(100% - 3rem);
+  position: absolute;
+  top: 0rem;
+  left: 0;
+}/*# sourceMappingURL=main.css.map */

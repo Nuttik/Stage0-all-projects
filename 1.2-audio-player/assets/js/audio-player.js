@@ -93,6 +93,7 @@ function playNextAudio() {
   currentTime = 0;
   progressFilled.value = 0;
   playAudio();
+  changeBodyBg()
 }
 function playPrevAudio() {
   clearInterval(tick);
@@ -104,6 +105,7 @@ function playPrevAudio() {
   currentTime = 0;
   progressFilled.value = 0;
   playAudio();
+  changeBodyBg()
 }
 
 function showTrackInfo() {
@@ -123,6 +125,7 @@ function startScreen() {
   fillTimeField(currentTimeFielf, currentTime);
   fillTimeField(endTimeFielf, playList[currentIndex].duration);
   setProgresField();
+  changeBodyBg();
 }
 
 function fillTimeField(field, time) {
@@ -169,10 +172,17 @@ function stopTick() {
   }
 }
 
+function changeBodyBg(){
+  document.body.style.backgroundImage =
+  "url('" + playList[currentIndex].cover + "')";
+}
+
 //Подключение функций
 startScreen();
 playBtn.addEventListener("click", clickPlayBtn);
 nextBtn.addEventListener("click", playNextAudio);
 prevBtn.addEventListener("click", playPrevAudio);
 progressFilled.addEventListener("mousedown", stopTick);
+progressFilled.addEventListener("touchstart", stopTick);
 progressFilled.addEventListener("mouseup", moveProgressValue);
+progressFilled.addEventListener("touchend", moveProgressValue);

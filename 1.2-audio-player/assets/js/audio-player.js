@@ -15,7 +15,9 @@ const endTimeFielf = document.querySelector(".progress__time-end");
 
 let isPlay = false;
 let currentIndex = 0; // индекс звучащей песни;
-let currentTime;
+let currentTime = 0;
+let tick;
+let tickProgress;
 
 //Список треков
 
@@ -48,19 +50,32 @@ const playList = [
 function playAudio() {
   audio.src = playList[currentIndex].audioPath;
   isPlay = true;
-  audio.currentTime = 0;
+  if (Math.round(currentTime) == playList[currentIndex].duration) {
+    audio.currentTime = 0;
+  } else {
+    audio.currentTime = progressFilled.value;
+  }
+
   audio.play();
+
   if (!playBtn.classList.contains("pause-btn")) {
     playBtn.classList.toggle("pause-btn");
   }
+
+  startTick();
   showTrackInfo();
   showTrackCover();
-  addEndTimeFielf();
+  fillTimeField(endTimeFielf, playList[currentIndex].duration);
+  setProgresField();
 }
 function pauseAudio() {
   isPlay = false;
   audio.pause();
   playBtn.classList.toggle("pause-btn");
+
+  endTick();
+  stopTick();
+  clearInterval(tickProgress);
 }
 
 function clickPlayBtn() {
@@ -77,6 +92,10 @@ function playNextAudio() {
   } else {
     currentIndex = 0;
   }
+
+  currentTime = 0;
+  progressFilled.value = 0;
+
   playAudio();
 }
 function playPrevAudio() {
@@ -85,6 +104,8 @@ function playPrevAudio() {
   } else {
     currentIndex = playList.length - 1;
   }
+  currentTime = 0;
+  progressFilled.value = 0;
   playAudio();
 }
 
@@ -102,19 +123,63 @@ function showTrackCover() {
 function startScreen() {
   showTrackInfo();
   showTrackCover();
-  addEndTimeFielf();
+  fillTimeField(endTimeFielf, playList[currentIndex].duration);
+  fillTimeField(currentTimeFielf, currentTime);
+  setProgresField();
 }
 
-function addEndTimeFielf() {
+function fillTimeField(field, time) {
   let min = 0;
   let sec = 0;
-  let duration = playList[currentIndex].duration;
+  let duration = time;
   sec = duration % 60 < 10 ? "0" + (duration % 60) : duration % 60;
   min =
     Math.floor(duration / 60) < 10
       ? "0" + Math.floor(duration / 60)
       : Math.floor(duration / 60);
-  endTimeFielf.innerHTML = min + ":" + sec;
+  field.innerHTML = min + ":" + sec;
+}
+
+function startTick() {
+  if (isPlay) {
+    tick = setInterval(function () {
+      currentTime = audio.currentTime;
+    }, 1);
+  }
+}
+function endTick() {
+  if (!isPlay) {
+    clearInterval(tick);
+  }
+}
+
+function setProgresField() {
+  progressFilled.max = playList[currentIndex].duration;
+  if (isPlay) {
+    tickProgress = setInterval(function () {
+      progressFilled.value = currentTime;
+      fillTimeField(currentTimeFielf, Math.floor(currentTime));
+      if (Math.round(currentTime) == playList[currentIndex].duration) {
+        pauseAudio();
+      }
+    }, 10);
+  }
+}
+
+function moveProgresvalue() {
+  if (progressFilled.value != 0) {
+    currentTime = progressFilled.value;
+    fillTimeField(currentTimeFielf, Math.floor(currentTime));
+    if (isPlay) {
+      playAudio();
+    }
+  }
+}
+function stopTick() {
+  if (progressFilled.value != 0) {
+    clearInterval(tickProgress);
+    clearInterval(tick);
+  }
 }
 
 //Подключение функций
@@ -122,3 +187,5 @@ startScreen();
 playBtn.addEventListener("click", clickPlayBtn);
 nextBtn.addEventListener("click", playNextAudio);
 prevBtn.addEventListener("click", playPrevAudio);
+progressFilled.addEventListener("mousedown", stopTick);
+progressFilled.addEventListener("mouseup", moveProgresvalue);

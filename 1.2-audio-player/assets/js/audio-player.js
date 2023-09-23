@@ -25,21 +25,21 @@ const playList = [
   {
     artist: "David Bowie",
     title: "Life On Mars",
-    duration: 218,
+    duration: 217,
     cover: "assets/images/covers/1.jpg",
     audioPath: "assets/audio/DavidBowie-LifeOnMars.mp3",
   },
   {
     artist: "Bob Dylan",
     title: "Knockin On Heavens Door",
-    duration: 150,
+    duration: 149,
     cover: "assets/images/covers/2.jpg",
     audioPath: "assets/audio/BobDylan-KnockinOnHeavensDoor.mp3",
   },
   {
     artist: "Queen",
     title: "Love of my life",
-    duration: 262,
+    duration: 261,
     cover: "assets/images/covers/3.jpg",
     audioPath: "assets/audio/Queen-Loveofmylife.mp3",
   },
@@ -61,19 +61,16 @@ function playAudio() {
   if (!playBtn.classList.contains("pause-btn")) {
     playBtn.classList.toggle("pause-btn");
   }
-
-  startTick();
+  setProgresField();
   showTrackInfo();
   showTrackCover();
   fillTimeField(endTimeFielf, playList[currentIndex].duration);
-  setProgresField();
 }
 function pauseAudio() {
   isPlay = false;
   audio.pause();
   playBtn.classList.toggle("pause-btn");
 
-  endTick();
   stopTick();
   clearInterval(tickProgress);
 }
@@ -87,18 +84,18 @@ function clickPlayBtn() {
 }
 
 function playNextAudio() {
+  clearInterval(tick);
   if (currentIndex < playList.length - 1) {
     currentIndex++;
   } else {
     currentIndex = 0;
   }
-
   currentTime = 0;
   progressFilled.value = 0;
-
   playAudio();
 }
 function playPrevAudio() {
+  clearInterval(tick);
   if (currentIndex > 0) {
     currentIndex--;
   } else {
@@ -123,8 +120,8 @@ function showTrackCover() {
 function startScreen() {
   showTrackInfo();
   showTrackCover();
-  fillTimeField(endTimeFielf, playList[currentIndex].duration);
   fillTimeField(currentTimeFielf, currentTime);
+  fillTimeField(endTimeFielf, playList[currentIndex].duration);
   setProgresField();
 }
 
@@ -132,7 +129,10 @@ function fillTimeField(field, time) {
   let min = 0;
   let sec = 0;
   let duration = time;
-  sec = duration % 60 < 10 ? "0" + (duration % 60) : duration % 60;
+  sec =
+    duration % 60 < 10
+      ? "0" + Math.floor(duration % 60)
+      : Math.floor(duration % 60);
   min =
     Math.floor(duration / 60) < 10
       ? "0" + Math.floor(duration / 60)
@@ -140,33 +140,21 @@ function fillTimeField(field, time) {
   field.innerHTML = min + ":" + sec;
 }
 
-function startTick() {
+function setProgresField() {
+  progressFilled.max = playList[currentIndex].duration;
+
   if (isPlay) {
     tick = setInterval(function () {
       currentTime = audio.currentTime;
-    }, 1);
-  }
-}
-function endTick() {
-  if (!isPlay) {
-    clearInterval(tick);
-  }
-}
-
-function setProgresField() {
-  progressFilled.max = playList[currentIndex].duration;
-  if (isPlay) {
-    tickProgress = setInterval(function () {
       progressFilled.value = currentTime;
       fillTimeField(currentTimeFielf, Math.floor(currentTime));
-      if (Math.round(currentTime) == playList[currentIndex].duration) {
-        pauseAudio();
-      }
-    }, 10);
+    }, 1);
+  } else if (currentTime == 0) {
+    progressFilled.value = 0;
   }
 }
 
-function moveProgresvalue() {
+function moveProgressValue() {
   if (progressFilled.value != 0) {
     currentTime = progressFilled.value;
     fillTimeField(currentTimeFielf, Math.floor(currentTime));
@@ -176,8 +164,7 @@ function moveProgresvalue() {
   }
 }
 function stopTick() {
-  if (progressFilled.value != 0) {
-    clearInterval(tickProgress);
+  if (progressFilled.value != 0 || audio.currentTime != 0) {
     clearInterval(tick);
   }
 }
@@ -188,4 +175,4 @@ playBtn.addEventListener("click", clickPlayBtn);
 nextBtn.addEventListener("click", playNextAudio);
 prevBtn.addEventListener("click", playPrevAudio);
 progressFilled.addEventListener("mousedown", stopTick);
-progressFilled.addEventListener("mouseup", moveProgresvalue);
+progressFilled.addEventListener("mouseup", moveProgressValue);

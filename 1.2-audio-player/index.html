@@ -22,18 +22,34 @@
           </div>
           <div class="audio-player__controls-tool">
             <div class="audio-player__controls-btn">
-              <button class="audio-player__prev-btn button"></button>
-              <button class="audio-player__play-btn button">
-                <div class="button__half_one"></div>
-                <div class="button__half_two"></div>
+              <button class="audio-player__prev-btn btn">
+                <span class="btn_arrow">&lt;</span>
               </button>
-              <button class="audio-player__next-btn button"></button>
+              <button class="audio-player__play-btn btn">
+                <span class="btn__half_one"></span>
+                <span class="btn__half_two"></span>
+              </button>
+              <button class="audio-player__next-btn btn">
+                <span class="btn_arrow">&gt;</span>
+              </button>
             </div>
           </div>
-          <div class="audio-player__progress-bar">
-            <div class="time-current"></div>
-            <div class="time-end"></div>
-            <div class="progress__filled"></div>
+          <div class="audio-player__progress-bar progress">
+            <div class="progress__time">
+              <div class="progress__time-current">00:00</div>
+              <div class="progress__time-end">03:24</div>
+            </div>
+            <div class="progress__filled">
+              <input
+                type="range"
+                id="progress"
+                name="progress"
+                min="0"
+                max="100"
+                value="90"
+                step="1"
+              />
+            </div>
           </div>
         </div>
         <div class="audio-player__footer footer">
@@ -44,7 +60,9 @@
             </div>
           </div>
           <div class="footer__rs">
-            <a href="https://rs.school/js-stage0/">RL logo</a>
+            <a href="https://rs.school/js-stage0/"
+              ><img src="assets/images/theme/rs_school_js.svg" width="50"
+            /></a>
           </div>
         </div>
       </div>

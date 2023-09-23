@@ -7,11 +7,15 @@ const prevBtn = document.querySelector(".audio-player__prev-btn");
 const trackTitle = document.querySelector(".track-title");
 const trackArtist = document.querySelector(".track-artist");
 const trackImg = document.querySelector(".audio-player__track-img");
+const progressFilled = document.querySelector(".progress__filled input");
+const currentTimeFielf = document.querySelector(".progress__time-current");
+const endTimeFielf = document.querySelector(".progress__time-end");
 
 //Глобальные переменные
 
 let isPlay = false;
 let currentIndex = 0; // индекс звучащей песни;
+let currentTime;
 
 //Список треков
 
@@ -51,6 +55,7 @@ function playAudio() {
   }
   showTrackInfo();
   showTrackCover();
+  addEndTimeFielf();
 }
 function pauseAudio() {
   isPlay = false;
@@ -97,6 +102,19 @@ function showTrackCover() {
 function startScreen() {
   showTrackInfo();
   showTrackCover();
+  addEndTimeFielf();
+}
+
+function addEndTimeFielf() {
+  let min = 0;
+  let sec = 0;
+  let duration = playList[currentIndex].duration;
+  sec = duration % 60 < 10 ? "0" + (duration % 60) : duration % 60;
+  min =
+    Math.floor(duration / 60) < 10
+      ? "0" + Math.floor(duration / 60)
+      : Math.floor(duration / 60);
+  endTimeFielf.innerHTML = min + ":" + sec;
 }
 
 //Подключение функций

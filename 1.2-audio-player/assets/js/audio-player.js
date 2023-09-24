@@ -93,6 +93,7 @@ function playNextAudio() {
   currentTime = 0;
   progressFilled.value = 0;
   playAudio();
+  changeBodyBg()
 }
 function playPrevAudio() {
   clearInterval(tick);
@@ -104,6 +105,7 @@ function playPrevAudio() {
   currentTime = 0;
   progressFilled.value = 0;
   playAudio();
+  changeBodyBg()
 }
 
 function showTrackInfo() {
@@ -123,6 +125,7 @@ function startScreen() {
   fillTimeField(currentTimeFielf, currentTime);
   fillTimeField(endTimeFielf, playList[currentIndex].duration);
   setProgresField();
+  changeBodyBg();
 }
 
 function fillTimeField(field, time) {
@@ -147,7 +150,11 @@ function setProgresField() {
     tick = setInterval(function () {
       currentTime = audio.currentTime;
       progressFilled.value = currentTime;
-      fillTimeField(currentTimeFielf, Math.floor(currentTime));
+      fillTimeField(currentTimeFielf, Math.floor(currentTime));      
+      //Добавляю включение следующего трека по завершению текущего
+      if(Math.floor(progressFilled.value) == playList[currentIndex].duration){
+        playNextAudio()
+      }
     }, 1);
   } else if (currentTime == 0) {
     progressFilled.value = 0;
@@ -169,10 +176,18 @@ function stopTick() {
   }
 }
 
+function changeBodyBg(){
+  document.body.style.backgroundImage =
+  "url('" + playList[currentIndex].cover + "')";
+}
+
 //Подключение функций
 startScreen();
 playBtn.addEventListener("click", clickPlayBtn);
 nextBtn.addEventListener("click", playNextAudio);
 prevBtn.addEventListener("click", playPrevAudio);
 progressFilled.addEventListener("mousedown", stopTick);
+progressFilled.addEventListener("touchstart", stopTick);
 progressFilled.addEventListener("mouseup", moveProgressValue);
+progressFilled.addEventListener("touchend", moveProgressValue);
+

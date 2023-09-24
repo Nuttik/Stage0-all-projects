@@ -26,7 +26,7 @@ body {
   background: var(--gradient-silver);
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 4px 5px 2px #757575, 4px 4px 2px #b6b6b6, 5px 6px 2px #3b3434, 10px 10px 11px 0px #0000008a, 5px 6px 19px 0px #00000033;
+  box-shadow: 4px 5px 2px #757575, 4px 4px 2px #b6b6b6, 5px 6px 2px #3b3434, 10px 10px 11px 0px #0000008a, 5px 6px 19px 0px #00000033, 1px 0px 50px 0px #7c7c7cb5;;
 
   &__wrapper {
     border-left: 4px solid #dcdcdc;
@@ -74,13 +74,14 @@ body {
   &__controls-btn {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     margin: 1rem 0;
   }
 
   &__play-btn {
     width: 3rem;
     height: 3rem;
+    margin: 0 2.5rem;
     border-radius: 50%;
     display: flex;
     align-items: center;

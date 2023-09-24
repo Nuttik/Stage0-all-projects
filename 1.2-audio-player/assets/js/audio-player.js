@@ -150,7 +150,8 @@ function setProgresField() {
     tick = setInterval(function () {
       currentTime = audio.currentTime;
       progressFilled.value = currentTime;
-      fillTimeField(currentTimeFielf, Math.floor(currentTime));      
+      fillTimeField(currentTimeFielf, Math.floor(currentTime));
+      
       //Добавляю включение следующего трека по завершению текущего
       if(Math.floor(progressFilled.value) == playList[currentIndex].duration){
         playNextAudio()
@@ -190,4 +191,3 @@ progressFilled.addEventListener("mousedown", stopTick);
 progressFilled.addEventListener("touchstart", stopTick);
 progressFilled.addEventListener("mouseup", moveProgressValue);
 progressFilled.addEventListener("touchend", moveProgressValue);
-

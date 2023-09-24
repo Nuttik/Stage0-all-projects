@@ -151,6 +151,11 @@ function setProgresField() {
       currentTime = audio.currentTime;
       progressFilled.value = currentTime;
       fillTimeField(currentTimeFielf, Math.floor(currentTime));
+      
+      //Добавляю включение следующего трека по завершению текущего
+      if(Math.floor(progressFilled.value) == playList[currentIndex].duration){
+        playNextAudio()
+      }
     }, 1);
   } else if (currentTime == 0) {
     progressFilled.value = 0;

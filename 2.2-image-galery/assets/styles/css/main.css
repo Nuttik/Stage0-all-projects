@@ -43,7 +43,7 @@ body .wrapper {
   min-height: calc(100vh - 8rem);
 }
 .main .wrapper {
-  padding: 5rem 0;
+  padding: 3rem 0;
 }
 .main h1 {
   font-weight: 800;

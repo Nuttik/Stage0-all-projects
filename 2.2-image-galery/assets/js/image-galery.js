@@ -1,3 +1,8 @@
+/* Доделать:
+ * - сделать автофокус на инпут
+ * - лайтбокс
+ */
+
 //---Элементы DOM---//
 const search = document.getElementById("search");
 const input = search.querySelector("input");
@@ -9,6 +14,7 @@ const galeryImageList = galery.querySelector(".galery__img-list");
 //---Глобальные переменные---//
 let query;
 let count = 9;
+let moreCount = 9;
 
 //---Функции---//
 function addInputClassActive() {
@@ -24,15 +30,28 @@ function startSeach() {
   if (input.value != "") {
     query = input.value;
   } else {
-    query = "photo";
+    query = "random";
   }
 
   getData();
 }
 
-function increaseCount() {
-  count += 9;
-  getData();
+async function increaseCount() {
+  //сделать проверку, что с этой страници еще не было загружено фотографий
+  const pageNumber = Math.floor(Math.random() * 10);
+  const url =
+    "https://api.unsplash.com/search/photos?query=" +
+    query +
+    "&per_page=" +
+    moreCount +
+    "&page=" +
+    pageNumber +
+    "&orientation=landscape&client_id=Z5ocwIy6zQdB2J-rFSJY20wNoPDYrqUXiJAWFviTUfQ";
+
+  const join = await fetch(url);
+  const data = await join.json();
+
+  createImage(data);
 }
 
 function createImage(data) {
@@ -48,11 +67,14 @@ function clearImageList() {
 }
 
 async function getData() {
+  const pageNumber = Math.floor(Math.random() * 10);
   const url =
     "https://api.unsplash.com/search/photos?query=" +
     query +
     "&per_page=" +
     count +
+    "&page=" +
+    pageNumber +
     "&orientation=landscape&client_id=Z5ocwIy6zQdB2J-rFSJY20wNoPDYrqUXiJAWFviTUfQ";
 
   const join = await fetch(url);

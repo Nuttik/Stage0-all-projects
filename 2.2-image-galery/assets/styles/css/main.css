@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;800&display=swap");
+:root {
+  --color-bg: #f5f5f5;
+  --color-white: #f3f2f0;
+  --color-gray-text: #cfcfcf;
+  --color-main: #ffbd39;
+  --color-black: #000;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: "Sarabun", sans-serif;
+  font-weight: 400;
+  color: var(--color-black);
+}
+body .wrapper {
+  max-width: 1080px;
+  margin: auto;
+}
+
+.header .wrapper {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+.header .wrapper .logo {
+  display: flex;
+  align-items: flex-end;
+}
+.header .wrapper .logo__icon svg {
+  width: 3rem;
+  margin-right: 0.75rem;
+}
+.header .wrapper .logo__text {
+  font-size: 1.875rem;
+  color: var(--color-black);
+  font-weight: 600;
+}
+
+.main {
+  min-height: calc(100vh - 8rem);
+}
+.main .wrapper {
+  padding: 5rem 0;
+}
+.main h1 {
+  font-weight: 800;
+  font-size: 3rem;
+  text-align: center;
+  color: var(--color-main);
+}
+.main .search {
+  height: 2.5rem;
+  background: #fff;
+  max-width: 30rem;
+  margin: 2rem auto;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 4px 4px 1px var(--color-gray-text);
+}
+.main .search:hover, .main .search:active, .main .search.active {
+  box-shadow: 4px 4px 1px var(--color-main);
+}
+.main .search__input {
+  width: calc(100% - 3rem);
+}
+.main .search__input::-moz-placeholder {
+  color: var(--color-gray-text);
+}
+.main .search__input::placeholder {
+  color: var(--color-gray-text);
+}
+
+.footer {
+  background-color: var(--color-black);
+}
+.footer__copy {
+  display: flex;
+  color: var(--color-bg);
+}
+.footer__rs {
+  background: var(--color-white);
+  padding: 0.2rem;
+  border-radius: 0.25rem;
+}
+.footer__year {
+  margin-right: 0.5rem;
+}
+.footer .wrapper {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}/*# sourceMappingURL=main.css.map */

@@ -2,9 +2,11 @@
 
 :root {
   --color-bg: #f5f5f5;
-  --color-white: #f3f2f0;
+  --color-white: #fff;
   --color-gray-text: #cfcfcf;
   --color-main: #ffbd39;
+  --color-main-hover: #ffaf0e;
+  --color-secondary: #ffe6ea;
   --color-black: #000;
 }
 
@@ -16,6 +18,7 @@ body {
 
   .wrapper {
     max-width: 1080px;
+    padding: 0.5rem 1rem;
     margin: auto;
   }
 }
@@ -23,7 +26,6 @@ body {
   .wrapper {
     display: flex;
     align-items: center;
-    padding: 0.5rem 0;
 
     .logo {
       display: flex;
@@ -53,18 +55,24 @@ body {
     color: var(--color-main);
   }
   .search {
-    height: 2.5rem;
-    background: #fff;
-    max-width: 30rem;
-    margin: 2rem auto;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    box-shadow: 4px 4px 1px var(--color-gray-text);
+    &__field {
+      height: 2.5rem;
+      background: var(--color-white);
+      max-width: 30rem;
+      margin: 2rem auto;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      box-shadow: 4px 4px 1px var(--color-gray-text);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-    &:hover,
-    &:active,
-    &.active {
-      box-shadow: 4px 4px 1px var(--color-main);
+      &:hover,
+      &:active,
+      &.active {
+        box-shadow: 4px 4px 1px var(--color-main);
+      }
     }
 
     &__input {
@@ -74,6 +82,45 @@ body {
         color: var(--color-gray-text);
       }
     }
+
+    &__icon {
+      display: flex;
+      svg {
+        height: 2rem;
+        opacity: 0.3;
+      }
+      &:hover,
+      &:active {
+        svg {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+.galery {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__img-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+  }
+
+  &__item {
+    width: 20rem;
+    height: 15rem;
+    overflow: hidden;
+  }
+  &__img {
+    object-fit: cover;
+    height: 100%;
+    width: auto;
   }
 }
 .footer {
@@ -98,5 +145,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-main);
+  padding: 1rem 1.5rem;
+  max-width: 20rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--color-white);
+
+  &:hover {
+    background-color: var(--color-main-hover);
+  }
+
+  &:active {
+    background-color: var(--color-secondary);
+  }
+
+  span {
+    line-height: 1.25rem;
   }
 }

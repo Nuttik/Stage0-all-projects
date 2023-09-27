@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;800&display=swap");
 :root {
   --color-bg: #f5f5f5;
-  --color-white: #f3f2f0;
+  --color-white: #fff;
   --color-gray-text: #cfcfcf;
   --color-main: #ffbd39;
+  --color-main-hover: #ffaf0e;
+  --color-secondary: #ffe6ea;
   --color-black: #000;
 }
 
@@ -15,13 +17,13 @@ body {
 }
 body .wrapper {
   max-width: 1080px;
+  padding: 0.5rem 1rem;
   margin: auto;
 }
 
 .header .wrapper {
   display: flex;
   align-items: center;
-  padding: 0.5rem 0;
 }
 .header .wrapper .logo {
   display: flex;
@@ -49,16 +51,20 @@ body .wrapper {
   text-align: center;
   color: var(--color-main);
 }
-.main .search {
+.main .search__field {
   height: 2.5rem;
-  background: #fff;
+  background: var(--color-white);
   max-width: 30rem;
   margin: 2rem auto;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   box-shadow: 4px 4px 1px var(--color-gray-text);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.main .search:hover, .main .search:active, .main .search.active {
+.main .search__field:hover, .main .search__field:active, .main .search__field.active {
   box-shadow: 4px 4px 1px var(--color-main);
 }
 .main .search__input {
@@ -69,6 +75,41 @@ body .wrapper {
 }
 .main .search__input::placeholder {
   color: var(--color-gray-text);
+}
+.main .search__icon {
+  display: flex;
+}
+.main .search__icon svg {
+  height: 2rem;
+  opacity: 0.3;
+}
+.main .search__icon:hover svg, .main .search__icon:active svg {
+  opacity: 1;
+}
+
+.galery {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.galery__img-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+.galery__item {
+  width: 20rem;
+  height: 15rem;
+  overflow: hidden;
+}
+.galery__img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: auto;
 }
 
 .footer {
@@ -91,4 +132,26 @@ body .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-main);
+  padding: 1rem 1.5rem;
+  max-width: 20rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--color-white);
+}
+.button:hover {
+  background-color: var(--color-main-hover);
+}
+.button:active {
+  background-color: var(--color-secondary);
+}
+.button span {
+  line-height: 1.25rem;
 }/*# sourceMappingURL=main.css.map */

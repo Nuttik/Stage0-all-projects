@@ -25,6 +25,9 @@
   background-size: 0.6875rem 0.6875rem;
   opacity: 0.3;
 }
+[type="search"]::-webkit-search-cancel-button:hover {
+  opacity: 1;
+}
 
 body {
   background-color: var(--color-bg);

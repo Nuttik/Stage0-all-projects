@@ -1,8 +1,3 @@
-/* Доделать:
- * - сделать рандом в пределах 100, а не 10ти
- * - сообщение, если ошибка превышение лимитов запроса
- */
-
 //---Элементы DOM---//
 const search = document.getElementById("search");
 const input = search.querySelector("input");
@@ -41,7 +36,9 @@ function startSeach() {
 
 async function increaseCount() {
   //сделать проверку, что с этой страници еще не было загружено фотографий
-  pageNumber++;
+  console.log(pageNumber);
+  pageNumber += 6;
+  console.log(pageNumber);
   const url =
     "https://api.unsplash.com/search/photos?query=" +
     query +
@@ -80,7 +77,7 @@ function clearImageList() {
 }
 
 async function getData() {
-  pageNumber = Math.floor(Math.random() * 10);
+  pageNumber = Math.floor(Math.random() * 30);
   const url =
     "https://api.unsplash.com/search/photos?query=" +
     query +

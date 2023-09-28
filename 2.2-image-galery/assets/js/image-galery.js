@@ -1,7 +1,5 @@
 /* Доделать:
  * - сделать рандом в пределах 100, а не 10ти
- * - сделать автофокус на инпут
- * - сообщение, если по запросу нет фотографий
  * - сообщение, если ошибка превышение лимитов запроса
  */
 
@@ -62,11 +60,18 @@ async function increaseCount() {
 }
 
 function createImage(data) {
-  for (let i = 0; i < data.results.length; i++) {
-    const urlSmallImg = data.results[i].urls.small;
-    const imgAlt = data.results[i].alt_description;
-    const img = `<li class="galery__item"><img class="galery__img" src=${urlSmallImg} alt="${imgAlt}" title="Click to enlarge"></li>`;
-    galeryImageList.insertAdjacentHTML("beforeend", img);
+  if (data.results.length < 1) {
+    let message = `<p class="galery__message">Oooops... Nothing was found for your request.</p>`;
+    galeryImageList.insertAdjacentHTML("beforeend", message);
+    buttonMore.disabled = true;
+  } else {
+    for (let i = 0; i < data.results.length; i++) {
+      const urlSmallImg = data.results[i].urls.small;
+      const imgAlt = data.results[i].alt_description;
+      const img = `<li class="galery__item"><img class="galery__img" src=${urlSmallImg} alt="${imgAlt}" title="Click to enlarge"></li>`;
+      galeryImageList.insertAdjacentHTML("beforeend", img);
+      buttonMore.disabled = false;
+    }
   }
 }
 
@@ -118,6 +123,9 @@ function closeModal() {
     }
   });
 }
+
+//let event = new Event("focus");
+//elem.dispatchEvent(event);
 
 //---вызов стартовых функций---//
 startSeach();

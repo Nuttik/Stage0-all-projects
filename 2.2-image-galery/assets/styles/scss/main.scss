@@ -181,7 +181,11 @@ body {
   &:active {
     background-color: var(--color-secondary);
   }
-
+  &:disabled {
+    background-color: var(--color-secondary);
+    pointer-events: none;
+    cursor: default;
+  }
   span {
     line-height: 1.25rem;
   }
@@ -208,21 +212,29 @@ body {
   }
   &__closeButton {
     position: absolute;
-    right: 0.5rem;
-    top: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
+    right: 0rem;
+    top: 0rem;
     cursor: pointer;
     background: var(--color-white);
     font-weight: 400;
     font-family: monospace;
     font-size: 2rem;
-    line-height: 1.25rem;
-    padding: 0.5rem;
     border-radius: 4rem;
     transform: rotate(45deg);
 
     &:hover,
     &:active {
       color: var(--color-main-hover);
+    }
+    @media (max-width: 980px) {
+      width: 3.5rem;
+      height: 3.5rem;
+      font-size: 2.5rem;
     }
   }
   &__wrapper-bg {

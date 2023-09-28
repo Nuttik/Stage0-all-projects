@@ -198,7 +198,8 @@ body {
   &__window {
     padding: 1rem;
     background: var(--color-white);
-    position: relative;
+    min-width: 20rem;
+    min-height: 15rem;
     position: fixed;
     top: 50%;
     left: 50%;

@@ -98,16 +98,18 @@ async function getData() {
   //путь к среднему размеру data.results[1].urls.regular
 }
 
+function addImagesInModal(event) {
+  modal.classList.remove("hidden");
+  let url = event.target.src.replace("&w=400", "&w=1080");
+  let alt = event.target.alt;
+  let img = `<img class="modal__img" src=${url} alt="${alt}" />`;
+  modalContainer.insertAdjacentHTML("beforeend", img);
+}
+
 function openModal() {
   const imageList = document.querySelectorAll(".galery__img");
   imageList.forEach(function (img) {
-    img.addEventListener("click", function (event) {
-      modal.classList.remove("hidden");
-      let url = event.target.src.replace("&w=400", "&w=1080");
-      let alt = event.target.alt;
-      let img = `<img class="modal__img" src=${url} alt="${alt}" />`;
-      modalContainer.insertAdjacentHTML("beforeend", img);
-    });
+    img.addEventListener("click", addImagesInModal);
   });
 }
 

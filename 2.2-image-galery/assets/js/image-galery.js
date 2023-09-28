@@ -1,7 +1,6 @@
 /* Доделать:
  * - сделать рандом в пределах 100, а не 10ти
  * - сделать автофокус на инпут
- * - лайтбокс
  * - сообщение, если по запросу нет фотографий
  * - сообщение, если ошибка превышение лимитов запроса
  */
@@ -13,6 +12,8 @@ const searchButton = search.querySelector(".search__icon");
 const galery = document.getElementById("galery");
 const buttonMore = galery.querySelector(".button");
 const galeryImageList = galery.querySelector(".galery__img-list");
+const modal = document.getElementById("galery-modal");
+const modalContainer = modal.querySelector(".modal__container");
 
 //---Глобальные переменные---//
 let query;
@@ -56,16 +57,19 @@ async function increaseCount() {
   const data = await join.json();
 
   createImage(data);
+  openModal();
+  closeModal();
 }
 
 function createImage(data) {
   for (let i = 0; i < data.results.length; i++) {
     const urlSmallImg = data.results[i].urls.small;
     const imgAlt = data.results[i].alt_description;
-    const img = `<li class="galery__item"><img class="galery__img" src=${urlSmallImg} alt="${imgAlt}"></li>`;
+    const img = `<li class="galery__item"><img class="galery__img" src=${urlSmallImg} alt="${imgAlt}" title="Click to enlarge"></li>`;
     galeryImageList.insertAdjacentHTML("beforeend", img);
   }
 }
+
 function clearImageList() {
   galeryImageList.innerHTML = "";
 }
@@ -80,25 +84,45 @@ async function getData() {
     "&page=" +
     pageNumber +
     "&orientation=landscape&client_id=Z5ocwIy6zQdB2J-rFSJY20wNoPDYrqUXiJAWFviTUfQ";
-
   const join = await fetch(url);
   const data = await join.json();
 
   clearImageList();
   createImage(data);
-
-  console.log(url);
-  console.log(data);
+  openModal();
+  closeModal();
 
   //путь к миниатюре data.results[i].urls.small;
   //путь к среднему размеру data.results[1].urls.regular
-  //вызов функций использующих data
 }
 
-//---вызов функций---//
-startSeach();
+function openModal() {
+  const imageList = document.querySelectorAll(".galery__img");
+  imageList.forEach(function (img) {
+    img.addEventListener("click", function (event) {
+      modal.classList.remove("hidden");
+      let url = event.target.src.replace("&w=400", "&w=1080");
+      let alt = event.target.alt;
+      let img = `<img class="modal__img" src=${url} alt="${alt}" />`;
+      modalContainer.insertAdjacentHTML("beforeend", img);
+    });
+  });
+}
 
+function closeModal() {
+  const butonClose = modal.querySelector(".modal__closeButton");
+  modal.addEventListener("click", function (event) {
+    if (event.target == butonClose || !event.target.closest(".modal__window")) {
+      modal.classList.add("hidden");
+      modalContainer.innerHTML = "";
+    }
+  });
+}
+
+//---вызов стартовых функций---//
+startSeach();
 addInputClassActive();
+buttonMore.addEventListener("click", increaseCount);
 
 //поиск по клику на иконку
 searchButton.onclick = startSeach;
@@ -109,5 +133,3 @@ document.addEventListener("keyup", function (event) {
     startSeach();
   }
 });
-
-buttonMore.addEventListener("click", increaseCount);

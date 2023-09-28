@@ -18,7 +18,7 @@ body {
 
   .wrapper {
     max-width: 1080px;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     margin: auto;
   }
 }
@@ -46,7 +46,7 @@ body {
 .main {
   min-height: calc(100vh - 8rem);
   .wrapper {
-    padding: 3rem 0;
+    padding: 2rem 0;
   }
   h1 {
     font-weight: 800;
@@ -55,6 +55,12 @@ body {
     color: var(--color-main);
   }
   .search {
+    &__wrapper {
+      position: sticky;
+      top: 0;
+      background-color: var(--color-bg);
+      padding: 0.1rem 1rem;
+    }
     &__field {
       height: 2.5rem;
       background: var(--color-white);
@@ -125,6 +131,7 @@ body {
 }
 .footer {
   background-color: var(--color-black);
+  margin-top: 3rem;
 
   &__copy {
     display: flex;

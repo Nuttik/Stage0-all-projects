@@ -1,6 +1,9 @@
 /* Доделать:
+ * - сделать рандом в пределах 100, а не 10ти
  * - сделать автофокус на инпут
  * - лайтбокс
+ * - сообщение, если по запросу нет фотографий
+ * - сообщение, если ошибка превышение лимитов запроса
  */
 
 //---Элементы DOM---//
@@ -13,8 +16,9 @@ const galeryImageList = galery.querySelector(".galery__img-list");
 
 //---Глобальные переменные---//
 let query;
-let count = 9;
+let count = 12;
 let moreCount = 9;
+let pageNumber;
 
 //---Функции---//
 function addInputClassActive() {
@@ -38,7 +42,7 @@ function startSeach() {
 
 async function increaseCount() {
   //сделать проверку, что с этой страници еще не было загружено фотографий
-  const pageNumber = Math.floor(Math.random() * 10);
+  pageNumber++;
   const url =
     "https://api.unsplash.com/search/photos?query=" +
     query +
@@ -67,7 +71,7 @@ function clearImageList() {
 }
 
 async function getData() {
-  const pageNumber = Math.floor(Math.random() * 10);
+  pageNumber = Math.floor(Math.random() * 10);
   const url =
     "https://api.unsplash.com/search/photos?query=" +
     query +
@@ -99,8 +103,8 @@ addInputClassActive();
 //поиск по клику на иконку
 searchButton.onclick = startSeach;
 
-//поиск по нажатию на пробел
-document.addEventListener("keydown", function (event) {
+//поиск по нажатию на 'enter'
+document.addEventListener("keyup", function (event) {
   if (event.code === "Enter") {
     startSeach();
   }

@@ -17,7 +17,7 @@ body {
 }
 body .wrapper {
   max-width: 1080px;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   margin: auto;
 }
 
@@ -43,13 +43,19 @@ body .wrapper {
   min-height: calc(100vh - 8rem);
 }
 .main .wrapper {
-  padding: 3rem 0;
+  padding: 2rem 0;
 }
 .main h1 {
   font-weight: 800;
   font-size: 3rem;
   text-align: center;
   color: var(--color-main);
+}
+.main .search__wrapper {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-bg);
+  padding: 0.1rem 1rem;
 }
 .main .search__field {
   height: 2.5rem;
@@ -114,6 +120,7 @@ body .wrapper {
 
 .footer {
   background-color: var(--color-black);
+  margin-top: 3rem;
 }
 .footer__copy {
   display: flex;

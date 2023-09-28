@@ -23,6 +23,10 @@
   opacity: 0.3;
 }
 
+[type=search]::-webkit-search-cancel-button:hover {
+  opacity: 1;
+}
+
 body {
   background-color: var(--color-bg);
   font-family: "Sarabun", sans-serif;

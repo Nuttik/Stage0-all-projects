@@ -111,12 +111,12 @@ body .wrapper {
   opacity: 1;
 }
 
-.galery {
+.gallery {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.galery__img-list {
+.gallery__img-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -124,12 +124,12 @@ body .wrapper {
   margin-bottom: 3rem;
   margin-top: 3rem;
 }
-.galery__item {
+.gallery__item {
   width: 20rem;
   height: 15rem;
   overflow: hidden;
 }
-.galery__img {
+.gallery__img {
   -o-object-fit: cover;
      object-fit: cover;
   height: 100%;

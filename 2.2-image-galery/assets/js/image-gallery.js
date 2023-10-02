@@ -35,10 +35,7 @@ function startSeach() {
 }
 
 async function increaseCount() {
-  //сделать проверку, что с этой страници еще не было загружено фотографий
-  console.log(pageNumber);
   pageNumber += 6;
-  console.log(pageNumber);
   const url =
     "https://api.unsplash.com/search/photos?query=" +
     query +

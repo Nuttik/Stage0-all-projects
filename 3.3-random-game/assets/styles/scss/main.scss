@@ -28,6 +28,11 @@ body {
 }
 main {
   padding: 3rem 0 3rem;
+
+  @media (max-width: 980px) {
+    padding: 2rem 1rem 2rem;
+    max-width: 100%;
+  }
 }
 .hidden {
   display: none;
@@ -62,6 +67,10 @@ p {
     background: #fff;
     box-shadow: -6px 6px 0px 0px #efefef;
     padding: 4.5rem 2.25rem 3.44rem;
+
+    @media (max-width: 980px) {
+      padding: 3.5rem 1rem 2.44rem;
+    }
   }
 
   &_footer {
@@ -75,6 +84,19 @@ p {
   background-color: var(--color-header);
   height: 7rem;
   padding: 0.5rem 0;
+
+  @media (max-width: 1020px) {
+    padding: 0.5rem 1rem;
+  }
+  @media (max-width: 980px) {
+    height: 6rem;
+  }
+
+  &__logo {
+    @media (max-width: 980px) {
+      height: 5rem;
+    }
+  }
 }
 .footer {
   background-color: var(--color-footer);
@@ -86,19 +108,44 @@ p {
       background: url("../../images/githab.svg") no-repeat left center;
     }
   }
+
+  @media (max-width: 1020px) {
+    padding: 0.5rem 1rem;
+  }
 }
 .game {
   max-width: 44.875rem;
   display: flex;
 
+  @media (max-width: 980px) {
+    flex-direction: column;
+    margin: 2rem auto 0;
+  }
+
+  @media (max-width: 767px) {
+    margin: 0 auto 0;
+  }
+
   &__main-wrapper {
     margin: 3rem 0 4.5rem;
     position: relative;
+
+    @media (max-width: 1020px) {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
   }
   &__scores-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 767px) {
+      position: absolute;
+      width: calc(100% - 2rem);
+      left: 1rem;
+      top: 2rem;
+    }
   }
   &__side-wrapper {
     height: 700px;
@@ -107,6 +154,20 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media (max-width: 1020px) {
+      margin-top: 3rem;
+    }
+    @media (max-width: 980px) {
+      margin-top: 0rem;
+      margin-left: 1rem;
+      height: auto;
+    }
+  }
+  &__info-points {
+    @media (max-width: 980px) {
+      margin-top: 3rem;
+    }
   }
 }
 .health-points-list {
@@ -141,6 +202,13 @@ p {
   margin-top: 1.5rem;
   background: url("../../images/bg-game-field.jpg");
   border: 1px solid var(--color-border-blur);
+  height: 718px;
+  width: 718px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 100%;
+  }
 }
 .game_before-start #game-field {
   background: url("../../images/game-field-blur.svg");
@@ -193,9 +261,19 @@ p {
 .info-points {
   font-size: 2rem;
 
+  @media (max-width: 980px) {
+    order: 2;
+    font-size: 1.5rem;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 980px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   &__item {
     display: flex;
@@ -203,23 +281,41 @@ p {
     justify-content: space-between;
     width: 9.625rem;
     margin-bottom: 2rem;
+
+    @media (max-width: 980px) {
+      margin-right: 1rem;
+      width: 7rem;
+    }
   }
   &__ico {
     width: 4rem;
     height: 4rem;
 
+    @media (max-width: 980px) {
+      width: 2rem;
+      height: 2rem;
+    }
+
     &_apple {
       @include bg-image("apple", "center", "center");
+      background-size: contain;
     }
     &_pear {
       @include bg-image("pear", "center", "center");
+      background-size: contain;
     }
     &_banana {
       @include bg-image("banana", "center", "center");
+      background-size: contain;
     }
   }
 }
 .contrls {
+  &__block-title {
+    @media (max-width: 980px) {
+      display: none;
+    }
+  }
   &__buttons {
     display: grid;
     grid-template-areas:
@@ -230,6 +326,11 @@ p {
     width: 10.375rem;
     gap: 0.125rem;
     margin-bottom: 4rem;
+
+    @media (max-width: 980px) {
+      margin-bottom: 2.5rem;
+      gap: 0.5rem;
+    }
   }
   &__button {
     width: 3.4rem;
@@ -269,4 +370,15 @@ p {
       }
     }
   }
+}
+.flex-block {
+  @media (max-width: 980px) {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.description {
+  margin-top: 2rem;
 }

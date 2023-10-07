@@ -6,7 +6,6 @@
 :root {
   --color-header: #ffeed1;
   --color-body: #fafafa;
-  --color-body: #fafafa;
   --color-footer: #2a3e52;
   --color-text: #1c1c1c;
   --color-main-blue-dark: #426280;
@@ -216,22 +215,20 @@ p {
   border: none;
 }
 .button {
+  width: max-content;
   border-radius: 0.75rem;
   box-shadow: -4px 4px 0px 0px #c4daee;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
+  font-size: 2rem;
+
+  @media (max-width: 414px) {
+    font-size: 1.5rem;
+  }
 
   &_big {
     background: var(--color-yellow);
     padding: 0.75rem 1rem 0.625rem 1rem;
-    font-size: 2rem;
     font-weight: 600;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%);
 
     &:hover,
     &:active {
@@ -242,7 +239,6 @@ p {
   &_small {
     background: var(--color-yellow-light);
     padding: 0.625rem 2rem 0.5rem 2rem;
-    font-size: 2rem;
     font-weight: 400;
     line-height: 2rem;
     &:hover {
@@ -252,6 +248,12 @@ p {
       background: var(--color-red);
     }
   }
+}
+#button-start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
 }
 .block-title {
   font-size: 1.5rem;
@@ -323,7 +325,7 @@ p {
       "b c d";
     align-items: center;
     justify-items: center;
-    width: 10.375rem;
+    width: auto;
     gap: 0.125rem;
     margin-bottom: 4rem;
 
@@ -381,4 +383,65 @@ p {
 }
 .description {
   margin-top: 2rem;
+}
+.game-over {
+  &__result {
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+
+    span {
+      color: var(--color-red);
+      font-size: 2rem;
+    }
+  }
+}
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 20rem;
+  background: var(--color-body);
+  padding: 2rem 1rem;
+  border-radius: 0.75rem;
+  box-shadow: -4px 4px 0px 0px #c4daee;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+  }
+
+  &__close-button {
+    position: absolute;
+    right: 0.5rem;
+    top: 0rem;
+    transform: rotate(45deg);
+    cursor: pointer;
+    font-size: 3rem;
+
+    &:hover {
+      color: var(--color-red);
+    }
+  }
+
+  &__result-table {
+    font-size: 1.5rem;
+
+    ol {
+      list-style: auto;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
 }

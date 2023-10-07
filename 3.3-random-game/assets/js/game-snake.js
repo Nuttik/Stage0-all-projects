@@ -13,13 +13,13 @@ let ctx = canvas.getContext("2d");
 
 // --- Глобальные переменные ---
 let isPlay = false;
-let isPause = false;
+let score;
+let lives;
 
 let elemSize = 64;
 let tick;
 let snake = {
   parts: [
-    { x: 6, y: 6 },
     { x: 5, y: 6 },
     { x: 4, y: 6 },
     { x: 3, y: 6 },
@@ -137,10 +137,6 @@ function drawSnake() {
   });
 }
 
-function drawGame() {
-  drawSnake();
-}
-
 // Движение змейки
 function nextLocation() {
   let snakeHead = snake.parts[0];
@@ -159,10 +155,25 @@ function nextLocation() {
 }
 
 function moveSnake() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  snake.parts.forEach((rect) => {
+    ctx.clearRect(
+      rect.x * elemSize,
+      rect.y * elemSize,
+      rect.x * elemSize + elemSize,
+      rect.y * elemSize + elemSize
+    );
+  });
   snake.parts.unshift(nextLocation());
   snake.parts.pop();
   drawSnake();
+}
+
+// тики для бесконечного движения змейки
+function startTick(func) {
+  tick = setInterval(func, 500);
+}
+function stopTick() {
+  clearTimeout(tick);
 }
 
 // Управление змейкой
@@ -198,21 +209,18 @@ function controlSnakeWithButton(event) {
     }
   }
 }
+document.addEventListener("keydown", controlSnakeWithKey);
+contrlsButtons.addEventListener("click", controlSnakeWithButton);
 
-// тики для бесконечного движения змейки
-function startTick(func) {
-  tick = setInterval(func, 500);
-}
-function stopTick() {
-  clearTimeout(tick);
-}
-
+// -- Старт игры
 function startGame() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   isPlay = true;
+  lives = 3;
+  score = 0;
+
   startTick(moveSnake);
 }
-
-// -- Кнопки
 
 function clickButtonPlay(event) {
   let button = event.target;
@@ -236,27 +244,4 @@ function pressEnterStart(event) {
     startGame();
   }
 }
-function pressSpasePause(event) {
-  if (
-    event.code == "Space" &&
-    !gameWrapper.classList.contains("game_before-start") &&
-    isPause == false
-  ) {
-    gameWrapper.classList.add("game_pause");
-    stopTick();
-    isPause = true;
-    event.preventDefault();
-  }
-  if (event.code == "Space" && isPause == true) {
-    gameWrapper.classList.remove("game_pause");
-    startTick(moveSnake);
-    isPause = false;
-  }
-}
-
-// --- Вызов функций ---
-
-document.addEventListener("keydown", controlSnakeWithKey);
-contrlsButtons.addEventListener("click", controlSnakeWithButton);
 document.addEventListener("keydown", pressEnterStart);
-document.addEventListener("keydown", pressSpasePause);

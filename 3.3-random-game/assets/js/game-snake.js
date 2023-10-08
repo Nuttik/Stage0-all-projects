@@ -203,7 +203,7 @@ function crashSnake() {
   if (lives > 0) {
     setTimeout(function () {
       startGame(lives, score);
-    }, 1500);
+    }, 1000);
   }
   if (lives == 0) {
     gameOverPopUp.classList.remove("hidden");
@@ -307,10 +307,8 @@ function startGame(countLives, countScore) {
 }
 
 function clickButtonPlay(event) {
-  let button = event.target;
   gameWrapper.classList.remove("game_before-start");
   startButtonMain.classList.add("hidden");
-
   startGame(3, 0);
 }
 

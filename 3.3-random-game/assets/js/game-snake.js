@@ -18,6 +18,8 @@ const buttonRight = document.getElementById("buttonRight");
 const gameOverPopUp = document.getElementById("game-over");
 const scoreVeiw = document.querySelectorAll(".scoreCount");
 const livesVeiw = document.querySelectorAll(".health-point");
+const listTableRecords = document.querySelectorAll(".result-table");
+
 const ctx = canvas.getContext("2d");
 
 // --- Глобальные переменные ---
@@ -296,6 +298,7 @@ function crashSnake() {
   }
   if (lives == 0) {
     gameOverPopUp.classList.remove("hidden");
+    addRecord();
   }
   clearInterval(intervalAddFruit); //остановка отрисовки фруктов
 }
@@ -448,10 +451,34 @@ function changeLivesVeiw() {
 }
 
 function addRecord() {
-  //получаем из локалстейдж со занчение по ключу saveRecords - это масив чисел отсортированный по убыванию
-  //если текущий score больше любого из эллементов массива - то пушим его в конец, заново сортируем массив и отрубаем последний эллемент
-  //перезаписываем значение в локалстордж
-  //перезаписываем значения в таблиц рекордов на странице
+  let recordsList = localStorage.getItem("savedRecords");
+  if (localStorage.getItem("savedRecords")) {
+    recordsList += ", " + score;
+    recordsList = recordsList
+      .split(", ")
+      .sort((a, b) => {
+        a = +a;
+        b = +b;
+        if (a > b) return -1;
+        if (a == b) return 0;
+        if (a < b) return 1;
+      })
+      .slice(0, 10)
+      .join(", ");
+
+    localStorage.setItem("savedRecords", recordsList);
+  } else {
+    localStorage.setItem("savedRecords", score);
+  }
+
+  listTableRecords.forEach((table) => {
+    recordsList = localStorage.getItem("savedRecords").split(", ");
+    table.querySelectorAll("li").forEach((elem, index) => {
+      if (recordsList[index]) {
+        elem.innerHTML = recordsList[index];
+      }
+    });
+  });
 }
 
 // Управление змейкой

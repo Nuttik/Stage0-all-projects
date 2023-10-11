@@ -470,12 +470,23 @@ p {
 .modal__close-button:hover {
   color: var(--color-red);
 }
-.modal__result-table {
+
+.result-table {
   font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
-.modal__result-table ol {
+.result-table ol {
   list-style: auto;
 }
-.modal__result-table li {
-  margin-bottom: 0.5rem;
+.result-table li {
+  margin-bottom: 0.75rem;
+}
+.result-table li::marker {
+  content: initial;
+  font-size: 1rem;
+  color: var(--color-red);
+}
+.result-table span {
+  font-weight: 800;
+  color: var(--color-red);
 }/*# sourceMappingURL=main.css.map */

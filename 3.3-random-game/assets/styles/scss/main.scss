@@ -456,16 +456,26 @@ p {
       color: var(--color-red);
     }
   }
+}
+.result-table {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
 
-  &__result-table {
-    font-size: 1.5rem;
+  ol {
+    list-style: auto;
+  }
 
-    ol {
-      list-style: auto;
+  li {
+    margin-bottom: 0.75rem;
+
+    &::marker {
+      content: initial;
+      font-size: 1rem;
+      color: var(--color-red);
     }
-
-    li {
-      margin-bottom: 0.5rem;
-    }
+  }
+  span {
+    font-weight: 800;
+    color: var(--color-red);
   }
 }

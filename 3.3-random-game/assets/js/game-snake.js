@@ -398,7 +398,7 @@ function drawNewFruit() {
 }
 function addFruit() {
   if (isPlay === true && isCrashSnake === false) {
-    intervalAddFruit = setInterval(drawNewFruit, 4000); //СТИРАЕТСЯ ИЗ_ЗА СЕТИНТЕРВАЛА ТАМ, ГДЕ ЗМЕЙКА БЫЛА 4 СЕКУНДЫ НАЗАД
+    intervalAddFruit = setInterval(drawNewFruit, 3000); //СТИРАЕТСЯ ИЗ_ЗА СЕТИНТЕРВАЛА ТАМ, ГДЕ ЗМЕЙКА БЫЛА 4 СЕКУНДЫ НАЗАД
   }
 }
 
@@ -475,7 +475,11 @@ function addRecord() {
     recordsList = localStorage.getItem("savedRecords").split(", ");
     table.querySelectorAll("li").forEach((elem, index) => {
       if (recordsList[index]) {
-        elem.innerHTML = recordsList[index];
+        if (recordsList[index] == score) {
+          elem.innerHTML = `<span>${recordsList[index]}</span>`;
+        } else {
+          elem.innerHTML = recordsList[index];
+        }
       }
     });
   });
@@ -539,9 +543,9 @@ function startGame(countLives, countScore) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   snake = {
     parts: [
-      { x: 5, y: 5 },
-      { x: 4, y: 5 },
       { x: 3, y: 5 },
+      { x: 2, y: 5 },
+      { x: 1, y: 5 },
     ],
     direction: "East", // возможные направления "East", "North", "West", "South"
   };
@@ -585,3 +589,5 @@ function pressEnterStart(event) {
   }
 }
 document.addEventListener("keydown", pressEnterStart);
+
+addRecord();

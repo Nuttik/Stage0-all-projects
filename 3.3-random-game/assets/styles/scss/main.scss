@@ -437,7 +437,7 @@ p {
   &__title {
     font-size: 3rem;
     font-weight: 800;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 
     @media (max-width: 767px) {
       font-size: 2rem;
@@ -473,9 +473,10 @@ p {
       font-size: 1rem;
       color: var(--color-red);
     }
-  }
-  span {
-    font-weight: 800;
-    color: var(--color-red);
+
+    &.user-score {
+      font-weight: 800;
+      color: var(--color-red);
+    }
   }
 }

@@ -473,13 +473,19 @@ function addRecord() {
 
   listTableRecords.forEach((table) => {
     recordsList = localStorage.getItem("savedRecords").split(", ");
+    let isUserScore = true;
     table.querySelectorAll("li").forEach((elem, index) => {
       if (recordsList[index]) {
-        if (recordsList[index] == score) {
-          elem.innerHTML = `<span>${recordsList[index]}</span>`;
-        } else {
-          elem.innerHTML = recordsList[index];
+        if (recordsList[index] == score && isUserScore) {
+          elem.classList.add("user-score");
+          isUserScore = false;
+        } else if (
+          recordsList[index] != score &&
+          elem.classList.contains("user-score")
+        ) {
+          elem.classList.remove("user-score");
         }
+        elem.innerHTML = recordsList[index];
       }
     });
   });

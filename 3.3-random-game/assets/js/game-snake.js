@@ -16,7 +16,8 @@ const buttonDown = document.getElementById("buttonDown");
 const buttonLeft = document.getElementById("buttonLeft");
 const buttonRight = document.getElementById("buttonRight");
 const gameOverPopUp = document.getElementById("game-over");
-
+const scoreVeiw = document.querySelectorAll(".scoreCount");
+const livesVeiw = document.querySelectorAll(".health-point");
 const ctx = canvas.getContext("2d");
 
 // --- Глобальные переменные ---
@@ -57,12 +58,15 @@ function drawElem(elem, src, cropX, cropY) {
 }
 
 function drawSnake(imgSrc) {
+  let next = nextLocation();
   snake.parts.forEach((item, index, array) => {
     if (index == 0) {
       switch (snake.direction) {
         case "East":
           if (isCrashSnake == true) {
             drawElem(item, "assets/images/sprite-snake.svg", 240, 80);
+          } else if (isNextFruit(next)) {
+            drawElem(item, "assets/images/sprite-snake.svg", 240, 160);
           } else {
             drawElem(item, "assets/images/sprite-snake.svg", 240, 0);
           }
@@ -72,6 +76,8 @@ function drawSnake(imgSrc) {
         case "North":
           if (isCrashSnake == true) {
             drawElem(item, "assets/images/sprite-snake.svg", 0, 80);
+          } else if (isNextFruit(next)) {
+            drawElem(item, "assets/images/sprite-snake.svg", 0, 160);
           } else {
             drawElem(item, "assets/images/sprite-snake.svg", 0, 0);
           }
@@ -80,6 +86,8 @@ function drawSnake(imgSrc) {
         case "West":
           if (isCrashSnake == true) {
             drawElem(item, "assets/images/sprite-snake.svg", 80, 80);
+          } else if (isNextFruit(next)) {
+            drawElem(item, "assets/images/sprite-snake.svg", 80, 160);
           } else {
             drawElem(item, "assets/images/sprite-snake.svg", 80, 0);
           }
@@ -88,6 +96,8 @@ function drawSnake(imgSrc) {
         case "South":
           if (isCrashSnake == true) {
             drawElem(item, "assets/images/sprite-snake.svg", 160, 80);
+          } else if (isNextFruit(next)) {
+            drawElem(item, "assets/images/sprite-snake.svg", 160, 160);
           } else {
             drawElem(item, "assets/images/sprite-snake.svg", 160, 0);
           }
@@ -179,13 +189,14 @@ function drawAllFruit() {
   }
 }
 
+let move;
 // тики для бесконечного движения змейки
 function startTick() {
   tick = setInterval(function () {
     drawAllFruit();
     moveSnake();
     drawSnake();
-  }, 500);
+  }, 300);
 }
 function stopTick() {
   clearInterval(tick);
@@ -209,9 +220,8 @@ function nextLocation() {
   return { x: nextX, y: nextY };
 }
 
-function moveSnake() {
+function claerSnace() {
   snake.parts.forEach((rect) => {
-    //ЗАТИРАЕТ ФРУКТЫ!!!!!!!!!!!
     ctx.clearRect(
       rect.x * elemSize,
       rect.y * elemSize,
@@ -219,8 +229,12 @@ function moveSnake() {
       rect.y * elemSize + elemSize
     );
   });
+}
 
+function moveSnake() {
+  claerSnace();
   let next = nextLocation();
+
   if (isNextWall(next) || isNextTail(next)) {
     crashSnake();
   } else {
@@ -231,10 +245,7 @@ function moveSnake() {
       //// удаления фрукта, для этого isNextFruit возвращает [тип фрукта,индекс его координат]
       removeFruit(next);
 
-      //Смена лица змейки в зависимости от направления
-
-      //// добавить увеличения длинны змейки
-
+      //// Увеличение длинны змейки
       let indexTail = snake.parts.length - 1;
       let tail = snake.parts[indexTail];
       //движется вперед
@@ -276,6 +287,7 @@ function crashSnake() {
   stopTick();
   lives = lives - 1;
   isCrashSnake = true;
+  changeLivesVeiw();
 
   if (lives > 0) {
     setTimeout(function () {
@@ -409,7 +421,37 @@ function increaseScore(next) {
       score = score + 3;
       break;
   }
-  //Добавить изменение отображаемого счета
+  //изменение отображаемого счета
+  changeScoreVeiw();
+}
+function changeScoreVeiw() {
+  scoreVeiw.forEach((elem) => {
+    if (score < 10) {
+      elem.innerHTML = "0" + score;
+    } else {
+      elem.innerHTML = score;
+    }
+  });
+}
+function changeLivesVeiw() {
+  let lostLive = 3 - lives;
+  if (lostLive == 0) {
+    livesVeiw.forEach((elem) => {
+      if (elem.classList.contains("health-point_lost")) {
+        elem.classList.remove("health-point_lost");
+      }
+    });
+  }
+  for (let i = 0; i < lostLive; i++) {
+    livesVeiw[livesVeiw.length - 1 - i].classList.add("health-point_lost");
+  }
+}
+
+function addRecord() {
+  //получаем из локалстейдж со занчение по ключу saveRecords - это масив чисел отсортированный по убыванию
+  //если текущий score больше любого из эллементов массива - то пушим его в конец, заново сортируем массив и отрубаем последний эллемент
+  //перезаписываем значение в локалстордж
+  //перезаписываем значения в таблиц рекордов на странице
 }
 
 // Управление змейкой
@@ -489,7 +531,8 @@ function startGame(countLives, countScore) {
   if (!gameOverPopUp.classList.contains("hidden")) {
     gameOverPopUp.classList.add("hidden");
   }
-
+  changeScoreVeiw();
+  changeLivesVeiw();
   startTick();
   addFruit();
 }

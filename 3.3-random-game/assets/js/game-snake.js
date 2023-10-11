@@ -177,14 +177,15 @@ function drawAllFruit() {
       });
     }
   }
+}
 
 // тики для бесконечного движения змейки
 function startTick() {
   tick = setInterval(function () {
+    drawAllFruit();
     moveSnake();
     drawSnake();
-    drawAllFruit();
-  }, 300);
+  }, 500);
 }
 function stopTick() {
   clearInterval(tick);
@@ -210,6 +211,7 @@ function nextLocation() {
 
 function moveSnake() {
   snake.parts.forEach((rect) => {
+    //ЗАТИРАЕТ ФРУКТЫ!!!!!!!!!!!
     ctx.clearRect(
       rect.x * elemSize,
       rect.y * elemSize,
@@ -222,6 +224,48 @@ function moveSnake() {
   if (isNextWall(next) || isNextTail(next)) {
     crashSnake();
   } else {
+    if (isNextFruit(next)) {
+      //увеличиваем счет в зависимости от типа фрукта
+      increaseScore(next);
+
+      //// удаления фрукта, для этого isNextFruit возвращает [тип фрукта,индекс его координат]
+      removeFruit(next);
+
+      //Смена лица змейки в зависимости от направления
+
+      //// добавить увеличения длинны змейки
+
+      let indexTail = snake.parts.length - 1;
+      let tail = snake.parts[indexTail];
+      //движется вперед
+      if (
+        tail.x == snake.parts[indexTail - 1].x + 1 &&
+        tail.y == snake.parts[indexTail - 1].y
+      ) {
+        snake.parts.push({ x: tail.x - 1, y: tail.y });
+      }
+      //движется назад
+      if (
+        tail.x == snake.parts[indexTail - 1].x - 1 &&
+        tail.y == snake.parts[indexTail - 1].y
+      ) {
+        snake.parts.push({ x: tail.x + 1, y: tail.y });
+      }
+      //движется вниз
+      if (
+        tail.x == snake.parts[indexTail - 1].x &&
+        tail.y == snake.parts[indexTail - 1].y + 1
+      ) {
+        snake.parts.push({ x: tail.x, y: tail.y - 1 });
+      }
+      //движется вверх
+      if (
+        tail.x == snake.parts[indexTail - 1].x &&
+        tail.y == snake.parts[indexTail - 1].y - 1
+      ) {
+        snake.parts.push({ x: tail.x, y: tail.y + 1 });
+      }
+    }
     snake.parts.unshift(next);
     snake.parts.pop();
   }
@@ -261,6 +305,20 @@ function isNextTail(next) {
       result = true;
     }
   });
+  return result;
+}
+
+function isNextFruit(next) {
+  let result = false;
+  for (let fruit in fruits) {
+    if (fruits[fruit].length > 0) {
+      fruits[fruit].forEach((coord, index) => {
+        if (coord.x === next.x && coord.y === next.y) {
+          result = [fruit, index];
+        }
+      });
+    }
+  }
   return result;
 }
 
@@ -325,8 +383,33 @@ function drawNewFruit() {
 }
 function addFruit() {
   if (isPlay === true && isCrashSnake === false) {
-    intervalAddFruit = setInterval(drawNewFruit, 2000); //СТИРАЕТСЯ ИЗ_ЗА СЕТИНТЕРВАЛА ТАМ, ГДЕ ЗМЕЙКА БЫЛА 4 СЕКУНДЫ НАЗАД
+    intervalAddFruit = setInterval(drawNewFruit, 4000); //СТИРАЕТСЯ ИЗ_ЗА СЕТИНТЕРВАЛА ТАМ, ГДЕ ЗМЕЙКА БЫЛА 4 СЕКУНДЫ НАЗАД
   }
+}
+
+function removeFruit(next) {
+  let nextFruitType = isNextFruit(next)[0];
+  let indexFruit = isNextFruit(next)[1];
+  fruits[nextFruitType].splice(indexFruit, 1);
+}
+
+// Игровой счет
+function increaseScore(next) {
+  let nextFruitType = isNextFruit(next)[0];
+  switch (nextFruitType) {
+    case "apples":
+      score++;
+      break;
+
+    case "pears":
+      score = score + 2;
+      break;
+
+    case "bananas":
+      score = score + 3;
+      break;
+  }
+  //Добавить изменение отображаемого счета
 }
 
 // Управление змейкой

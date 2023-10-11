@@ -210,7 +210,6 @@ function nextLocation() {
 
 function moveSnake() {
   snake.parts.forEach((rect) => {
-    //ЗАТИРАЕТ ФРУКТЫ!!!!!!!!!!!
     ctx.clearRect(
       rect.x * elemSize,
       rect.y * elemSize,

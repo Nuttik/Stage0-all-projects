@@ -36,7 +36,14 @@ let imgSrc;
 let snake;
 let fruits;
 
-const listCongratulation = ["it's cool!", "it's fun!", "Nice result!"];
+let recordsList = !localStorage.getItem("savedRecords")
+  ? false
+  : localStorage
+      .getItem("savedRecords")
+      .split(",")
+      .map((item) => {
+        return +item;
+      });
 
 // --- Отрисовка элементов игры ----
 function drawElem(elem, src, cropX, cropY) {
@@ -453,52 +460,59 @@ function changeLivesVeiw() {
     livesVeiw[livesVeiw.length - 1 - i].classList.add("health-point_lost");
   }
 }
-let recordsList = localStorage.getItem("savedRecords");
 
 function addRecord() {
   savedRecords();
   fillRecord();
 }
+
 function savedRecords() {
-  if (localStorage.getItem("savedRecords")) {
-    recordsList += ", " + score;
+  if (recordsList) {
+    recordsList.push(score);
     recordsList = recordsList
-      .split(", ")
       .sort((a, b) => {
-        a = +a;
-        b = +b;
+        a = a;
+        b = b;
         if (a > b) return -1;
         if (a == b) return 0;
         if (a < b) return 1;
       })
-      .slice(0, 10)
-      .join(", ");
+      .slice(0, 10);
 
     localStorage.setItem("savedRecords", recordsList);
-  } else {
-    localStorage.setItem("savedRecords", score);
+  } else if (recordsList == false) {
+    localStorage.setItem("savedRecords", score + ",");
+    recordsList = localStorage
+      .getItem("savedRecords")
+      .split(",")
+      .map((item) => {
+        return +item;
+      });
   }
 }
 
 function fillRecord() {
   listTableRecords.forEach((table) => {
-    recordsList = localStorage.getItem("savedRecords").split(", ");
     let isUserScore = true;
     table.querySelectorAll("li").forEach((elem, index) => {
-      if (recordsList[index]) {
-        if (recordsList[index] == score && isUserScore) {
-          elem.classList.add("user-score");
-          isUserScore = false;
-          elem.innerHTML = recordsList[index];
-          addCongratulation(elem, index);
-        } else if (
-          recordsList[index] != score &&
-          elem.classList.contains("user-score")
-        ) {
-          elem.classList.remove("user-score");
-          elem.innerHTML = recordsList[index];
+      if (recordsList) {
+        if (recordsList[index]) {
+          if (recordsList[index] == score && isUserScore) {
+            elem.classList.add("user-score");
+            isUserScore = false;
+            elem.innerHTML = recordsList[index];
+            addCongratulation(elem, index);
+          } else if (
+            recordsList[index] != score &&
+            elem.classList.contains("user-score")
+          ) {
+            elem.classList.remove("user-score");
+            elem.innerHTML = recordsList[index];
+          } else {
+            elem.innerHTML = recordsList[index];
+          }
         } else {
-          elem.innerHTML = recordsList[index];
+          elem.innerHTML = "0";
         }
       } else {
         elem.innerHTML = "0";
@@ -633,8 +647,8 @@ document.addEventListener("keydown", pressEnterStart);
 
 function openRecordsModal(event) {
   modalRecords.classList.remove("hidden");
-  if (localStorage.getItem("savedRecords").length > 0) {
-    fillRecord(); //функция, которая просто заполняет таблицу данными из локал стордж, а не высчитывает новый рекорд
+  if (recordsList) {
+    fillRecord();
   }
 }
 function closeModal(event) {

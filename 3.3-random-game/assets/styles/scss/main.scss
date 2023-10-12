@@ -468,6 +468,10 @@ p {
   li {
     margin-bottom: 0.75rem;
 
+    @media (max-width: 767px) {
+      margin-bottom: 0.25rem;
+    }
+
     &::marker {
       content: initial;
       font-size: 1rem;

@@ -35,6 +35,8 @@ let tick;
 let imgSrc;
 let snake;
 let fruits;
+let timer;
+let speed;
 
 let recordsList = !localStorage.getItem("savedRecords")
   ? false
@@ -68,6 +70,20 @@ function drawElem(elem, src, cropX, cropY) {
     },
     false
   );
+}
+
+// тики для бесконечного движения змейки
+function startTick() {
+  tick = setInterval(function () {
+    timer++;
+    addFruit();
+    drawAllFruit();
+    moveSnake();
+    drawSnake();
+  }, speed);
+}
+function stopTick() {
+  clearInterval(tick);
 }
 
 function drawSnake(imgSrc) {
@@ -202,19 +218,6 @@ function drawAllFruit() {
   }
 }
 
-let move;
-// тики для бесконечного движения змейки
-function startTick() {
-  tick = setInterval(function () {
-    drawAllFruit();
-    moveSnake();
-    drawSnake();
-  }, 300);
-}
-function stopTick() {
-  clearInterval(tick);
-}
-
 // Движение змейки
 
 function nextLocation() {
@@ -233,7 +236,7 @@ function nextLocation() {
   return { x: nextX, y: nextY };
 }
 
-function claerSnace() {
+function claerSnake() {
   snake.parts.forEach((rect) => {
     ctx.clearRect(
       rect.x * elemSize,
@@ -245,53 +248,60 @@ function claerSnace() {
 }
 
 function moveSnake() {
-  claerSnace();
-  let next = nextLocation();
+  if (timer % 20 == 0) {
+    claerSnake();
+    let next = nextLocation();
 
-  if (isNextWall(next) || isNextTail(next)) {
-    crashSnake();
-  } else {
-    if (isNextFruit(next)) {
-      //увеличиваем счет в зависимости от типа фрукта
-      increaseScore(next);
+    if (isNextWall(next) || isNextTail(next)) {
+      crashSnake();
+    } else {
+      if (isNextFruit(next)) {
+        //увеличиваем счет в зависимости от типа фрукта
+        increaseScore(next);
 
-      //// удаления фрукта, для этого isNextFruit возвращает [тип фрукта,индекс его координат]
-      removeFruit(next);
+        //// удаления фрукта, для этого isNextFruit возвращает [тип фрукта,индекс его координат]
+        removeFruit(next);
 
-      //// Увеличение длинны змейки
-      let indexTail = snake.parts.length - 1;
-      let tail = snake.parts[indexTail];
-      //движется вперед
-      if (
-        tail.x == snake.parts[indexTail - 1].x + 1 &&
-        tail.y == snake.parts[indexTail - 1].y
-      ) {
-        snake.parts.push({ x: tail.x - 1, y: tail.y });
+        // увеличение скорости
+        if (speed > 5) {
+          speed = speed - 1;
+        }
+
+        //// Увеличение длинны змейки
+        let indexTail = snake.parts.length - 1;
+        let tail = snake.parts[indexTail];
+        //движется вперед
+        if (
+          tail.x == snake.parts[indexTail - 1].x + 1 &&
+          tail.y == snake.parts[indexTail - 1].y
+        ) {
+          snake.parts.push({ x: tail.x - 1, y: tail.y });
+        }
+        //движется назад
+        if (
+          tail.x == snake.parts[indexTail - 1].x - 1 &&
+          tail.y == snake.parts[indexTail - 1].y
+        ) {
+          snake.parts.push({ x: tail.x + 1, y: tail.y });
+        }
+        //движется вниз
+        if (
+          tail.x == snake.parts[indexTail - 1].x &&
+          tail.y == snake.parts[indexTail - 1].y + 1
+        ) {
+          snake.parts.push({ x: tail.x, y: tail.y - 1 });
+        }
+        //движется вверх
+        if (
+          tail.x == snake.parts[indexTail - 1].x &&
+          tail.y == snake.parts[indexTail - 1].y - 1
+        ) {
+          snake.parts.push({ x: tail.x, y: tail.y + 1 });
+        }
       }
-      //движется назад
-      if (
-        tail.x == snake.parts[indexTail - 1].x - 1 &&
-        tail.y == snake.parts[indexTail - 1].y
-      ) {
-        snake.parts.push({ x: tail.x + 1, y: tail.y });
-      }
-      //движется вниз
-      if (
-        tail.x == snake.parts[indexTail - 1].x &&
-        tail.y == snake.parts[indexTail - 1].y + 1
-      ) {
-        snake.parts.push({ x: tail.x, y: tail.y - 1 });
-      }
-      //движется вверх
-      if (
-        tail.x == snake.parts[indexTail - 1].x &&
-        tail.y == snake.parts[indexTail - 1].y - 1
-      ) {
-        snake.parts.push({ x: tail.x, y: tail.y + 1 });
-      }
+      snake.parts.unshift(next);
+      snake.parts.pop();
     }
-    snake.parts.unshift(next);
-    snake.parts.pop();
   }
 }
 
@@ -408,8 +418,8 @@ function drawNewFruit() {
   }
 }
 function addFruit() {
-  if (isPlay === true && isCrashSnake === false) {
-    intervalAddFruit = setInterval(drawNewFruit, 3000); //СТИРАЕТСЯ ИЗ_ЗА СЕТИНТЕРВАЛА ТАМ, ГДЕ ЗМЕЙКА БЫЛА 4 СЕКУНДЫ НАЗАД
+  if (timer % 150 == 0) {
+    drawNewFruit();
   }
 }
 
@@ -613,6 +623,8 @@ function startGame(countLives, countScore) {
   isCrashSnake = false;
   lives = countLives;
   score = countScore;
+  timer = 0;
+  speed = 15;
 
   if (!gameOverPopUp.classList.contains("hidden")) {
     gameOverPopUp.classList.add("hidden");

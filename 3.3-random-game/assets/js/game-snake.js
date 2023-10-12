@@ -23,6 +23,9 @@ const livesVeiw = document.querySelectorAll(".health-point");
 const listTableRecords = document.querySelectorAll(".result-table");
 
 const ctx = canvas.getContext("2d");
+const srcSrc = "assets/images/sprite-snake.svg";
+let sprite = new Image(); // Создаёт новый элемент изображения
+sprite.src = srcSrc; // Устанавливает путь
 
 // --- Глобальные переменные ---
 let isPlay = false;
@@ -48,27 +51,19 @@ let recordsList = !localStorage.getItem("savedRecords")
       });
 
 // --- Отрисовка элементов игры ----
-function drawElem(elem, src, cropX, cropY) {
+function drawElem(elem, cropX, cropY) {
   let x = elem.x * elemSize;
   let y = elem.y * elemSize;
-  var img = new Image(); // Создаёт новый элемент изображения
-  img.src = src; // Устанавливает путь
-  img.addEventListener(
-    "load",
-    function () {
-      ctx.drawImage(
-        img,
-        cropX,
-        cropY,
-        elemSize,
-        elemSize,
-        x,
-        y,
-        elemSize,
-        elemSize
-      );
-    },
-    false
+  ctx.drawImage(
+    sprite,
+    cropX,
+    cropY,
+    elemSize,
+    elemSize,
+    x,
+    y,
+    elemSize,
+    elemSize
   );
 }
 
@@ -93,71 +88,71 @@ function drawSnake(imgSrc) {
       switch (snake.direction) {
         case "East":
           if (isCrashSnake == true) {
-            drawElem(item, "assets/images/sprite-snake.svg", 240, 80);
+            drawElem(item, 240, 80);
           } else if (isNextFruit(next)) {
-            drawElem(item, "assets/images/sprite-snake.svg", 240, 160);
+            drawElem(item, 240, 160);
           } else {
-            drawElem(item, "assets/images/sprite-snake.svg", 240, 0);
+            drawElem(item, 240, 0);
           }
 
           break;
 
         case "North":
           if (isCrashSnake == true) {
-            drawElem(item, "assets/images/sprite-snake.svg", 0, 80);
+            drawElem(item, 0, 80);
           } else if (isNextFruit(next)) {
-            drawElem(item, "assets/images/sprite-snake.svg", 0, 160);
+            drawElem(item, 0, 160);
           } else {
-            drawElem(item, "assets/images/sprite-snake.svg", 0, 0);
+            drawElem(item, 0, 0);
           }
           break;
 
         case "West":
           if (isCrashSnake == true) {
-            drawElem(item, "assets/images/sprite-snake.svg", 80, 80);
+            drawElem(item, 80, 80);
           } else if (isNextFruit(next)) {
-            drawElem(item, "assets/images/sprite-snake.svg", 80, 160);
+            drawElem(item, 80, 160);
           } else {
-            drawElem(item, "assets/images/sprite-snake.svg", 80, 0);
+            drawElem(item, 80, 0);
           }
           break;
 
         case "South":
           if (isCrashSnake == true) {
-            drawElem(item, "assets/images/sprite-snake.svg", 160, 80);
+            drawElem(item, 160, 80);
           } else if (isNextFruit(next)) {
-            drawElem(item, "assets/images/sprite-snake.svg", 160, 160);
+            drawElem(item, 160, 160);
           } else {
-            drawElem(item, "assets/images/sprite-snake.svg", 160, 0);
+            drawElem(item, 160, 0);
           }
           break;
       }
     } else if (index == array.length - 1) {
       if (item.x + 1 == array[index - 1].x) {
-        drawElem(item, "assets/images/sprite-snake.svg", 240, 240);
+        drawElem(item, 240, 240);
       }
       if (item.x - 1 == array[index - 1].x) {
-        drawElem(item, "assets/images/sprite-snake.svg", 80, 240);
+        drawElem(item, 80, 240);
       }
       if (item.y + 1 == array[index - 1].y) {
-        drawElem(item, "assets/images/sprite-snake.svg", 0, 240);
+        drawElem(item, 0, 240);
       }
       if (item.y - 1 == array[index - 1].y) {
-        drawElem(item, "assets/images/sprite-snake.svg", 160, 240);
+        drawElem(item, 160, 240);
       }
     } else {
       //идет по прямой
       if (item.x + 1 == array[index - 1].x && item.y == array[index - 1].y) {
-        drawElem(item, "assets/images/sprite-snake.svg", 240, 320);
+        drawElem(item, 240, 320);
       }
       if (item.x - 1 == array[index - 1].x && item.y == array[index - 1].y) {
-        drawElem(item, "assets/images/sprite-snake.svg", 80, 320);
+        drawElem(item, 80, 320);
       }
       if (item.y + 1 == array[index - 1].y && item.x == array[index - 1].x) {
-        drawElem(item, "assets/images/sprite-snake.svg", 0, 320);
+        drawElem(item, 0, 320);
       }
       if (item.y - 1 == array[index - 1].y && item.x == array[index - 1].x) {
-        drawElem(item, "assets/images/sprite-snake.svg", 160, 320);
+        drawElem(item, 160, 320);
       }
       //поворачивает
       //угол нижний правый
@@ -166,7 +161,7 @@ function drawSnake(imgSrc) {
           item.y + 1 == array[index - 1].y) ||
         (item.x + 1 == array[index - 1].x && item.y + 1 == array[index + 1].y)
       ) {
-        drawElem(item, "assets/images/sprite-snake.svg", 0, 400);
+        drawElem(item, 0, 400);
       }
       //угол верхний левый
       if (
@@ -174,7 +169,7 @@ function drawSnake(imgSrc) {
           item.y - 1 == array[index - 1].y) ||
         (item.x - 1 == array[index - 1].x && item.y - 1 == array[index + 1].y)
       ) {
-        drawElem(item, "assets/images/sprite-snake.svg", 80, 400);
+        drawElem(item, 80, 400);
       }
       // угол нижний левый
       if (
@@ -182,7 +177,7 @@ function drawSnake(imgSrc) {
           item.y + 1 == array[index + 1].y) ||
         (item.x - 1 == array[index + 1].x && item.y + 1 == array[index - 1].y)
       ) {
-        drawElem(item, "assets/images/sprite-snake.svg", 160, 400);
+        drawElem(item, 160, 400);
       }
       //угол верхний правый
       if (
@@ -190,7 +185,7 @@ function drawSnake(imgSrc) {
           item.y - 1 == array[index + 1].y) ||
         (item.x + 1 == array[index + 1].x && item.y - 1 == array[index - 1].y)
       ) {
-        drawElem(item, "assets/images/sprite-snake.svg", 240, 400);
+        drawElem(item, 240, 400);
       }
     }
   });
@@ -202,15 +197,15 @@ function drawAllFruit() {
       fruits[fruit].forEach((coord) => {
         switch (fruit) {
           case "apples":
-            drawElem(coord, "assets/images/sprite-snake.svg", 0, 480);
+            drawElem(coord, 0, 480);
             break;
 
           case "pears":
-            drawElem(coord, "assets/images/sprite-snake.svg", 80, 480);
+            drawElem(coord, 80, 480);
             break;
 
           case "bananas":
-            drawElem(coord, "assets/images/sprite-snake.svg", 160, 480);
+            drawElem(coord, 160, 480);
             break;
         }
       });
@@ -405,15 +400,15 @@ function drawNewFruit() {
   let fruit = newFruit();
   switch (fruit[0]) {
     case "apples":
-      drawElem(fruit[1], "assets/images/sprite-snake.svg", 0, 480);
+      drawElem(fruit[1], 0, 480);
       break;
 
     case "pears":
-      drawElem(fruit[1], "assets/images/sprite-snake.svg", 80, 480);
+      drawElem(fruit[1], 80, 480);
       break;
 
     case "bananas":
-      drawElem(fruit[1], "assets/images/sprite-snake.svg", 160, 480);
+      drawElem(fruit[1], 160, 480);
       break;
   }
 }

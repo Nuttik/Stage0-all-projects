@@ -415,7 +415,7 @@ p {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-46%) translateY(-50%);
   width: 20rem;
   background: var(--color-body);
   padding: 2rem 1rem;

@@ -9,6 +9,8 @@
 const canvas = document.getElementById("game-field");
 const startButtons = document.querySelectorAll(".button-play");
 const startButtonMain = document.getElementById("button-start");
+const recordsButton = document.getElementById("records-button");
+const modalRecords = document.querySelector(".game-records.modal");
 const gameWrapper = document.getElementById("game");
 const contrlsButtons = document.querySelector(".contrls__buttons");
 const buttonUp = document.getElementById("buttonUp");
@@ -451,9 +453,13 @@ function changeLivesVeiw() {
     livesVeiw[livesVeiw.length - 1 - i].classList.add("health-point_lost");
   }
 }
+let recordsList = localStorage.getItem("savedRecords");
 
 function addRecord() {
-  let recordsList = localStorage.getItem("savedRecords");
+  savedRecords();
+  fillRecord();
+}
+function savedRecords() {
   if (localStorage.getItem("savedRecords")) {
     recordsList += ", " + score;
     recordsList = recordsList
@@ -472,7 +478,9 @@ function addRecord() {
   } else {
     localStorage.setItem("savedRecords", score);
   }
+}
 
+function fillRecord() {
   listTableRecords.forEach((table) => {
     recordsList = localStorage.getItem("savedRecords").split(", ");
     let isUserScore = true;
@@ -492,6 +500,8 @@ function addRecord() {
         } else {
           elem.innerHTML = recordsList[index];
         }
+      } else {
+        elem.innerHTML = "0";
       }
     });
   });
@@ -620,3 +630,18 @@ function pressEnterStart(event) {
   }
 }
 document.addEventListener("keydown", pressEnterStart);
+
+function openRecordsModal(event) {
+  modalRecords.classList.remove("hidden");
+  if (localStorage.getItem("savedRecords").length > 0) {
+    fillRecord(); //функция, которая просто заполняет таблицу данными из локал стордж, а не высчитывает новый рекорд
+  }
+}
+function closeModal(event) {
+  let closeButton = this.querySelector(".modal__close-button");
+  if (event.target == closeButton) {
+    this.classList.add("hidden");
+  }
+}
+recordsButton.addEventListener("click", openRecordsModal);
+modalRecords.addEventListener("click", closeModal);

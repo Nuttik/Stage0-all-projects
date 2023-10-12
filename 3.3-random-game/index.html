@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Snake</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="assets/styles/css/reset.css" />
+    <link rel="stylesheet" href="assets/styles/css/main.css" />
+  </head>
+  <body>    
+    <header class="header">
+      <div class="wrapper">
+        <div class="header__logo"><img src="assets/images/simple-game-logo.svg" alt="SimpleGame logo"></div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="wrapper wrapper_main">           
+        <h1>Game: "Snake"</h1> 
+        <div class="game game_before-start" id="game">          
+          <div class="game__main-wrapper">
+            <div class="game__scores-row">
+              <div class="game__health-points health-points">
+                <ul class="health-points-list">
+                  <li class="health-point"></li>
+                  <li class="health-point"></li>
+                  <li class="health-point"></li>
+                </ul>
+              </div>
+              <div class="game__score score">
+                <div class="score__title">score:</div>
+                <div class="score__count scoreCount">00</div>
+              </div>
+            </div>
+            <canvas id="game-field" height="704" width="704"></canvas>
+            <button class="button button_big button-play" id="button-start">Play now!</button>
+            <div class="game-over modal hidden" id="game-over">              
+              <div class="modal__bg"></div>
+              <div class="modal__wrapper">
+                <div class="modal__title">Game over</div>
+                <div class="game-over__result">
+                  <div class="game-over__text">Your total score:&nbsp<span class="game-over__total-score scoreCount">00</span></div>
+                </div>
+                <div class="result-table">
+                  <ol>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                  </ol>
+                </div> 
+                <button class="button button_big button-play">Play again</button>
+              </div>            
+            </div>
+            <div class="game-records modal hidden">
+              <div class="modal__bg"></div>
+              <div class="modal__wrapper">
+                <div class="modal__close-button">+</div>
+                <div class="modal__title">Records</div>
+                <div class="modal__result-table result-table">
+                  <ol>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                    <li>0</li>
+                  </ol>
+                </div> 
+              </div>             
+            </div>
+          </div>
+          <div class="game__side-wrapper"> 
+            <div class="game__info-points info-points">
+              <div class="block-title contrls__info-points">Points:</div>
+              <ul class="info-points__list">
+                <li class="info-points__item">
+                  <div class="info-points__ico info-points__ico_apple"></div>
+                  <div>x</div>
+                  <div class="info-points__count">1</div>
+                </li>
+                <li class="info-points__item">
+                  <div class="info-points__ico info-points__ico_pear"></div>
+                  <div>x</div>
+                  <div class="info-points__count">2</div>
+                </li>
+                <li class="info-points__item">
+                  <div class="info-points__ico info-points__ico_banana"></div>
+                  <div>x</div>
+                  <div class="info-points__count">3</div>
+                </li>
+              </ul>
+            </div>
+            <div class="flex-block">
+              <div class="game__contrls contrls">
+                <div class="block-title contrls__block-title">Move snake:</div>
+                <div class="contrls__buttons">
+                  <div class="contrls__button contrls__button_top " id="buttonUp"></div>
+                  <div class="contrls__button contrls__button_left" id="buttonLeft"></div>
+                  <div class="contrls__button contrls__button_down" id="buttonDown"></div>
+                  <div class="contrls__button contrls__button_right" id="buttonRight"></div>
+                </div>
+              </div>
+              <button class="button button_small" id="records-button">Records</button>
+            </div>
+          </div>          
+        </div>
+        <div class="description">
+          <h2>Game description:</h2>
+          <p>Snake is a classic computer game that originated in the 1970s and has since become a popular and iconic game among players of all ages. The objective of the game is simple yet addictive: control a growing snake as it moves around the screen, eating food and avoiding obstacles.
+            Have fun with our game!</p>
+        </div>        
+      </div>
+    </main>
+    <footer class="footer">
+      <div class=" wrapper wrapper_footer">
+        <div class="footer__copy">
+          <div class="footer__github">
+            <a href="https://github.com/Nuttik">by Nata</a>
+          </div>
+        </div>        
+        <div class="footer__year">2023</div>
+        <div class="footer__rs">
+          <a href="https://rs.school/js-stage0/"><img src="assets/images/rs_school_js.svg" width="80"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </footer> 
+  <script src="assets/js/index.js"></script>
+  <script src="assets/js/game-snake.js"></script>
+  </body>
+</html>

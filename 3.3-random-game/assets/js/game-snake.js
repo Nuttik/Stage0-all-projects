@@ -34,6 +34,8 @@ let imgSrc;
 let snake;
 let fruits;
 
+const listCongratulation = ["it's cool!", "it's fun!", "Nice result!"];
+
 // --- Отрисовка элементов игры ----
 function drawElem(elem, src, cropX, cropY) {
   let x = elem.x * elemSize;
@@ -479,16 +481,39 @@ function addRecord() {
         if (recordsList[index] == score && isUserScore) {
           elem.classList.add("user-score");
           isUserScore = false;
+          elem.innerHTML = recordsList[index];
+          addCongratulation(elem, index);
         } else if (
           recordsList[index] != score &&
           elem.classList.contains("user-score")
         ) {
           elem.classList.remove("user-score");
+          elem.innerHTML = recordsList[index];
+        } else {
+          elem.innerHTML = recordsList[index];
         }
-        elem.innerHTML = recordsList[index];
       }
     });
   });
+}
+
+function addCongratulation(li, index) {
+  let listCongratulation = [
+    "Best!",
+    "Perfect!",
+    "Excellent!",
+    "Amazing!",
+    "It's cool!",
+    "Great!",
+    "Good result!",
+    "Good!",
+    "I believe in you",
+    "You can more",
+  ];
+  let congratulation = listCongratulation[index];
+  let span = document.createElement("span");
+  span.innerHTML = congratulation;
+  li.append(span);
 }
 
 // Управление змейкой
@@ -595,5 +620,3 @@ function pressEnterStart(event) {
   }
 }
 document.addEventListener("keydown", pressEnterStart);
-
-addRecord();

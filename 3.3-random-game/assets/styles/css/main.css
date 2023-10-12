@@ -489,4 +489,19 @@ p {
 .result-table li.user-score {
   font-weight: 800;
   color: var(--color-red);
+  position: relative;
+}
+.result-table li.user-score span {
+  color: #ffffff;
+  background: #ffea2c;
+  display: block;
+  position: absolute;
+  left: 2rem;
+  width: -moz-max-content;
+  width: max-content;
+  top: -1rem;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  transform: rotate(336deg);
 }/*# sourceMappingURL=main.css.map */

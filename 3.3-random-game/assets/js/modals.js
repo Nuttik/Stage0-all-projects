@@ -1,3 +1,4 @@
+// -- Элементы DOM ---
 const modalRecords = document.querySelector(".game-records.modal");
 const gameOverPopUp = document.getElementById("game-over");
 
@@ -13,7 +14,9 @@ function closeModal(event) {
     this.classList.add("hidden");
   }
   if (event.target.classList.contains("game-over_close-button")) {
+    claerCanvas();
     startButtonMain.classList.remove("hidden");
+    gameWrapper.classList.add("game_before-start");
   }
 }
 recordsButton.addEventListener("click", openRecordsModal);

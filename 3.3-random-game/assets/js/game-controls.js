@@ -1,3 +1,12 @@
+// -- Элементы DOM ---
+const startButtons = document.querySelectorAll(".button-play");
+const startButtonMain = document.getElementById("button-start");
+const contrlsButtons = document.querySelector(".contrls__buttons");
+const buttonUp = document.getElementById("buttonUp");
+const buttonDown = document.getElementById("buttonDown");
+const buttonLeft = document.getElementById("buttonLeft");
+const buttonRight = document.getElementById("buttonRight");
+
 // Управление змейкой
 // клавиатура
 function controlSnakeWithKey(event) {

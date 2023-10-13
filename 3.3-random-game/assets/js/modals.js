@@ -62,8 +62,8 @@ function addCongratulation(li, index) {
     "Great!",
     "Good result!",
     "Good!",
-    "I believe in you",
     "You can more",
+    "Don't worry!",
   ];
   let congratulation = listCongratulation[index];
   let span = document.createElement("span");

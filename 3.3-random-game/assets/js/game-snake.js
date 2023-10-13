@@ -339,6 +339,7 @@ function startGame(countLives, countScore) {
   }
 
   changeLivesVeiw();
+  changeScoreVeiw();
   startTick();
   addFruit();
 

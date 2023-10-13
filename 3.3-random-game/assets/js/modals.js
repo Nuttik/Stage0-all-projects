@@ -9,17 +9,13 @@ function openRecordsModal(event) {
 }
 function closeModal(event) {
   let closeButton = this.querySelector(".modal__close-button");
-  console.log(closeButton);
   if (event.target == closeButton) {
     this.classList.add("hidden");
   }
-  if (closeButton.classList.contains("game-over_close-button")) {
-    claerCanvas();
-    gameWrapper.classList.add("game_before-start");
+  if (event.target.classList.contains("game-over_close-button")) {
     startButtonMain.classList.remove("hidden");
   }
 }
 recordsButton.addEventListener("click", openRecordsModal);
 modalRecords.addEventListener("click", closeModal);
-
 gameOverPopUp.addEventListener("click", closeModal);

@@ -1,10 +1,3 @@
-/* Баги: 
- -- змейка мигает из-за очищения ее тела при отрисовки перемещения
- -- фрукты мигают. из-за разных сетинтервалов их затирает стирание теле змейки при перемещении. 
- Но иногда очищается и фрукт на позиции где змейка еще не была, 
- НО при отключении очистки тела змейки фрукты перестают исчезать 
-*/
-
 // -- Элементы DOM ---
 const canvas = document.getElementById("game-field");
 const startButtons = document.querySelectorAll(".button-play");
@@ -72,10 +65,10 @@ function startTick() {
   tick = setInterval(function () {
     timer++;
     addFruit();
-    drawAllFruit();
     moveSnake();
     drawSnake();
-  }, speed);
+    drawAllFruit();
+  }, 14);
 }
 function stopTick() {
   clearInterval(tick);
@@ -231,26 +224,22 @@ function nextLocation() {
   return { x: nextX, y: nextY };
 }
 
-function claerSnake() {
-  snake.parts.forEach((rect) => {
-    ctx.clearRect(
-      rect.x * elemSize,
-      rect.y * elemSize,
-      rect.x * elemSize + elemSize,
-      rect.y * elemSize + elemSize
-    );
-  });
+function claerCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function moveSnake() {
-  if (timer % 20 == 0) {
-    claerSnake();
+  if (timer % speed == 0) {
+    claerCanvas();
     let next = nextLocation();
 
     if (isNextWall(next) || isNextTail(next)) {
       crashSnake();
     } else {
       if (isNextFruit(next)) {
+        //звук
+        bonus.currentTime = 0;
+        bonus.play();
         //увеличиваем счет в зависимости от типа фрукта
         increaseScore(next);
 
@@ -259,7 +248,12 @@ function moveSnake() {
 
         // увеличение скорости
         if (speed > 5) {
-          speed = speed - 1;
+          //добавлена проверка, чтобы исключитьмгновенное повторение шага вперед после съедания
+          if ((timer % speed) - 3 != 0) {
+            speed = speed - 3;
+          } else {
+            speed = speed - 4;
+          }
         }
 
         //// Увеличение длинны змейки
@@ -315,8 +309,15 @@ function crashSnake() {
   if (lives == 0) {
     gameOverPopUp.classList.remove("hidden");
     addRecord();
+
+    //звуки
+    soundMaimTheme.pause();
+    gameOver.play();
   }
   clearInterval(intervalAddFruit); //остановка отрисовки фруктов
+
+  //звук
+  crash.play();
 }
 
 function isNextWall(next) {
@@ -600,7 +601,7 @@ contrlsButtons.addEventListener("click", controlSnakeWithButton);
 
 // -- Старт игры
 function startGame(countLives, countScore) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  claerCanvas();
   snake = {
     parts: [
       { x: 3, y: 5 },
@@ -619,7 +620,7 @@ function startGame(countLives, countScore) {
   lives = countLives;
   score = countScore;
   timer = 0;
-  speed = 15;
+  speed = 35;
 
   if (!gameOverPopUp.classList.contains("hidden")) {
     gameOverPopUp.classList.add("hidden");
@@ -628,6 +629,8 @@ function startGame(countLives, countScore) {
   changeLivesVeiw();
   startTick();
   addFruit();
+
+  soundMaimTheme.play();
 }
 
 function clickButtonPlay(event) {

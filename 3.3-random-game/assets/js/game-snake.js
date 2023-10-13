@@ -3,14 +3,12 @@ const canvas = document.getElementById("game-field");
 const startButtons = document.querySelectorAll(".button-play");
 const startButtonMain = document.getElementById("button-start");
 const recordsButton = document.getElementById("records-button");
-const modalRecords = document.querySelector(".game-records.modal");
 const gameWrapper = document.getElementById("game");
 const contrlsButtons = document.querySelector(".contrls__buttons");
 const buttonUp = document.getElementById("buttonUp");
 const buttonDown = document.getElementById("buttonDown");
 const buttonLeft = document.getElementById("buttonLeft");
 const buttonRight = document.getElementById("buttonRight");
-const gameOverPopUp = document.getElementById("game-over");
 const scoreVeiw = document.querySelectorAll(".scoreCount");
 const livesVeiw = document.querySelectorAll(".health-point");
 const listTableRecords = document.querySelectorAll(".result-table");
@@ -631,17 +629,10 @@ function startGame(countLives, countScore) {
   addFruit();
 
   soundMaimTheme.play();
+  if (gameWrapper.classList.contains("game_before-start")) {
+    gameWrapper.classList.remove("game_before-start");
+  }
 }
-
-function clickButtonPlay(event) {
-  gameWrapper.classList.remove("game_before-start");
-  startButtonMain.classList.add("hidden");
-  startGame(3, 0);
-}
-
-startButtons.forEach((button) => {
-  button.addEventListener("click", clickButtonPlay);
-});
 
 function pressEnterStart(event) {
   if (
@@ -655,17 +646,12 @@ function pressEnterStart(event) {
 }
 document.addEventListener("keydown", pressEnterStart);
 
-function openRecordsModal(event) {
-  modalRecords.classList.remove("hidden");
-  if (recordsList) {
-    fillRecord();
-  }
+function clickButtonPlay(event) {
+  gameWrapper.classList.remove("game_before-start");
+  startButtonMain.classList.add("hidden");
+  startGame(3, 0);
 }
-function closeModal(event) {
-  let closeButton = this.querySelector(".modal__close-button");
-  if (event.target == closeButton) {
-    this.classList.add("hidden");
-  }
-}
-recordsButton.addEventListener("click", openRecordsModal);
-modalRecords.addEventListener("click", closeModal);
+
+startButtons.forEach((button) => {
+  button.addEventListener("click", clickButtonPlay);
+});

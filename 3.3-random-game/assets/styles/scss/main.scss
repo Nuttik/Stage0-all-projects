@@ -461,6 +461,16 @@ p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
 
+  @media (max-width: 420px) {
+    margin-bottom: 1rem;
+    overflow: auto;
+    max-height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   ol {
     list-style: auto;
   }

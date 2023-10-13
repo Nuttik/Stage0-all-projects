@@ -1,14 +1,7 @@
 // -- Элементы DOM ---
 const canvas = document.getElementById("game-field");
-const startButtons = document.querySelectorAll(".button-play");
-const startButtonMain = document.getElementById("button-start");
 const recordsButton = document.getElementById("records-button");
 const gameWrapper = document.getElementById("game");
-const contrlsButtons = document.querySelector(".contrls__buttons");
-const buttonUp = document.getElementById("buttonUp");
-const buttonDown = document.getElementById("buttonDown");
-const buttonLeft = document.getElementById("buttonLeft");
-const buttonRight = document.getElementById("buttonRight");
 const scoreVeiw = document.querySelectorAll(".scoreCount");
 const livesVeiw = document.querySelectorAll(".health-point");
 const listTableRecords = document.querySelectorAll(".result-table");

@@ -23,6 +23,12 @@ const sounds = [
     volume: 0.5,
     isLoop: false,
   },
+  {
+    title: "aw",
+    src: "assets/sounds/aw.mp3",
+    volume: 0.8,
+    isLoop: false,
+  },
 ];
 
 let soundsArray;
@@ -44,3 +50,4 @@ const soundMaimTheme = soundsArray[0];
 const bonus = soundsArray[1];
 const crash = soundsArray[2];
 const gameOver = soundsArray[3];
+const aw = soundsArray[4];

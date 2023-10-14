@@ -190,8 +190,22 @@ function moveSnake() {
     claerCanvas();
     let next = nextLocation();
 
-    if (isNextWall(next) || isNextTail(next)) {
+    if (isNextWall(next)) {
       crashSnake();
+      //звук
+      //звук удара
+      crash.play();
+    } else if (isNextTail(next)) {
+      crashSnake();
+
+      //выбор звука
+      if (next.x == snake.parts[1].x && next.y == snake.parts[1].y) {
+        //звук Ох - змейка свернула себе шею
+        aw.play();
+      } else {
+        //звук удара
+        crash.play();
+      }
     } else {
       if (isNextFruit(next)) {
         //звук
@@ -272,9 +286,6 @@ function crashSnake() {
     gameOver.play();
   }
   clearInterval(intervalAddFruit); //остановка отрисовки фруктов
-
-  //звук
-  crash.play();
 }
 
 function isNextWall(next) {

@@ -148,14 +148,6 @@ p {
   justify-content: space-between;
   align-items: center;
 }
-@media (max-width: 767px) {
-  .game__scores-row {
-    position: absolute;
-    width: calc(100% - 2rem);
-    left: 1rem;
-    top: 2rem;
-  }
-}
 .game__side-wrapper {
   height: 700px;
   margin-left: 3rem;

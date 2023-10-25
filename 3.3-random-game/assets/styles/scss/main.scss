@@ -138,13 +138,6 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @media (max-width: 767px) {
-      position: absolute;
-      width: calc(100% - 2rem);
-      left: 1rem;
-      top: 2rem;
-    }
   }
   &__side-wrapper {
     height: 700px;
